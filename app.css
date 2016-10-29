@@ -1,0 +1,34 @@
+@hilight-color: #0080c0;
+
+body {
+  font-family: apple-system;
+}
+
+.app {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .ime, .result {
+    width: 100%;
+  }
+
+  .ime input {
+    width: 100%;
+  }
+  .ime .completion {
+    border-left: 10px solid white;
+    &.hilighted {
+      border-left: 10px solid @hilight-color;
+    }
+
+    font-size: 32px;
+  }
+
+  input {
+    font-size: 48px;
+    line-height: 64px;
+    width: 100%;
+  }
+
+}
