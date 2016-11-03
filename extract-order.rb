@@ -35,6 +35,6 @@ cards.sort_by{|x|x[:frameNoV6]}.each_with_index do |card, i|
   unless index == card[:frameNoV6]
     raise "Index doesn't match position, index=#{index} position=#{card[:frameNoV6]}"
   end
-  puts "  [#{card[:kanji].to_json}, #{card[:keyword].to_json}], /* #{card[:frameNoV6]} */"
+  puts "  [#{card[:kanji].to_json}, #{card[:keyword].downcase.to_json}], /* #{card[:frameNoV6]} */"
 end
 puts "];"

@@ -15,7 +15,7 @@ export const words = [
   ["田", "rice field"], /* 14 */
   ["目", "eye"], /* 15 */
   ["古", "old"], /* 16 */
-  ["吾", "I"], /* 17 */
+  ["吾", "i"], /* 17 */
   ["冒", "risk"], /* 18 */
   ["朋", "companion"], /* 19 */
   ["明", "bright"], /* 20 */
@@ -46,7 +46,7 @@ export const words = [
   ["寸", "measurement"], /* 45 */
   ["肘", "elbow"], /* 46 */
   ["専", "specialty"], /* 47 */
-  ["博", "Dr."], /* 48 */
+  ["博", "dr."], /* 48 */
   ["占", "fortune-telling"], /* 49 */
   ["上", "above"], /* 50 */
   ["下", "below"], /* 51 */
@@ -168,7 +168,7 @@ export const words = [
   ["圭", "squared jewel"], /* 167 */
   ["封", "seal"], /* 168 */
   ["涯", "horizon"], /* 169 */
-  ["寺", "Buddhist temple"], /* 170 */
+  ["寺", "buddhist temple"], /* 170 */
   ["時", "time"], /* 171 */
   ["均", "level"], /* 172 */
   ["火", "fire"], /* 173 */
@@ -208,7 +208,7 @@ export const words = [
   ["木", "tree"], /* 207 */
   ["林", "grove"], /* 208 */
   ["森", "forest"], /* 209 */
-  ["桂", "Japanese Judas-tree"], /* 210 */
+  ["桂", "japanese judas-tree"], /* 210 */
   ["柏", "oak"], /* 211 */
   ["枠", "frame"], /* 212 */
   ["梢", "treetops"], /* 213 */
@@ -320,7 +320,7 @@ export const words = [
   ["条", "twig"], /* 319 */
   ["落", "fall"], /* 320 */
   ["冗", "superfluous"], /* 321 */
-  ["冥", "Hades"], /* 322 */
+  ["冥", "hades"], /* 322 */
   ["軍", "army"], /* 323 */
   ["輝", "radiance"], /* 324 */
   ["運", "carry"], /* 325 */
@@ -377,7 +377,7 @@ export const words = [
   ["諭", "rebuke"], /* 376 */
   ["式", "style"], /* 377 */
   ["試", "test"], /* 378 */
-  ["弐", "II (two)"], /* 379 */
+  ["弐", "ii (two)"], /* 379 */
   ["域", "range"], /* 380 */
   ["賊", "burglar"], /* 381 */
   ["栽", "plantation"], /* 382 */
@@ -494,7 +494,7 @@ export const words = [
   ["旨", "delicious"], /* 493 */
   ["脂", "fat"], /* 494 */
   ["詣", "visit a shrine"], /* 495 */
-  ["壱", "I (one)"], /* 496 */
+  ["壱", "i (one)"], /* 496 */
   ["毎", "every"], /* 497 */
   ["敏", "cleverness"], /* 498 */
   ["梅", "plum"], /* 499 */
@@ -548,7 +548,7 @@ export const words = [
   ["廷", "courts"], /* 547 */
   ["染", "dye"], /* 548 */
   ["燃", "burn"], /* 549 */
-  ["賓", "V.I.P."], /* 550 */
+  ["賓", "v.i.p."], /* 550 */
   ["歳", "year-end"], /* 551 */
   ["県", "prefecture"], /* 552 */
   ["栃", "horse chestnut"], /* 553 */
@@ -1001,7 +1001,7 @@ export const words = [
   ["類", "sort"], /* 1000 */
   ["漆", "lacquer"], /* 1001 */
   ["膝", "knee"], /* 1002 */
-  ["様", "Esq."], /* 1003 */
+  ["様", "esq."], /* 1003 */
   ["求", "request"], /* 1004 */
   ["球", "ball"], /* 1005 */
   ["救", "salvation"], /* 1006 */
@@ -1035,7 +1035,7 @@ export const words = [
   ["他", "other"], /* 1034 */
   ["伏", "prostrated"], /* 1035 */
   ["伝", "transmit"], /* 1036 */
-  ["仏", "Buddha"], /* 1037 */
+  ["仏", "buddha"], /* 1037 */
   ["休", "rest"], /* 1038 */
   ["仮", "provisional"], /* 1039 */
   ["伎", "performing artist"], /* 1040 */
@@ -1055,7 +1055,7 @@ export const words = [
   ["傲", "arrogance"], /* 1054 */
   ["倒", "overthrow"], /* 1055 */
   ["偵", "spy"], /* 1056 */
-  ["僧", "Buddhist priest"], /* 1057 */
+  ["僧", "buddhist priest"], /* 1057 */
   ["億", "hundred million"], /* 1058 */
   ["儀", "ceremony"], /* 1059 */
   ["償", "reparation"], /* 1060 */
@@ -1108,7 +1108,7 @@ export const words = [
   ["併", "join"], /* 1107 */
   ["瓦", "tile"], /* 1108 */
   ["瓶", "flower pot"], /* 1109 */
-  ["宮", "Shinto shrine"], /* 1110 */
+  ["宮", "shinto shrine"], /* 1110 */
   ["営", "occupation"], /* 1111 */
   ["善", "virtuous"], /* 1112 */
   ["膳", "dining tray"], /* 1113 */
@@ -1173,7 +1173,7 @@ export const words = [
   ["祉", "welfare"], /* 1172 */
   ["社", "company"], /* 1173 */
   ["視", "inspection"], /* 1174 */
-  ["奈", "Nara"], /* 1175 */
+  ["奈", "nara"], /* 1175 */
   ["尉", "military officer"], /* 1176 */
   ["慰", "consolation"], /* 1177 */
   ["款", "goodwill"], /* 1178 */
@@ -1239,16 +1239,16 @@ export const words = [
   ["争", "contend"], /* 1238 */
   ["浄", "clean"], /* 1239 */
   ["事", "matter"], /* 1240 */
-  ["唐", "T'ang"], /* 1241 */
+  ["唐", "t'ang"], /* 1241 */
   ["糖", "sugar"], /* 1242 */
   ["康", "sane"], /* 1243 */
   ["逮", "apprehend"], /* 1244 */
-  ["伊", "Italy"], /* 1245 */
+  ["伊", "italy"], /* 1245 */
   ["君", "old boy"], /* 1246 */
   ["群", "flock"], /* 1247 */
   ["耐", "-proof"], /* 1248 */
   ["需", "demand"], /* 1249 */
-  ["儒", "Confucian"], /* 1250 */
+  ["儒", "confucian"], /* 1250 */
   ["端", "edge"], /* 1251 */
   ["両", "both"], /* 1252 */
   ["満", "full"], /* 1253 */
@@ -1259,7 +1259,7 @@ export const words = [
   ["遭", "encounter"], /* 1258 */
   ["漕", "rowing"], /* 1259 */
   ["槽", "vat"], /* 1260 */
-  ["斗", "Big Dipper"], /* 1261 */
+  ["斗", "big dipper"], /* 1261 */
   ["料", "fee"], /* 1262 */
   ["科", "department"], /* 1263 */
   ["図", "map"], /* 1264 */
@@ -1325,7 +1325,7 @@ export const words = [
   ["溺", "drowning"], /* 1324 */
   ["沸", "seethe"], /* 1325 */
   ["費", "expense"], /* 1326 */
-  ["第", "No."], /* 1327 */
+  ["第", "no."], /* 1327 */
   ["弟", "younger brother"], /* 1328 */
   ["巧", "adroit"], /* 1329 */
   ["号", "nickname"], /* 1330 */
@@ -1388,8 +1388,8 @@ export const words = [
   ["渦", "whirlpool"], /* 1387 */
   ["鍋", "pot"], /* 1388 */
   ["過", "overdo"], /* 1389 */
-  ["阪", "Heights"], /* 1390 */
-  ["阿", "Africa"], /* 1391 */
+  ["阪", "heights"], /* 1390 */
+  ["阿", "africa"], /* 1391 */
   ["際", "occasion"], /* 1392 */
   ["障", "hinder"], /* 1393 */
   ["隙", "chink"], /* 1394 */
@@ -1399,7 +1399,7 @@ export const words = [
   ["陳", "line up"], /* 1398 */
   ["防", "ward off"], /* 1399 */
   ["附", "affixed"], /* 1400 */
-  ["院", "Inst."], /* 1401 */
+  ["院", "inst."], /* 1401 */
   ["陣", "camp"], /* 1402 */
   ["隊", "regiment"], /* 1403 */
   ["墜", "crash"], /* 1404 */
@@ -1426,7 +1426,7 @@ export const words = [
   ["探", "grope"], /* 1425 */
   ["深", "deep"], /* 1426 */
   ["丘", "hill"], /* 1427 */
-  ["岳", "Point"], /* 1428 */
+  ["岳", "point"], /* 1428 */
   ["兵", "soldier"], /* 1429 */
   ["浜", "seacoast"], /* 1430 */
   ["糸", "thread"], /* 1431 */
@@ -1587,7 +1587,7 @@ export const words = [
   ["餓", "starve"], /* 1586 */
   ["飾", "decorate"], /* 1587 */
   ["餌", "feed"], /* 1588 */
-  ["館", "Bldg."], /* 1589 */
+  ["館", "bldg."], /* 1589 */
   ["餅", "mochi"], /* 1590 */
   ["養", "foster"], /* 1591 */
   ["飽", "sated"], /* 1592 */
@@ -1699,7 +1699,7 @@ export const words = [
   ["謹", "discreet"], /* 1698 */
   ["僅", "trifle"], /* 1699 */
   ["勤", "diligence"], /* 1700 */
-  ["漢", "Sino-"], /* 1701 */
+  ["漢", "sino-"], /* 1701 */
   ["嘆", "sigh"], /* 1702 */
   ["難", "difficult"], /* 1703 */
   ["華", "splendor"], /* 1704 */
@@ -1774,7 +1774,7 @@ export const words = [
   ["違", "difference"], /* 1773 */
   ["緯", "horizontal"], /* 1774 */
   ["衛", "defense"], /* 1775 */
-  ["韓", "Korea"], /* 1776 */
+  ["韓", "korea"], /* 1776 */
   ["干", "dry"], /* 1777 */
   ["肝", "liver"], /* 1778 */
   ["刊", "publish"], /* 1779 */
@@ -1832,7 +1832,7 @@ export const words = [
   ["区", "ward"], /* 1831 */
   ["枢", "hinge"], /* 1832 */
   ["殴", "assault"], /* 1833 */
-  ["欧", "Europe"], /* 1834 */
+  ["欧", "europe"], /* 1834 */
   ["抑", "repress"], /* 1835 */
   ["仰", "faceup"], /* 1836 */
   ["迎", "welcome"], /* 1837 */
@@ -1876,7 +1876,7 @@ export const words = [
   ["渋", "astringent"], /* 1875 */
   ["摂", "vicarious"], /* 1876 */
   ["央", "center"], /* 1877 */
-  ["英", "England"], /* 1878 */
+  ["英", "england"], /* 1878 */
   ["映", "reflect"], /* 1879 */
   ["赤", "red"], /* 1880 */
   ["赦", "pardon"], /* 1881 */
@@ -1901,7 +1901,7 @@ export const words = [
   ["棋", "chess piece"], /* 1900 */
   ["旗", "national flag"], /* 1901 */
   ["期", "period"], /* 1902 */
-  ["碁", "Go"], /* 1903 */
+  ["碁", "go"], /* 1903 */
   ["基", "fundamentals"], /* 1904 */
   ["甚", "tremendously"], /* 1905 */
   ["勘", "intuition"], /* 1906 */
@@ -1943,12 +1943,12 @@ export const words = [
   ["爆", "bomb"], /* 1942 */
   ["恭", "respect"], /* 1943 */
   ["選", "elect"], /* 1944 */
-  ["殿", "Mr."], /* 1945 */
+  ["殿", "mr."], /* 1945 */
   ["井", "well"], /* 1946 */
   ["丼", "donburi"], /* 1947 */
   ["囲", "surround"], /* 1948 */
   ["耕", "till"], /* 1949 */
-  ["亜", "Asia"], /* 1950 */
+  ["亜", "asia"], /* 1950 */
   ["悪", "bad"], /* 1951 */
   ["円", "circle"], /* 1952 */
   ["角", "angle"], /* 1953 */
@@ -2078,7 +2078,7 @@ export const words = [
   ["巣", "nest"], /* 2077 */
   ["単", "simple"], /* 2078 */
   ["戦", "war"], /* 2079 */
-  ["禅", "Zen"], /* 2080 */
+  ["禅", "zen"], /* 2080 */
   ["弾", "bullet"], /* 2081 */
   ["桜", "cherry tree"], /* 2082 */
   ["獣", "animal"], /* 2083 */
@@ -2110,14 +2110,14 @@ export const words = [
   ["逆", "inverted"], /* 2109 */
   ["塑", "model"], /* 2110 */
   ["遡", "go upstream"], /* 2111 */
-  ["岡", "Mount"], /* 2112 */
+  ["岡", "mount"], /* 2112 */
   ["鋼", "steel"], /* 2113 */
   ["綱", "hawser"], /* 2114 */
   ["剛", "sturdy"], /* 2115 */
   ["缶", "tin can"], /* 2116 */
   ["陶", "pottery"], /* 2117 */
   ["揺", "swing"], /* 2118 */
-  ["謡", "Noh chanting"], /* 2119 */
+  ["謡", "noh chanting"], /* 2119 */
   ["鬱", "gloom"], /* 2120 */
   ["就", "concerning"], /* 2121 */
   ["蹴", "kick"], /* 2122 */
