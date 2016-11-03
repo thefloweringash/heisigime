@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: "./app.js",
   output: {
@@ -15,5 +17,10 @@ module.exports = {
         loader: "style!css!less"
       },
     ],
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin([
+      "NODE_ENV"
+    ])
+  ],
 };
