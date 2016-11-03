@@ -16,13 +16,17 @@ body {
   .ime input {
     width: 100%;
   }
+  .ime .completions {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
   .ime .completion {
-    border-left: 10px solid white;
+    font-size: 32px;
+    flex: 0 0 48px;
     &.hilighted {
       border-left: 10px solid @hilight-color;
     }
-
-    font-size: 32px;
   }
 
   input {

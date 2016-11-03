@@ -7,7 +7,8 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel?presets[]=es2015&presets[]=react'
+        loader: 'babel?presets[]=es2015&presets[]=react&plugins[]=transform-runtime',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,

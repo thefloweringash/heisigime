@@ -2,26 +2,88 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Autocomplete from 'react-autocomplete';
 
 import { words as RTKv6 } from './words';
 import './app.css';
+
+function *scan(str, n) {
+  for (let i = 0; i < str.length - n; i++) {
+    yield str.substring(i, i + n);
+  }
+}
+
+function contains(collection, element, equal) {
+  for (const cand of collection) {
+    if (equal(element, cand)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+const current = Symbol('current');
+
+class WordListFilter {
+  constructor(words, prefix_size) {
+    this.completions = {[current]: words};
+    this.prefix_size = prefix_size;
+
+    for (const entry of words) {
+      for (const idx of scan(keyword[1], prefix_size)) {
+        this.addCompletion(idx, entry);
+      }
+    }
+  }
+
+  addCompletion(index, value) {
+    let map = this.completions;
+    for (const step of index) {
+      if (!map[step]) {
+        map[step] = {};
+      }
+      map = map[step];
+
+      if (!map[current]) {
+        map[current] = [];
+      }
+      if (!contains(map[current], value, ([k1], [k2]) => k1 === k2)) {
+        map[current].push(value);
+      }
+    }
+  }
+
+  mapForQuery(query) {
+    let map = this.completions;
+    for (const step of query.substr(0, this.prefix_size)) {
+      if (map[step]) {
+        map = map[step];
+      }
+      else {
+        return;
+      }
+    }
+    return map;
+  }
+
+  fetch(query) {
+    const map = this.mapForQuery(query);
+    return map && map[current];
+  }
+}
+
 
 class HeisigIME extends Component {
   constructor() {
     super();
 
-    this.state = {input:''};
+    this.wordlist = new WordListFilter(RTKv6, 2);
 
-    this.completed        = this.completed.bind(this);
-    this.renderItem       = this.renderItem.bind(this);
-    this.shouldItemRender = this.shouldItemRender.bind(this);
-    this.onChange         = this.onChange.bind(this);
+    this.state={query: '', candidates: [] };
   }
 
   completed(character) {
     this.props.onInput(character);
-    this.setState({input: ''});
+    this.setQuery('');
   }
 
   renderItem(item, hilighted) {
@@ -29,29 +91,66 @@ class HeisigIME extends Component {
     if (hilighted) {
       classes += ' hilighted'
     }
-    return <div className={classes}>{item[0]} {item[1]}</div>;
+    return (
+      <div
+      key={item[0]}
+      title={item[1]}
+      className={classes}
+      onClick={() => this.completed(item[0])}>
+      {item[0]}
+      </div>
+    );
   }
 
-  shouldItemRender(item, query) {
-    return query !== '' && item[1].startsWith(query);
+  setQuery(query) {
+    this.setState({
+      query,
+      candidates: this.refineCandidates(query, 50),
+    });
   }
 
-  onChange(event, query) {
-    this.setState({input: query});
+  refineCandidates(query, max) {
+    query = query.toLowerCase();
+    const result = [];
+
+    const candidates = this.wordlist.fetch(query);
+    if (candidates) {
+      for (const candidate of candidates) {
+        if (candidate[1].startsWith(query)) {
+          result.unshift(candidate);
+        }
+        else if (candidate[1].indexOf(query) !== -1) {
+          result.push(candidate);
+        }
+        if (max && result.length === max)
+          break;
+      }
+    }
+    return result;
+  }
+
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      const result = this.state.candidates[0];
+      if (result) {
+        this.completed(result[0]);
+      }
+    }
   }
 
   render() {
     return (
-      <Autocomplete
-      wrapperProps={{className: "ime"}}
-      value={this.state.input}
-      onChange={this.onChange}
-      onSelect={this.completed}
-      renderItem={this.renderItem}
-      shouldItemRender={this.shouldItemRender}
-      getItemValue={([kanji, keyword]) => kanji}
-      items={RTKv6}
-      />
+      <div className="ime">
+      <input
+      value={this.state.query}
+      onChange={(event) => this.setQuery(event.target.value)}
+      placeholder="Keyword"
+      onKeyDown={(evt) => this.handleKeyDown(evt)}
+      autoComplete="off" autoCorrect="off" autoCapitalize="off" />
+      <div className="completions">
+        {this.state.candidates.map((c) => this.renderItem(c))}
+      </div>
+      </div>
     );
   }
 }
@@ -73,7 +172,7 @@ class App extends Component {
       <div className="app">
       <input className="result"
       value={this.state.result}
-      onChange={(evt) => this.setState({result: evt.target.value})} />
+      onChange={(evt) => this.setState({result: evt.target.value})} placeholder="Result"/>
       <HeisigIME onInput={this.characterSelected}/>
       </div>
     );
