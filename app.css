@@ -35,4 +35,14 @@ body {
     width: 100%;
   }
 
+  .reverse {
+    font-size: 48px;
+    line-height: 64px;
+    > * {
+      margin-left: 1em;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
 }

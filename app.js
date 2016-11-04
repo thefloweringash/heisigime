@@ -6,6 +6,16 @@ import ReactDOM from 'react-dom';
 import { words as RTKv6 } from './words';
 import './app.css';
 
+function reverseLookupMap() {
+  let reverse = {};
+  for (const [kanji, keyword] of RTKv6) {
+    reverse[kanji] = keyword;
+  }
+  return reverse;
+}
+
+const RTKv6Inverse = reverseLookupMap(RTKv6);
+
 function *scan(str, n) {
   for (let i = 0; i < str.length - n; i++) {
     yield str.substring(i, i + n);
@@ -19,6 +29,50 @@ function contains(collection, element, equal) {
     }
   }
   return false;
+}
+
+class Rubifier extends React.Component {
+  splitPhrase(dictionary, phrase) {
+    const result = [];
+    let partial = null;
+    for (const x of phrase) {
+      if (dictionary[x]) {
+        if (partial) {
+          result.push(partial);
+          partial = null;
+        }
+        result.push(x);
+      }
+      else {
+        partial = partial ? partial + x : x;
+      }
+    }
+    if (partial) {
+      result.push(partial);
+      partial = null;
+    }
+    return result;
+  }
+
+  render() {
+    const { phrase, dictionary } = this.props;
+    const split = this.splitPhrase(dictionary, phrase);
+    return (
+      <div className="reverse">
+      {
+        split.map((w) => {
+          const keyword = dictionary[w[0]];
+          if (keyword) {
+            return <ruby><rb>{w}</rb><rp>(</rp><rt>{keyword}</rt><rp>)</rp></ruby>;
+          }
+          else {
+            return <span className="boring">{w}</span>
+          }
+        })
+      }
+      </div>
+    );
+  }
 }
 
 const current = Symbol('current');
@@ -170,6 +224,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+      <Rubifier dictionary={RTKv6Inverse} phrase={this.state.result} />
       <input className="result"
       value={this.state.result}
       onChange={(evt) => this.setState({result: evt.target.value})} placeholder="Result"/>
