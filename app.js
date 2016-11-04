@@ -29,7 +29,7 @@ class WordListFilter {
     this.prefix_size = prefix_size;
 
     for (const entry of words) {
-      for (const idx of scan(keyword[1], prefix_size)) {
+      for (const idx of scan(entry[1], prefix_size)) {
         this.addCompletion(idx, entry);
       }
     }
