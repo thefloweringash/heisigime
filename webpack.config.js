@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: "./app.js",
+  entry: './main.js',
   output: {
     filename: 'dist.js',
   },
@@ -17,6 +17,9 @@ module.exports = {
         loader: "style!css!less"
       },
     ],
+  },
+  devServer: {
+    stats: 'errors-only',
   },
   plugins: [
     new webpack.EnvironmentPlugin([

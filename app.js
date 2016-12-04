@@ -1,7 +1,6 @@
 // -*- mode: web -*-
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Heap from 'heap';
 import Levenshtein from 'levenshtein';
 
@@ -18,8 +17,7 @@ function reverseLookupMap() {
 
 const RTKv6Inverse = reverseLookupMap(RTKv6);
 
-function *scan(str, n) {
-  for (let i = 0; i < str.length - n; i++) {
+export function *scan(str, n) {
     yield str.substring(i, i + n);
   }
 }
@@ -219,7 +217,7 @@ class HeisigIME extends Component {
   }
 }
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {result: ''};
@@ -243,9 +241,3 @@ class App extends Component {
     );
   }
 }
-
-function main() {
-  ReactDOM.render(<App />, document.getElementById('appcontainer'));
-};
-
-main();
