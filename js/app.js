@@ -223,6 +223,30 @@ class HeisigIME extends Component {
   }
 }
 
+const Dictionaries = [
+  {
+    label: 'Jisho',
+    inline: true,
+    url(query) {
+      return `http://jisho.org/search/${query}`;
+    },
+  },
+  {
+    label: 'Google',
+    inline: false,
+    url(query) {
+      return `https://google.com/search?q=${query}`;
+    },
+  },
+  {
+    label: 'Translate',
+    inline: false,
+    url(query) {
+      return `https://translate.google.com/#ja/en/${query}`
+    }
+  },
+];
+
 export class App extends Component {
   constructor() {
     super();
@@ -237,29 +261,28 @@ export class App extends Component {
   }
 
   showDict(dictionary) {
-    this.setState({dictionary, dictionaryQuery: this.state.result});
-  }
-  closeDict() {
-    this.setState({dictionary: null});
-  }
-
-  dictionaryURL() {
-    const { dictionary, dictionaryQuery } = this.state;
-    switch(dictionary) {
-      case 'jisho':
-        return `http://jisho.org/search/${dictionaryQuery}`
-      default:
-        throw new Error('Unknown dictionary');
+    const dictionaryURL = dictionary.url(this.state.result);
+    if (dictionary.inline) {
+      this.setState({dictionaryURL});
+    }
+    else {
+      window.open(dictionaryURL);
     }
   }
+
+  closeDict() {
+    this.setState({dictionaryURL: null});
+  }
+
   render() {
     return (
       <div className="app">
       <div className="imePane">
       <div className="outButtons">
-      {this.state.dictionary &&
+      {this.state.dictionaryURL &&
        <button className="closeDict" onClick={this.closeDict}>Close</button>}
-      <button onClick={() => this.showDict('jisho')}>Jisho</button>
+       {Dictionaries.map((dict) =>
+         <button key={dict.label} onClick={() => this.showDict(dict)}>{dict.label}</button>)}
       </div>
       <div className="inputs">
       <Rubifier dictionary={RTKv6Inverse} phrase={this.state.result} />
@@ -269,8 +292,8 @@ export class App extends Component {
       <HeisigIME onInput={this.characterSelected}/>
       </div>
       </div>
-      {this.state.dictionary &&
-       <iframe className="dictPane" src={this.dictionaryURL()}/>}
+      {this.state.dictionaryURL &&
+       <iframe className="dictPane" src={this.state.dictionaryURL}/>}
       </div>
     );
   }
