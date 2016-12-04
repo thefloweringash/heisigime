@@ -5,7 +5,7 @@ import Heap from 'heap';
 import Levenshtein from 'levenshtein';
 
 import { words as RTKv6 } from './words';
-import './app.css';
+import '../css/app.css';
 
 function reverseLookupMap() {
   let reverse = {};

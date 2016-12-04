@@ -1,9 +1,12 @@
+var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './main.js',
+  entry: './js/main.js',
   output: {
-    filename: 'dist.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.js',
+    publicPath: '/',
   },
   module:{
     loaders: [
@@ -20,6 +23,7 @@ module.exports = {
   },
   devServer: {
     stats: 'errors-only',
+    contentBase: './dist',
   },
   plugins: [
     new webpack.EnvironmentPlugin([
