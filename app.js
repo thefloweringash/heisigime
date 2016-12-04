@@ -18,6 +18,11 @@ function reverseLookupMap() {
 const RTKv6Inverse = reverseLookupMap(RTKv6);
 
 export function *scan(str, n) {
+  if (str.length <= n) {
+    yield str;
+    return;
+  }
+  for (let i = 0; i <= str.length - n; i++) {
     yield str.substring(i, i + n);
   }
 }
