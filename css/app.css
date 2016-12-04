@@ -5,21 +5,50 @@ body {
 }
 
 .app {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
 
+  display: flex;
+  flex-direction: row;
+  .imePane {
+    flex: 1 1 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  .dictPane {
+    flex: 3 1 0;
+    border: 0;
+    box-shadow: 8px 0px 16px black;
+  }
+
+  .outButtons {
+    float: right;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inputs {
+    margin: 0 8px;
+  }
   .ime, .result {
     width: 100%;
   }
 
+  .result {
+    margin: 8px 0;
+  }
+
   .ime input {
     width: 100%;
+    margin: 8px 0;
   }
   .ime .completions {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    align-content: space-between;
   }
   .ime .completion {
     font-size: 32px;
@@ -38,11 +67,9 @@ body {
   .reverse {
     font-size: 48px;
     line-height: 64px;
-    > * {
-      margin-left: 1em;
-      &:first-child {
-        margin-left: 0;
-      }
+    word-wrap: break-word;
+    rt {
+      margin: 0 4px;
     }
   }
 }

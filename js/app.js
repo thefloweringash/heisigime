@@ -5,6 +5,7 @@ import Heap from 'heap';
 import Levenshtein from 'levenshtein';
 
 import { words as RTKv6 } from './words';
+import 'normalize.css/normalize.css';
 import '../css/app.css';
 
 function reverseLookupMap() {
@@ -225,23 +226,51 @@ class HeisigIME extends Component {
 export class App extends Component {
   constructor() {
     super();
-    this.state = {result: ''};
+    this.state = {result: '', dictionary: null};
 
     this.characterSelected = this.characterSelected.bind(this);
+    this.closeDict = this.closeDict.bind(this);
   }
 
   characterSelected(char) {
     this.setState((prev) => ({result: prev.result + char}));
   }
-  
+
+  showDict(dictionary) {
+    this.setState({dictionary, dictionaryQuery: this.state.result});
+  }
+  closeDict() {
+    this.setState({dictionary: null});
+  }
+
+  dictionaryURL() {
+    const { dictionary, dictionaryQuery } = this.state;
+    switch(dictionary) {
+      case 'jisho':
+        return `http://jisho.org/search/${dictionaryQuery}`
+      default:
+        throw new Error('Unknown dictionary');
+    }
+  }
   render() {
     return (
       <div className="app">
+      <div className="imePane">
+      <div className="outButtons">
+      {this.state.dictionary &&
+       <button className="closeDict" onClick={this.closeDict}>Close</button>}
+      <button onClick={() => this.showDict('jisho')}>Jisho</button>
+      </div>
+      <div className="inputs">
       <Rubifier dictionary={RTKv6Inverse} phrase={this.state.result} />
       <input className="result"
       value={this.state.result}
       onChange={(evt) => this.setState({result: evt.target.value})} placeholder="Result"/>
       <HeisigIME onInput={this.characterSelected}/>
+      </div>
+      </div>
+      {this.state.dictionary &&
+       <iframe className="dictPane" src={this.dictionaryURL()}/>}
       </div>
     );
   }
