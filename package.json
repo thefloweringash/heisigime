@@ -4,7 +4,7 @@
   "description": "Remembering the Kanji based Kanji entry method",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --inline --hot",
     "build": "NODE_ENV=production webpack --optimize-minimize --optimize-dedupe",
     "test": "karma start --single-run"
   },
