@@ -158,11 +158,12 @@ class HeisigIME extends Component {
     this.setQuery('');
   }
 
-  renderItem({kanji, keyword}, hilighted) {
+  renderItem({kanji, keyword, distance}, hilighted) {
     let classes = 'completion';
     if (hilighted) {
       classes += ' hilighted'
     }
+    classes += distance <= 2 ? ' close' : ' far';
     return (
       <div
       key={kanji}
@@ -185,13 +186,13 @@ class HeisigIME extends Component {
     query = query.toLowerCase();
     const result = [];
 
-    const sorted = new Heap((x, y) => x.score - y.score);
+    const sorted = new Heap((x, y) => x.distance - y.distance);
     const candidates = this.wordlist.fetch(query);
     if (candidates) {
       for (const candidate of candidates) {
         const [kanji, keyword] = candidate;
-        const score = new Levenshtein(query, keyword).distance;
-        sorted.push({kanji, keyword, score});
+        const distance = new Levenshtein(query, keyword).distance;
+        sorted.push({kanji, keyword, distance});
       }
     }
     return takeHeap(sorted, 50);

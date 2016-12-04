@@ -56,6 +56,9 @@ body {
     &.hilighted {
       border-left: 10px solid @hilight-color;
     }
+    &.far {
+      color: #ccc;
+    }
   }
 
   input {
