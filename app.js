@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Heap from 'heap';
+import Levenshtein from 'levenshtein';
 
 import { words as RTKv6 } from './words';
 import './app.css';
@@ -29,6 +31,18 @@ function contains(collection, element, equal) {
     }
   }
   return false;
+}
+
+function takeHeap(heap, n) {
+  const result = [];
+  for (let i = 0; i < n; i++) {
+    const element = heap.pop();
+    if (!element) {
+      break;
+    }
+    result.push(element);
+  }
+  return result;
 }
 
 class Rubifier extends React.Component {
@@ -140,18 +154,18 @@ class HeisigIME extends Component {
     this.setQuery('');
   }
 
-  renderItem(item, hilighted) {
+  renderItem({kanji, keyword}, hilighted) {
     let classes = 'completion';
     if (hilighted) {
       classes += ' hilighted'
     }
     return (
       <div
-      key={item[0]}
-      title={item[1]}
+      key={kanji}
+      title={keyword}
       className={classes}
-      onClick={() => this.completed(item[0])}>
-      {item[0]}
+      onClick={() => this.completed(kanji)}>
+      {kanji}
       </div>
     );
   }
@@ -159,35 +173,31 @@ class HeisigIME extends Component {
   setQuery(query) {
     this.setState({
       query,
-      candidates: this.refineCandidates(query, 50),
+      candidates: this.search(query, 50),
     });
   }
 
-  refineCandidates(query, max) {
+  search(query, max) {
     query = query.toLowerCase();
     const result = [];
 
+    const sorted = new Heap((x, y) => x.score - y.score);
     const candidates = this.wordlist.fetch(query);
     if (candidates) {
       for (const candidate of candidates) {
-        if (candidate[1].startsWith(query)) {
-          result.unshift(candidate);
-        }
-        else if (candidate[1].indexOf(query) !== -1) {
-          result.push(candidate);
-        }
-        if (max && result.length === max)
-          break;
+        const [kanji, keyword] = candidate;
+        const score = new Levenshtein(query, keyword).distance;
+        sorted.push({kanji, keyword, score});
       }
     }
-    return result;
+    return takeHeap(sorted, 50);
   }
 
   handleKeyDown(event) {
     if (event.keyCode === 13) {
       const result = this.state.candidates[0];
       if (result) {
-        this.completed(result[0]);
+        this.completed(result.kanji);
       }
     }
   }
