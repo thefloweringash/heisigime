@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Heap from 'heap';
 import Levenshtein from 'levenshtein';
+import Kuromoji from 'kuromoji';
 
 import { words as RTKv6 } from './words';
 import 'normalize.css/normalize.css';
@@ -76,7 +77,7 @@ class Rubifier extends React.Component {
     const { phrase, dictionary } = this.props;
     const split = this.splitPhrase(dictionary, phrase);
     return (
-      <div className="reverse">
+      <span>
       {
         split.map((w) => {
           const keyword = dictionary[w[0]];
@@ -88,7 +89,7 @@ class Rubifier extends React.Component {
           }
         })
       }
-      </div>
+      </span>
     );
   }
 }
@@ -248,13 +249,57 @@ const Dictionaries = [
   },
 ];
 
+const TokenizerLoader = {
+  load() {
+    if (!this.promise) {
+      this.promise = new Promise((ok, fail) => {
+        Kuromoji.builder({ dicPath: "/dict/" }).build(
+          (err, tokenizer) => {
+            if (err) {
+              fail(err);
+            } else {
+              ok(tokenizer);
+            }
+          }
+        );
+      });
+      this.promise.then((tokenizer) => {
+        this.tokenizer = tokenizer;
+      });
+    }
+    return this.promise;
+  },
+  isLoaded() {
+    return !!this.tokenizer;
+  }
+};
+
 export class App extends Component {
   constructor() {
     super();
-    this.state = {result: '', dictionary: null};
+    this.state = {
+      result: '',
+      dictionary: null,
+      haveTokenizer: TokenizerLoader.isLoaded(),
+      useTokenizer: false,
+    };
 
     this.characterSelected = this.characterSelected.bind(this);
     this.closeDict = this.closeDict.bind(this);
+    this.toggleTokenizer = this.toggleTokenizer.bind(this);
+  }
+
+  toggleTokenizer() {
+    if (!this.state.useTokenizer) {
+      this.setState({useTokenizer: true});
+      TokenizerLoader.load().then((tokenizer) => {
+        this.tokenizer = tokenizer;
+        this.setState({haveTokenizer: true});
+      });
+    }
+    else {
+      this.setState({useTokenizer: false});
+    }
   }
 
   characterSelected(char) {
@@ -275,16 +320,35 @@ export class App extends Component {
     this.setState({dictionaryURL: null});
   }
 
+  fakeTokenize(result) {
+    return [{word_type: "UNKNOWN", surface_form: result}];
+  }
+
   render() {
+    const tokenized = (this.state.useTokenizer && this.tokenizer) ?
+                      this.tokenizer.tokenize(this.state.result) :
+                      this.fakeTokenize(this.state.result);
     return (
       <div className="app">
       <div className="imePane">
       <div className="outButtons">
        {Dictionaries.map((dict) =>
          <button key={dict.label} onClick={() => this.showDict(dict)}>{dict.label}</button>)}
+         <button key="kuromoji" onClick={this.toggleTokenizer}>Kuromoji</button>
       </div>
       <div className="inputs">
-      <Rubifier dictionary={RTKv6Inverse} phrase={this.state.result} />
+          <div className="reverse">
+              {tokenized.map(({surface_form, reading}) =>
+                <ruby>
+                    <rb>
+                        <Rubifier dictionary={RTKv6Inverse} phrase={surface_form} />
+                    </rb>
+                    <rp>(</rp>
+                    <rt>{reading}</rt>
+                    <rp>)</rp>
+                </ruby>
+               )}
+          </div>
       <input className="result"
       value={this.state.result}
       onChange={(evt) => this.setState({result: evt.target.value})} placeholder="Result"/>
@@ -301,3 +365,5 @@ export class App extends Component {
     );
   }
 }
+
+

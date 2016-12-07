@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './js/main.js',
@@ -28,6 +29,15 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin([
       "NODE_ENV"
-    ])
+    ]),
+
+    // Static data
+    new CopyWebpackPlugin([
+      {
+        context: path.resolve(__dirname, 'node_modules/kuromoji/dict'),
+        from: '*.dat.gz',
+        to:   'dict',
+      },
+    ]),
   ],
 };
