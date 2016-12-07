@@ -280,8 +280,6 @@ export class App extends Component {
       <div className="app">
       <div className="imePane">
       <div className="outButtons">
-      {this.state.dictionaryURL &&
-       <button className="closeDict" onClick={this.closeDict}>Close</button>}
        {Dictionaries.map((dict) =>
          <button key={dict.label} onClick={() => this.showDict(dict)}>{dict.label}</button>)}
       </div>
@@ -294,7 +292,11 @@ export class App extends Component {
       </div>
       </div>
       {this.state.dictionaryURL &&
-       <iframe className="dictPane" src={this.state.dictionaryURL}/>}
+       <div className="obscurePane" onClick={this.closeDict}>
+       <div className="dictPane">
+        <iframe width="100%" height="100%" className="dictFrame" src={this.state.dictionaryURL}/>
+       </div>
+       </div>}
       </div>
     );
   }
