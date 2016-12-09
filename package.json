@@ -38,6 +38,7 @@
     "levenshtein": "^1.0.5",
     "normalize.css": "^5.0.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "wanakana": "^1.3.7"
   }
 }

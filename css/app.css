@@ -86,4 +86,7 @@ body {
       margin: 0 4px;
     }
   }
+  .token:hover {
+    background: AliceBlue;
+  }
 }

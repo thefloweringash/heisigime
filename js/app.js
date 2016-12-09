@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Heap from 'heap';
 import Levenshtein from 'levenshtein';
 import Kuromoji from 'kuromoji';
+import Wanakana from 'wanakana';
 
 import { words as RTKv6 } from './words';
 import 'normalize.css/normalize.css';
@@ -338,16 +339,22 @@ export class App extends Component {
       </div>
       <div className="inputs">
           <div className="reverse">
-              {tokenized.map(({surface_form, reading}) =>
-                <ruby>
-                    <rb>
-                        <Rubifier dictionary={RTKv6Inverse} phrase={surface_form} />
-                    </rb>
-                    <rp>(</rp>
-                    <rt>{reading}</rt>
-                    <rp>)</rp>
-                </ruby>
-               )}
+              {tokenized.map(({surface_form, reading}) => {
+                 if (surface_form === reading || Wanakana.isKana(surface_form)) {
+                   return <span className="token">{surface_form}</span>;
+                 }
+                 else {
+                   return (
+                     <ruby className="token">
+                         <rb>
+                             <Rubifier dictionary={RTKv6Inverse} phrase={surface_form} />
+                         </rb>
+                         <rp>(</rp>
+                         <rt>{reading && Wanakana.toHiragana(reading)}</rt>
+                         <rp>)</rp>
+                     </ruby>
+                   )
+                 }})}
           </div>
       <input className="result"
       value={this.state.result}
