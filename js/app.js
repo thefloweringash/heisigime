@@ -204,9 +204,11 @@ class HeisigIME extends Component {
     if (event.getModifierState("Control")) {
       if (event.keyCode === 74) {
         this.completed(Wanakana.toHiragana(this.state.query));
+        event.preventDefault();
       }
       else if (event.keyCode === 75) {
         this.completed(Wanakana.toKatakana(this.state.query));
+        event.preventDefault();
       }
     }
     else {
@@ -214,6 +216,7 @@ class HeisigIME extends Component {
         const result = this.state.candidates[0];
         if (result) {
           this.completed(result.kanji);
+          event.preventDefault();
         }
       }
     }
