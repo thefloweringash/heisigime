@@ -49,6 +49,27 @@ body {
 
   .result {
     margin: 8px 0;
+
+  }
+
+  // Some silly text to help test:
+  // すぐに写真を撮ってください。 可愛い写真。 きれいな人。
+  .particle, .auxiliary-verb {
+    color: blueviolet;
+  }
+  .adjective {
+    color: cadetblue;
+  }
+  .symbol {
+    color: #aaa;
+  }
+  .verb {
+    color: cornflowerblue;
+  }
+  .adverb {
+    color: crimson;
+  }
+  .noun {
   }
 
   .ime input {

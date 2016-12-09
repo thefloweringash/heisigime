@@ -80,13 +80,13 @@ class Rubifier extends React.Component {
     return (
       <span>
       {
-        split.map((w) => {
+        split.map((w, i) => {
           const keyword = dictionary[w[0]];
           if (keyword) {
-            return <ruby><rb>{w}</rb><rp>(</rp><rt>{keyword}</rt><rp>)</rp></ruby>;
+            return <ruby key={i}><rb>{w}</rb><rp>(</rp><rt>{keyword}</rt><rp>)</rp></ruby>;
           }
           else {
-            return <span className="boring">{w}</span>
+            return <span key={i} className="boring">{w}</span>
           }
         })
       }
@@ -285,6 +285,35 @@ const TokenizerLoader = {
   }
 };
 
+const posClasses = {
+  助詞:   'particle',
+  形容詞: 'adjective',
+  名詞:   'noun',
+  動詞:   'verb',
+  副詞:   'adverb',
+  助動詞: 'auxiliary-verb',
+  記号:   'symbol',
+};
+
+const Token = ({surface_form, reading, pos}) => {
+  const posClass = posClasses[pos] || '';
+  if (surface_form === reading || Wanakana.isKana(surface_form)) {
+    return <span className={`token ${posClass}`}>{surface_form}</span>;
+  }
+  else {
+    return (
+      <ruby className={`token ${posClass}`}>
+          <rb>
+              <Rubifier dictionary={RTKv6Inverse} phrase={surface_form} />
+          </rb>
+          <rp>(</rp>
+          <rt>{reading && Wanakana.toHiragana(reading)}</rt>
+          <rp>)</rp>
+      </ruby>
+    )
+  };
+};
+
 export class App extends Component {
   constructor() {
     super();
@@ -349,22 +378,7 @@ export class App extends Component {
       </div>
       <div className="inputs">
           <div className="reverse">
-              {tokenized.map(({surface_form, reading}) => {
-                 if (surface_form === reading || Wanakana.isKana(surface_form)) {
-                   return <span className="token">{surface_form}</span>;
-                 }
-                 else {
-                   return (
-                     <ruby className="token">
-                         <rb>
-                             <Rubifier dictionary={RTKv6Inverse} phrase={surface_form} />
-                         </rb>
-                         <rp>(</rp>
-                         <rt>{reading && Wanakana.toHiragana(reading)}</rt>
-                         <rp>)</rp>
-                     </ruby>
-                   )
-                 }})}
+              {tokenized.map((token, i) => <Token key={i} {...token} />)}
           </div>
       <input className="result"
       value={this.state.result}
