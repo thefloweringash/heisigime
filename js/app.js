@@ -201,10 +201,20 @@ class HeisigIME extends Component {
   }
 
   handleKeyDown(event) {
-    if (event.keyCode === 13) {
-      const result = this.state.candidates[0];
-      if (result) {
-        this.completed(result.kanji);
+    if (event.getModifierState("Control")) {
+      if (event.keyCode === 74) {
+        this.completed(Wanakana.toHiragana(this.state.query));
+      }
+      else if (event.keyCode === 75) {
+        this.completed(Wanakana.toKatakana(this.state.query));
+      }
+    }
+    else {
+      if (event.keyCode === 13) {
+        const result = this.state.candidates[0];
+        if (result) {
+          this.completed(result.kanji);
+        }
       }
     }
   }
