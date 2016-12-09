@@ -293,6 +293,7 @@ const posClasses = {
   副詞:   'adverb',
   助動詞: 'auxiliary-verb',
   記号:   'symbol',
+  接頭詞: 'prefix',
 };
 
 const Token = ({surface_form, reading, pos}) => {

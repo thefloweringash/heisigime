@@ -71,6 +71,9 @@ body {
   }
   .noun {
   }
+  .prefix {
+    color: coral;
+  }
 
   .ime input {
     width: 100%;
