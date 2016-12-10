@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: './js/main.js',
@@ -18,10 +19,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style!css!less"
+        loader: "style!css!postcss!less"
       },
     ],
   },
+  postcss: [
+    autoprefixer({ browsers: ['last 2 versions'] }),
+  ],
   devServer: {
     stats: 'errors-only',
     contentBase: './dist',
