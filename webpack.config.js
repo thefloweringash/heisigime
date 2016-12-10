@@ -3,6 +3,10 @@ var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
+const supportedBrowsers = [
+  'last 1 version',
+];
+
 module.exports = {
   entry: './js/main.js',
   output: {
@@ -14,8 +18,17 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel?presets[]=es2015&presets[]=react&plugins[]=transform-runtime',
-        exclude: /node_modules/
+        loader: 'babel',
+        exclude: /node_modules/,
+        query: {
+          presets: [
+            ['env', {
+              targets: { browsers: supportedBrowsers },
+            }],
+            'react',
+          ],
+          plugins: ['transform-runtime'],
+        }
       },
       {
         test: /\.css$/,
@@ -24,7 +37,7 @@ module.exports = {
     ],
   },
   postcss: [
-    autoprefixer({ browsers: ['last 2 versions'] }),
+    autoprefixer({ browsers: supportedBrowsers }),
   ],
   devServer: {
     stats: 'errors-only',
