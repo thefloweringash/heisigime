@@ -43,6 +43,7 @@ module.exports = {
     stats: 'errors-only',
     contentBase: './dist',
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.EnvironmentPlugin([
       "NODE_ENV"
