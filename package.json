@@ -4,9 +4,9 @@
   "description": "Remembering the Kanji based Kanji entry method",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot",
-    "build": "NODE_ENV=production webpack --optimize-minimize --optimize-dedupe",
-    "test": "karma start --single-run"
+    "start": "make -f Makefile.radicals && webpack-dev-server --inline --hot",
+    "build": "make -f Makefile.radicals && NODE_ENV=production webpack --optimize-minimize --optimize-dedupe",
+    "test": "make -f Makefile.radicals && karma start --single-run"
   },
   "author": "Andrew Childs <lorne@cons.org.nz>",
   "license": "BSD-2-Clause",
@@ -34,8 +34,10 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "aphrodite": "^1.1.0",
     "babel-runtime": "^6.18.0",
     "heap": "^0.2.6",
+    "json-loader": "^0.5.4",
     "kuromoji": "^0.1.1",
     "levenshtein": "^1.0.5",
     "normalize.css": "^5.0.0",

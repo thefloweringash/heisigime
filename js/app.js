@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import Kuromoji from 'kuromoji';
 import Wanakana from 'wanakana';
+import kradfile from '../data/kradfile.json';
 import { HeisigIME } from './heisigime';
+import { RadicalSearch } from './radicalsearch';
 import { words as RTKv6 } from './words';
 import { ShowKeyword } from './showkeyword';
 import 'normalize.css/normalize.css';
@@ -78,7 +80,7 @@ const posClasses = {
   接頭詞: 'prefix',
 };
 
-const Token = ({ surface_form, reading, pos }) => {
+const Token = ({ surface_form, reading, pos, onKanjiClicked }) => {
   const posClass = posClasses[pos] || '';
   if (surface_form === reading || Wanakana.isKana(surface_form)) {
     return <span className={`token ${posClass}`}>{surface_form}</span>;
@@ -87,7 +89,11 @@ const Token = ({ surface_form, reading, pos }) => {
     return (
       <ruby className={`token ${posClass}`}>
         <rb>
-          <ShowKeyword dictionary={RTKv6Inverse} phrase={surface_form}/>
+          <ShowKeyword
+            dictionary={RTKv6Inverse}
+            phrase={surface_form}
+            onKanjiClicked={onKanjiClicked}
+          />
         </rb>
         <rp>(</rp>
         <rt>{reading && Wanakana.toHiragana(reading)}</rt>
@@ -101,15 +107,21 @@ export class App extends Component {
   constructor() {
     super();
     this.state = {
-      result:        '',
-      dictionary:    null,
-      haveTokenizer: TokenizerLoader.isLoaded(),
-      useTokenizer:  false,
+      result:           '',
+      dictionary:       null,
+      haveTokenizer:    TokenizerLoader.isLoaded(),
+      useTokenizer:     false,
+      selectedRadicals: [],
+      showRadicalUI:    false,
     };
 
     this.characterSelected = this.characterSelected.bind(this);
     this.closeDict         = this.closeDict.bind(this);
     this.toggleTokenizer   = this.toggleTokenizer.bind(this);
+    this.toggleRadical     = this.toggleRadical.bind(this);
+    this.refineRadicals    = this.refineRadicals.bind(this);
+    this.clearRadicals     = this.clearRadicals.bind(this);
+    this.toggleRadicalUI   = this.toggleRadicalUI.bind(this);
   }
 
   toggleTokenizer() {
@@ -147,6 +159,32 @@ export class App extends Component {
     return [{ word_type: "UNKNOWN", surface_form: result }];
   }
 
+  toggleRadical(radical) {
+    const selectedRadicals = this.state.selectedRadicals.slice();
+    let index              = selectedRadicals.indexOf(radical);
+    if (index === -1) {
+      selectedRadicals.push(radical);
+    }
+    else {
+      selectedRadicals.splice(index, 1);
+    }
+    this.setState({ selectedRadicals });
+  }
+
+  toggleRadicalUI() {
+    this.setState({ showRadicalUI: !this.state.showRadicalUI });
+  }
+
+  clearRadicals() {
+    this.setState({ selectedRadicals: [] });
+  }
+
+  refineRadicals(kanji) {
+    const selectedRadicals = this.state.selectedRadicals.slice();
+    selectedRadicals.unshift(...kradfile[kanji]);
+    this.setState({ selectedRadicals });
+  }
+
   render() {
     const tokenized = (this.state.useTokenizer && this.tokenizer) ?
       this.tokenizer.tokenize(this.state.result) :
@@ -158,17 +196,36 @@ export class App extends Component {
             {Dictionaries.map((dict) =>
               <button key={dict.label} onClick={() => this.showDict(dict)}>{dict.label}</button>)}
             <button key="kuromoji" onClick={this.toggleTokenizer}>Kuromoji</button>
+            <button key="radicals" onClick={this.toggleRadicalUI}>Radicals</button>
           </div>
 
           <div className="inputs">
             <div className="reverse">
-              {tokenized.map((token, i) => <Token key={i} {...token} />)}
+              {tokenized.map((token, i) => <Token key={i} {...token} onKanjiClicked={this.refineRadicals}/>)}
             </div>
-            <input className="result"
-                   value={this.state.result}
-                   onChange={(evt) => this.setState({ result: evt.target.value })}
-                   placeholder="Result"/>
-            <HeisigIME onInput={this.characterSelected}/>
+            <input
+              className="result"
+              value={this.state.result}
+              onChange={(evt) => this.setState({ result: evt.target.value })}
+              placeholder="Result"
+            />
+            <HeisigIME
+              onInput={this.characterSelected}
+            />
+            {this.state.showRadicalUI && (
+              <div>
+                <button
+                  onClick={this.clearRadicals}
+                >
+                  Reset
+                </button>
+                <RadicalSearch
+                  onToggle={this.toggleRadical}
+                  selected={this.state.selectedRadicals}
+                  onComplete={this.characterSelected}
+                />
+              </div>
+            )}
           </div>
         </div>
 

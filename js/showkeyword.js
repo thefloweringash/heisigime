@@ -22,7 +22,7 @@ function splitPhrase(dictionary, phrase) {
   return result;
 }
 
-export const ShowKeyword = ({ phrase, dictionary }) => {
+export const ShowKeyword = ({ phrase, dictionary, onKanjiClicked }) => {
   const split = splitPhrase(dictionary, phrase);
   return (
     <span>
@@ -32,7 +32,7 @@ export const ShowKeyword = ({ phrase, dictionary }) => {
           if (keyword) {
             return (
               <ruby key={i}>
-                <rb>{w}</rb>
+                <rb onClick={() => onKanjiClicked(w)}>{w}</rb>
                 <rp>(</rp>
                 <rt>{keyword}</rt>
                 <rp>)</rp>

@@ -1,3 +1,5 @@
 /dist/app.js
 /dist/dict
 /node_modules
+/data
+/kradzip/*.utf8

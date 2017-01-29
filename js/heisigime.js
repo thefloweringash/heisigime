@@ -40,7 +40,7 @@ export class HeisigIME extends Component {
   setQuery(query) {
     this.setState({
       query,
-      candidates: this.search(query, 50),
+      candidates: query !== '' ? this.search(query, 50) : [],
     });
   }
 
