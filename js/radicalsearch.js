@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     border:  '2px solid transparent',
   },
   diminished:    {
-    color: '#eee',
+    color: '#aaa',
   },
   selected:      {
     border: '2px solid green',
