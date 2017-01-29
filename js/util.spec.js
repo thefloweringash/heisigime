@@ -1,4 +1,4 @@
-import { scan } from './app';
+import { scan } from './util';
 
 describe('scan', () => {
   it('always returns a window, even if the string is too short', () => {
