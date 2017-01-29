@@ -4,9 +4,9 @@
   "description": "Remembering the Kanji based Kanji entry method",
   "main": "index.js",
   "scripts": {
-    "start": "make -f Makefile.radicals && webpack-dev-server --inline --hot",
-    "build": "make -f Makefile.radicals && NODE_ENV=production webpack --optimize-minimize --optimize-dedupe",
-    "test": "make -f Makefile.radicals && karma start --single-run"
+    "start": "make -f Makefile.data && webpack-dev-server --inline --hot",
+    "build": "make -f Makefile.data && NODE_ENV=production webpack --optimize-minimize --optimize-dedupe",
+    "test": "make -f Makefile.data && karma start --single-run"
   },
   "author": "Andrew Childs <lorne@cons.org.nz>",
   "license": "BSD-2-Clause",

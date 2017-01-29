@@ -2,23 +2,12 @@
 import React, { Component } from 'react';
 import Kuromoji from 'kuromoji';
 import Wanakana from 'wanakana';
-import kradfile from '../data/kradfile.json';
 import { HeisigIME } from './heisigime';
 import { RadicalSearch } from './radicalsearch';
-import { words as RTKv6 } from './words';
+import { RTKv6Inverse, kanjiToRadical } from './data';
 import { ShowKeyword } from './showkeyword';
 import 'normalize.css/normalize.css';
 import '../css/app.less';
-
-function reverseLookupMap() {
-  let reverse = {};
-  for (const [kanji, keyword] of RTKv6) {
-    reverse[kanji] = keyword;
-  }
-  return reverse;
-}
-
-const RTKv6Inverse = reverseLookupMap(RTKv6);
 
 const Dictionaries = [
   {
@@ -181,7 +170,7 @@ export class App extends Component {
 
   refineRadicals(kanji) {
     const selectedRadicals = this.state.selectedRadicals.slice();
-    selectedRadicals.unshift(...kradfile[kanji]);
+    selectedRadicals.unshift(...kanjiToRadical[kanji]);
     this.setState({ selectedRadicals });
   }
 

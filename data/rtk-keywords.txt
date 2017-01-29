@@ -1,0 +1,3058 @@
+#Other lists of RTK keywords:
+#
+#- http://ziggr.com/heisig/ includes keywords for the third, fourth, and fifth editions of RTK1. It doesn't include keywords for RTK3 or for the sixth edition of RTK1. At least four of the keywords for the fifth edition of RTK1 are different from the books.
+#- https://docs.google.com/spreadsheet/ccc?key=0AqYInAMvWw-2dGdzUV9uUXpaLXNhYy1Qb3Z0NVRidnc#gid=0 is the source I used for the keywords in the third edition of RTK3. At least four of the keywords for the third edition of RTK3 are likely wrong though, and I changed them in this file. The column for keywords in various older editions does not match any specific editions.
+#- http://forum.koohii.com/viewtopic.php?id=9276 and http://forum.koohii.com/viewtopic.php?id=10054 mention a few lists of keywords for the sixth edition of RTK1. All of them have some errors though.
+#- http://forum.koohii.com/viewtopic.php?id=1492 includes a list of keywords that changed in the second edition of RTK3. I haven't found other keywords that changed in the second edition, but one small error is that 誰 (2712) was "who" instead of "who?" in the first edition of RTK3.
+#
+#The fifth edition of RTK1 contains 2042 kanji, the second edition of RTK2 contains 965 kanji, the sixth edition of RTK1 contains 2200 kanji, and the third edition of RTK3 contains 800 kanji.
+#
+#Kanji whose keywords changed in different editions are 鎮説雌雄峠堂男菓謄釈 in the fifth edition of RTK1, 勾填捻曖籠諦貼勃丼箋 in the sixth edition of RTK1, 揖托捧遁遼樗誰鮒鳶坐呎 in the second edition of RTK3, and 侃涅榊槙詫曳祟陀轡 in the third edition of RTK3.
+#
+#The RTK books use the old standard variants, like the fonts whose name doesn't end with N, but the 2010 jōyō list uses the new standard variants, like the fonts whose name ends with N. For example the ⻍/⻌ radical has two dots in the jōyō list and one dot in the RTK books. RTK books and JIS X 0208 (left) and the 2010 jōyō list (right) also use different variants for at least these four kanji: peel off (剥 / 剝), cheek (頬 / 頰), stuff up (填 / 塡), and scold (叱 / 𠮟). This file uses the RTK / JIS X 0208 variants. All four jōyō variants are included in kanjidic2.xml, which contains the 13108 characters in JIS X 0208, JIS X 0212, and JIS X 0213, but none of them are included in the kanjidic file, which contains the 6355 characters in JIS X 0208.
+#
+#The jōyō list (left) and the sixth edition of RTK and (right) also use different variants for at least these kanji: sniff (嗅 / 嗅 where the right side is 臭), metaphor (喩 / 喻), basket (籠 / 篭), chink (隙 / 隙 where the two upper strokes point upwards). This file uses the jōyō variants for all four kanji. The RTK variant of "metaphor" is not included in kanjidic2.xml, and I haven't found Unicode characters for the RTK variants of "sniff" or "chink".
+#
+#A few keywords are misspelled in the RTK books: "facsimilie" (謄) in the fourth edition of RTK1, "receptable" (托) and "sitting in mediation" (坐) in the first edition of RTK3, and "authochthonous" (坤), "carillion" (鉦), "resucitate" (甦), and "stationary" (箋) in the first, second, and third editions of RTK3. The keywords are left misspelled in this file.
+#
+#The keyword of 枚 is shown as "sheet of" in the indexes but as "a sheet of" in other places in the RTK books. It is "a sheet of" in this file.
+#
+#kanji;sixth edition of RTK1 and third edition of RTK3;sixth edition of RTK1 and third edition of RTK3;fifth edition of RTK1 and second edition of RTK3;fifth edition of RTK1 and second edition of RTK3
+一;1;one;1;one
+二;2;two;2;two
+三;3;three;3;three
+四;4;four;4;four
+五;5;five;5;five
+六;6;six;6;six
+七;7;seven;7;seven
+八;8;eight;8;eight
+九;9;nine;9;nine
+十;10;ten;10;ten
+口;11;mouth;11;mouth
+日;12;day;12;day
+月;13;month;13;month
+田;14;rice field;14;rice field
+目;15;eye;15;eye
+古;16;old;16;old
+吾;17;I;17;I
+冒;18;risk;18;risk
+朋;19;companion;19;companion
+明;20;bright;20;bright
+唱;21;chant;21;chant
+晶;22;sparkle;22;sparkle
+品;23;goods;23;goods
+呂;24;spine;24;spine
+昌;25;prosperous;25;prosperous
+早;26;early;26;early
+旭;27;rising sun;27;rising sun
+世;28;generation;28;generation
+胃;29;stomach;29;stomach
+旦;30;nightbreak;30;nightbreak
+胆;31;gall bladder;31;gall bladder
+亘;32;span;32;span
+凹;33;concave;33;concave
+凸;34;convex;34;convex
+旧;35;olden times;35;olden times
+自;36;oneself;36;oneself
+白;37;white;37;white
+百;38;hundred;38;hundred
+中;39;in;39;in
+千;40;thousand;40;thousand
+舌;41;tongue;41;tongue
+升;42;measuring box;42;measuring box
+昇;43;rise up;43;rise up
+丸;44;round;44;round
+寸;45;measurement;45;measurement
+肘;46;elbow;2464;elbow
+専;47;specialty;46;specialty
+博;48;Dr.;47;Dr.
+占;49;fortune-telling;48;fortune-telling
+上;50;above;49;above
+下;51;below;50;below
+卓;52;eminent;51;eminent
+朝;53;morning;52;morning
+嘲;54;derision;2155;derision
+只;55;only;53;only
+貝;56;shellfish;54;shellfish
+唄;57;pop song;2178;pop song
+貞;58;upright;55;upright
+員;59;employee;56;employee
+貼;60;post a bill;2736;affix
+見;61;see;57;see
+児;62;newborn babe;58;newborn babe
+元;63;beginning;59;beginning
+頁;64;page;60;page
+頑;65;stubborn;61;stubborn
+凡;66;mediocre;62;mediocre
+負;67;defeat;63;defeat
+万;68;ten thousand;64;ten thousand
+句;69;phrase;65;phrase
+肌;70;texture;66;texture
+旬;71;decameron;67;decameron
+勺;72;ladle;68;ladle
+的;73;bull's eye;69;bull's eye
+首;74;neck;70;neck
+乙;75;fish guts;71;fish guts
+乱;76;riot;72;riot
+直;77;straightaway;73;straightaway
+具;78;tool;74;tool
+真;79;true;75;true
+工;80;craft;76;craft
+左;81;left;77;left
+右;82;right;78;right
+有;83;possess;79;possess
+賄;84;bribe;80;bribe
+貢;85;tribute;81;tribute
+項;86;paragraph;82;paragraph
+刀;87;sword;83;sword
+刃;88;blade;84;blade
+切;89;cut;85;cut
+召;90;seduce;86;seduce
+昭;91;shining;87;shining
+則;92;rule;88;rule
+副;93;vice-;89;vice-
+別;94;separate;90;separate
+丁;95;street;91;street
+町;96;village;92;village
+可;97;can;93;can
+頂;98;place on the head;94;place on the head
+子;99;child;95;child
+孔;100;cavity;96;cavity
+了;101;complete;97;complete
+女;102;woman;98;woman
+好;103;fond;99;fond
+如;104;likeness;100;likeness
+母;105;mama;101;mama
+貫;106;pierce;102;pierce
+兄;107;elder brother;103;elder brother
+呪;108;curse;2169;curse
+克;109;overcome;104;overcome
+小;110;little;105;little
+少;111;few;106;few
+大;112;large;107;large
+多;113;many;108;many
+夕;114;evening;109;evening
+汐;115;eventide;110;eventide
+外;116;outside;111;outside
+名;117;name;112;name
+石;118;stone;113;stone
+肖;119;resemblance;114;resemblance
+硝;120;nitrate;115;nitrate
+砕;121;smash;116;smash
+砂;122;sand;117;sand
+妬;123;jealous;2195;jealous
+削;124;plane;118;plane
+光;125;ray;119;ray
+太;126;plump;120;plump
+器;127;utensil;121;utensil
+臭;128;stinking;122;stinking
+嗅;129;sniff
+妙;130;exquisite;123;exquisite
+省;131;focus;124;focus
+厚;132;thick;125;thick
+奇;133;strange;126;strange
+川;134;stream;127;stream
+州;135;state;128;state
+順;136;obey;129;obey
+水;137;water;130;water
+氷;138;icicle;131;icicle
+永;139;eternity;132;eternity
+泉;140;spring;133;spring
+腺;141;gland;2466;gland
+原;142;meadow;134;meadow
+願;143;petition;135;petition
+泳;144;swim;136;swim
+沼;145;marsh;137;marsh
+沖;146;open sea;138;open sea
+汎;147;pan-;2327;pan-
+江;148;creek;139;creek
+汰;149;cleanse;2316;cleanse
+汁;150;soup;140;soup
+沙;151;grains of sand;2296;grains of sand
+潮;152;tide;141;tide
+源;153;source;142;source
+活;154;lively;143;lively
+消;155;extinguish;144;extinguish
+況;156;but of course;145;but of course
+河;157;river;146;river
+泊;158;overnight;147;overnight
+湖;159;lake;148;lake
+測;160;fathom;149;fathom
+土;161;soil;150;soil
+吐;162;spit;151;spit
+圧;163;pressure;152;pressure
+埼;164;cape;153;cape
+垣;165;hedge;154;hedge
+填;166;inlay;2190;stuff up
+圭;167;squared jewel;155;squared jewel
+封;168;seal;156;seal
+涯;169;horizon;157;horizon
+寺;170;Buddhist temple;158;Buddhist temple
+時;171;time;159;time
+均;172;level;160;level
+火;173;fire;161;fire
+炎;174;inflammation;162;inflammation
+煩;175;anxiety;163;anxiety
+淡;176;thin;164;thin
+灯;177;lamp;165;lamp
+畑;178;farm;166;farm
+災;179;disaster;167;disaster
+灰;180;ashes;168;ashes
+点;181;spot;169;spot
+照;182;illuminate;170;illuminate
+魚;183;fish;171;fish
+漁;184;fishing;172;fishing
+里;185;ri;173;ri
+黒;186;black;174;black
+墨;187;black ink;175;black ink
+鯉;188;carp;176;carp
+量;189;quantity;177;quantity
+厘;190;rin;178;rin
+埋;191;bury;179;bury
+同;192;same;180;same
+洞;193;den;181;den
+胴;194;trunk;182;trunk
+向;195;yonder;183;yonder
+尚;196;esteem;184;esteem
+字;197;character;185;character
+守;198;guard;186;guard
+完;199;perfect;187;perfect
+宣;200;proclaim;188;proclaim
+宵;201;wee hours;189;wee hours
+安;202;relax;190;relax
+宴;203;banquet;191;banquet
+寄;204;draw near;192;draw near
+富;205;wealth;193;wealth
+貯;206;savings;194;savings
+木;207;tree;195;tree
+林;208;grove;196;grove
+森;209;forest;197;forest
+桂;210;Japanese Judas-tree;198;Japanese Judas-tree
+柏;211;oak;199;oak
+枠;212;frame;200;frame
+梢;213;treetops;201;treetops
+棚;214;shelf;202;shelf
+杏;215;apricot;203;apricot
+桐;216;paulownia;204;paulownia
+植;217;plant;205;plant
+椅;218;chair;2480;chair
+枯;219;wither;206;wither
+朴;220;crude;207;crude
+村;221;town;208;town
+相;222;inter-;209;inter-
+机;223;desk;210;desk
+本;224;book;211;book
+札;225;tag;212;tag
+暦;226;calendar;213;calendar
+案;227;plan;214;plan
+燥;228;parch;215;parch
+未;229;not yet;216;not yet
+末;230;extremity;217;extremity
+昧;231;obscure;2445;obscure
+沫;232;splash;218;splash
+味;233;flavor;219;flavor
+妹;234;younger sister;220;younger sister
+朱;235;vermilion;221;vermilion
+株;236;stocks;222;stocks
+若;237;young;223;young
+草;238;grass;224;grass
+苦;239;suffering;225;suffering
+苛;240;bullying;2373;bullying
+寛;241;tolerant;226;tolerant
+薄;242;dilute;227;dilute
+葉;243;leaf;228;leaf
+模;244;imitation;229;imitation
+漠;245;vague;230;vague
+墓;246;grave;231;grave
+暮;247;livelihood;232;livelihood
+膜;248;membrane;233;membrane
+苗;249;seedling;234;seedling
+兆;250;portent;235;portent
+桃;251;peach tree;236;peach tree
+眺;252;stare;237;stare
+犬;253;dog;238;dog
+状;254;status quo;239;status quo
+黙;255;silence;240;silence
+然;256;sort of thing;241;sort of thing
+荻;257;reed;242;reed
+狩;258;hunt;243;hunt
+猫;259;cat;244;cat
+牛;260;cow;245;cow
+特;261;special;246;special
+告;262;revelation;247;revelation
+先;263;before;248;before
+洗;264;wash;249;wash
+介;265;jammed in;250;jammed in
+界;266;world;251;world
+茶;267;tea;252;tea
+脊;268;spinal column;2071;spinal column
+合;269;fit;253;fit
+塔;270;pagoda;254;pagoda
+王;271;king;255;king
+玉;272;jewel;256;jewel
+宝;273;treasure;257;treasure
+珠;274;pearl;258;pearl
+現;275;present;259;present
+玩;276;toy;2567;toy
+狂;277;lunatic;260;lunatic
+旺;278;effulgent;2450;effulgent
+皇;279;emperor;261;emperor
+呈;280;display;262;display
+全;281;whole;263;whole
+栓;282;plug;264;plug
+理;283;logic;265;logic
+主;284;lord;266;lord
+注;285;pour;267;pour
+柱;286;pillar;268;pillar
+金;287;gold;269;gold
+銑;288;pig iron;270;pig iron
+鉢;289;bowl;271;bowl
+銅;290;copper;272;copper
+釣;291;angling;273;angling
+針;292;needle;274;needle
+銘;293;inscription;275;inscription
+鎮;294;tranquilize;276;tranquilize
+道;295;road-way;277;road-way
+導;296;guidance;278;guidance
+辻;297;crossing;279;crossing
+迅;298;swift;280;swift
+造;299;create;281;create
+迫;300;urge;282;urge
+逃;301;escape;283;escape
+辺;302;environs;284;environs
+巡;303;patrol;285;patrol
+車;304;car;286;car
+連;305;take along;287;take along
+軌;306;rut;288;rut
+輸;307;transport;289;transport
+喩;308;metaphor
+前;309;in front;290;in front
+煎;310;roast;2548;roast
+各;311;each;291;each
+格;312;status;292;status
+賂;313;graft;2738;graft
+略;314;abbreviation;293;abbreviation
+客;315;guest;294;guest
+額;316;forehead;295;forehead
+夏;317;summer;296;summer
+処;318;dispose;297;dispose
+条;319;twig;298;twig
+落;320;fall;299;fall
+冗;321;superfluous;300;superfluous
+冥;322;Hades;2841;Hades
+軍;323;army;301;army
+輝;324;radiance;302;radiance
+運;325;carry;303;carry
+冠;326;crown;304;crown
+夢;327;dream;305;dream
+坑;328;pit;306;pit
+高;329;tall;307;tall
+享;330;receive;308;receive
+塾;331;cram school;309;cram school
+熟;332;mellow;310;mellow
+亭;333;pavilion;311;pavilion
+京;334;capital;312;capital
+涼;335;refreshing;313;refreshing
+景;336;scenery;314;scenery
+鯨;337;whale;315;whale
+舎;338;cottage;316;cottage
+周;339;circumference;317;circumference
+週;340;week;318;week
+士;341;gentleman;319;gentleman
+吉;342;good luck;320;good luck
+壮;343;robust;321;robust
+荘;344;villa;322;villa
+売;345;sell;323;sell
+学;346;study;324;study
+覚;347;memorize;325;memorize
+栄;348;flourish;326;flourish
+書;349;write;327;write
+津;350;haven;328;haven
+牧;351;breed;329;breed
+攻;352;aggression;330;aggression
+敗;353;failure;331;failure
+枚;354;a sheet of;332;a sheet of
+故;355;happenstance;333;happenstance
+敬;356;awe;334;awe
+言;357;say;335;say
+警;358;admonish;336;admonish
+計;359;plot;337;plot
+詮;360;elucidate;2717;elucidate
+獄;361;prison;338;prison
+訂;362;revise;339;revise
+訃;363;obituary
+討;364;chastise;340;chastise
+訓;365;instruction;341;instruction
+詔;366;imperial edict;342;imperial edict
+詰;367;packed;343;packed
+話;368;tale;344;tale
+詠;369;recitation;345;recitation
+詩;370;poem;346;poem
+語;371;word;347;word
+読;372;read;348;read
+調;373;tune;349;tune
+談;374;discuss;350;discuss
+諾;375;consent;351;consent
+諭;376;rebuke;352;rebuke
+式;377;style;353;style
+試;378;test;354;test
+弐;379;II (two);355;II (two)
+域;380;range;356;range
+賊;381;burglar;357;burglar
+栽;382;plantation;358;plantation
+載;383;load;359;load
+茂;384;overgrown;360;overgrown
+戚;385;relatives;2882;relatives
+成;386;turn into;361;turn into
+城;387;castle;362;castle
+誠;388;sincerity;363;sincerity
+威;389;intimidate;364;intimidate
+滅;390;destroy;365;destroy
+減;391;dwindle;366;dwindle
+蔑;392;revile;2390;revile
+桟;393;scaffold;367;scaffold
+銭;394;coin;368;coin
+浅;395;shallow;369;shallow
+止;396;stop;370;stop
+歩;397;walk;371;walk
+渉;398;ford;372;ford
+頻;399;repeatedly;373;repeatedly
+肯;400;agreement;374;agreement
+企;401;undertake;375;undertake
+歴;402;curriculum;376;curriculum
+武;403;warrior;377;warrior
+賦;404;levy;378;levy
+正;405;correct;379;correct
+証;406;evidence;380;evidence
+政;407;politics;381;politics
+定;408;determine;382;determine
+錠;409;lock;383;lock
+走;410;run;384;run
+超;411;transcend;385;transcend
+赴;412;proceed;386;proceed
+越;413;surpass;387;surpass
+是;414;just so;388;just so
+題;415;topic;389;topic
+堤;416;dike;390;dike
+建;417;build;391;build
+鍵;418;key;2761;key
+延;419;prolong;392;prolong
+誕;420;nativity;393;nativity
+礎;421;cornerstone;394;cornerstone
+婿;422;bridegroom;395;bridegroom
+衣;423;garment;396;garment
+裁;424;tailor;397;tailor
+装;425;attire;398;attire
+裏;426;back;399;back
+壊;427;demolition;400;demolition
+哀;428;pathetic;401;pathetic
+遠;429;distant;402;distant
+猿;430;monkey;403;monkey
+初;431;first time;404;first time
+巾;432;towel;2101;towel
+布;433;linen;405;linen
+帆;434;sail;406;sail
+幅;435;hanging scroll;407;hanging scroll
+帽;436;cap;408;cap
+幕;437;curtain;409;curtain
+幌;438;canopy;410;canopy
+錦;439;brocade;411;brocade
+市;440;market;412;market
+柿;441;persimmon;2481;persimmon
+姉;442;elder sister;413;elder sister
+肺;443;lungs;414;lungs
+帯;444;sash;415;sash
+滞;445;stagnate;416;stagnate
+刺;446;thorn;417;thorn
+制;447;system;418;system
+製;448;made in...;419;made in...
+転;449;revolve;420;revolve
+芸;450;technique;421;technique
+雨;451;rain;422;rain
+雲;452;cloud;423;cloud
+曇;453;cloudy weather;424;cloudy weather
+雷;454;thunder;425;thunder
+霜;455;frost;426;frost
+冬;456;winter;427;winter
+天;457;heavens;428;heavens
+妖;458;bewitched;2078;bewitched
+沃;459;irrigate;2079;irrigate
+橋;460;bridge;429;bridge
+嬌;461;attractive;430;attractive
+立;462;stand up;431;stand up
+泣;463;cry;432;cry
+章;464;badge;433;badge
+競;465;vie;434;vie
+帝;466;sovereign;435;sovereign
+諦;467;renunciation;2716;give up
+童;468;juvenile;436;juvenile
+瞳;469;pupil;437;pupil
+鐘;470;bell;438;bell
+商;471;make a deal;439;make a deal
+嫡;472;legitimate wife;440;legitimate wife
+適;473;suitable;441;suitable
+滴;474;drip;442;drip
+敵;475;enemy;443;enemy
+匕;476;spoon;444;spoon
+叱;477;scold;2179;scold
+匂;478;aroma;2147;aroma
+頃;479;about that time;2791;about that time
+北;480;north;445;north
+背;481;stature;446;stature
+比;482;compare;447;compare
+昆;483;descendants;448;descendants
+皆;484;all;449;all
+楷;485;block letters
+諧;486;orderliness
+混;487;mix;450;mix
+渇;488;thirst;451;thirst
+謁;489;audience;452;audience
+褐;490;brown;453;brown
+喝;491;hoarse;454;hoarse
+葛;492;kudzu;2398;kudzu
+旨;493;delicious;455;delicious
+脂;494;fat;456;fat
+詣;495;visit a shrine;2715;visit a shrine
+壱;496;I (one);457;I (one)
+毎;497;every;458;every
+敏;498;cleverness;459;cleverness
+梅;499;plum;460;plum
+海;500;sea;461;sea
+乞;501;beg;462;beg
+乾;502;drought;463;drought
+腹;503;abdomen;464;abdomen
+複;504;duplicate;465;duplicate
+欠;505;lack;466;lack
+吹;506;blow;467;blow
+炊;507;cook;468;cook
+歌;508;song;469;song
+軟;509;soft;470;soft
+次;510;next;471;next
+茨;511;briar;472;briar
+資;512;assets;473;assets
+姿;513;figure;474;figure
+諮;514;consult with;475;consult with
+賠;515;compensation;476;compensation
+培;516;cultivate;477;cultivate
+剖;517;divide;478;divide
+音;518;sound;479;sound
+暗;519;darkness;480;darkness
+韻;520;rhyme;481;rhyme
+識;521;discriminating;482;discriminating
+鏡;522;mirror;483;mirror
+境;523;boundary;484;boundary
+亡;524;deceased;485;deceased
+盲;525;blind;486;blind
+妄;526;delusion;487;delusion
+荒;527;laid waste;488;laid waste
+望;528;ambition;489;ambition
+方;529;direction;490;direction
+妨;530;disturb;491;disturb
+坊;531;boy;492;boy
+芳;532;perfumed;493;perfumed
+肪;533;obese;494;obese
+訪;534;call on;495;call on
+放;535;set free;496;set free
+激;536;violent;497;violent
+脱;537;undress;498;undress
+説;538;explanation;499;interpretation
+鋭;539;pointed;500;pointed
+曽;540;formerly;501;formerly
+増;541;increase;502;increase
+贈;542;presents;503;presents
+東;543;east;504;east
+棟;544;ridgepole;505;ridgepole
+凍;545;frozen;506;frozen
+妊;546;pregnancy;507;pregnancy
+廷;547;courts;508;courts
+染;548;dye;509;dye
+燃;549;burn;510;burn
+賓;550;V.I.P.;511;V.I.P.
+歳;551;year-end;512;year-end
+県;552;prefecture;513;prefecture
+栃;553;horse chestnut;514;horse chestnut
+地;554;ground;515;ground
+池;555;pond;516;pond
+虫;556;insect;517;insect
+蛍;557;lightning bug;518;lightning bug
+蛇;558;snake;519;snake
+虹;559;rainbow;520;rainbow
+蝶;560;butterfly;521;butterfly
+独;561;single;522;single
+蚕;562;silkworm;523;silkworm
+風;563;wind;524;wind
+己;564;self;525;self
+起;565;rouse;526;rouse
+妃;566;queen;527;queen
+改;567;reformation;528;reformation
+記;568;scribe;529;scribe
+包;569;wrap;530;wrap
+胞;570;placenta;531;placenta
+砲;571;cannon;532;cannon
+泡;572;bubble;533;bubble
+亀;573;tortoise;534;tortoise
+電;574;electricity;535;electricity
+竜;575;dragon;536;dragon
+滝;576;waterfall;537;waterfall
+豚;577;pork;538;pork
+逐;578;pursue;539;pursue
+遂;579;consummate;540;consummate
+家;580;house;541;house
+嫁;581;marry into;542;marry into
+豪;582;overpowering;543;overpowering
+腸;583;intestines;544;intestines
+場;584;location;545;location
+湯;585;hot water;546;hot water
+羊;586;sheep;547;sheep
+美;587;beauty;548;beauty
+洋;588;ocean;549;ocean
+詳;589;detailed;550;detailed
+鮮;590;fresh;551;fresh
+達;591;accomplished;552;accomplished
+羨;592;envious;553;envious
+差;593;distinction;554;distinction
+着;594;don;555;don
+唯;595;solely;556;solely
+堆;596;piled high;2185;piled high
+椎;597;sweet oak;2505;sweet oak
+誰;598;who;2712;who?
+焦;599;char;557;char
+礁;600;reef;558;reef
+集;601;gather;559;gather
+准;602;quasi-;560;quasi-
+進;603;advance;561;advance
+雑;604;miscellaneous;562;miscellaneous
+雌;605;female;563;female
+準;606;semi-;564;semi-
+奮;607;stirred up;565;stirred up
+奪;608;rob;566;rob
+確;609;assurance;567;assurance
+午;610;noon;568;noon
+許;611;permit;569;permit
+歓;612;delight;570;delight
+権;613;authority;571;authority
+観;614;outlook;572;outlook
+羽;615;feathers;573;feathers
+習;616;learn;574;learn
+翌;617;the following;575;the following
+曜;618;weekday;576;weekday
+濯;619;laundry;577;laundry
+曰;620;sayeth;578;sayeth
+困;621;quandary;579;quandary
+固;622;harden;580;harden
+錮;623;weld
+国;624;country;581;country
+団;625;group;582;group
+因;626;cause;583;cause
+姻;627;matrimony;584;matrimony
+咽;628;windpipe;2159;windpipe
+園;629;park;585;park
+回;630;-times;586;-times
+壇;631;podium;587;podium
+店;632;store;588;store
+庫;633;warehouse;589;warehouse
+庭;634;courtyard;590;courtyard
+庁;635;government office;591;government office
+床;636;bed;592;bed
+麻;637;hemp;593;hemp
+磨;638;grind;594;grind
+心;639;heart;595;heart
+忘;640;forget;596;forget
+恣;641;selfish
+忍;642;endure;597;endure
+認;643;acknowledge;598;acknowledge
+忌;644;mourning;599;mourning
+志;645;intention;600;intention
+誌;646;document;601;document
+芯;647;wick;2368;wick
+忠;648;loyalty;602;loyalty
+串;649;shish kebab;603;shish kebab
+患;650;afflicted;604;afflicted
+思;651;think;605;think
+恩;652;grace;606;grace
+応;653;apply;607;apply
+意;654;idea;608;idea
+臆;655;cowardice;2460;cowardice
+想;656;concept;609;concept
+息;657;breath;610;breath
+憩;658;recess;611;recess
+恵;659;favor;612;favor
+恐;660;fear;613;fear
+惑;661;beguile;614;beguile
+感;662;emotion;615;emotion
+憂;663;melancholy;616;melancholy
+寡;664;widow;617;widow
+忙;665;busy;618;busy
+悦;666;ecstasy;619;ecstasy
+恒;667;constancy;620;constancy
+悼;668;lament;621;lament
+悟;669;enlightenment;622;enlightenment
+怖;670;dreadful;623;dreadful
+慌;671;disconcerted;624;disconcerted
+悔;672;repent;625;repent
+憎;673;hate;626;hate
+慣;674;accustomed;627;accustomed
+愉;675;pleasure;628;pleasure
+惰;676;lazy;629;lazy
+慎;677;humility;630;humility
+憾;678;remorse;631;remorse
+憶;679;recollection;632;recollection
+惧;680;disquieting
+憧;681;yearn;2280;yearn
+憬;682;hanker
+慕;683;pining;633;pining
+添;684;annexed;634;annexed
+必;685;invariably;635;invariably
+泌;686;ooze;636;ooze
+手;687;hand;637;hand
+看;688;watch over;638;watch over
+摩;689;chafe;639;chafe
+我;690;ego;640;ego
+義;691;righteousness;641;righteousness
+議;692;deliberation;642;deliberation
+犠;693;sacrifice;643;sacrifice
+抹;694;rub;644;rub
+拭;695;wipe;2254;wipe
+拉;696;yank
+抱;697;embrace;645;embrace
+搭;698;board;646;board
+抄;699;extract;647;extract
+抗;700;confront;648;confront
+批;701;criticism;649;criticism
+招;702;beckon;650;beckon
+拓;703;clear the land;651;clear the land
+拍;704;clap;652;clap
+打;705;strike;653;strike
+拘;706;arrest;654;arrest
+捨;707;discard;655;discard
+拐;708;kidnap;656;kidnap
+摘;709;pinch;657;pinch
+挑;710;challenge;658;challenge
+指;711;finger;659;finger
+持;712;hold;660;hold
+拶;713;imminent;2261;imminent
+括;714;fasten;661;fasten
+揮;715;brandish;662;brandish
+推;716;conjecture;663;conjecture
+揚;717;hoist;664;hoist
+提;718;propose;665;propose
+損;719;damage;666;damage
+拾;720;pick up;667;pick up
+担;721;shouldering;668;shouldering
+拠;722;foothold;669;foothold
+描;723;sketch;670;sketch
+操;724;maneuver;671;maneuver
+接;725;touch;672;touch
+掲;726;put up a notice;673;put up a notice
+掛;727;hang;674;hang
+捗;728;make headway;2269;make headway
+研;729;polish;675;polish
+戒;730;commandment;676;commandment
+弄;731;tinker with;2558;tinker with
+械;732;contraption;677;contraption
+鼻;733;nose;678;nose
+刑;734;punish;679;punish
+型;735;mould;680;mould
+才;736;genius;681;genius
+財;737;property;682;property
+材;738;lumber;683;lumber
+存;739;suppose;684;suppose
+在;740;exist;685;exist
+乃;741;from;686;from
+携;742;portable;687;portable
+及;743;reach out;688;reach out
+吸;744;suck;689;suck
+扱;745;handle;690;handle
+丈;746;length;691;length
+史;747;history;692;history
+吏;748;officer;693;officer
+更;749;grow late;694;grow late
+硬;750;stiff;695;stiff
+梗;751;spiny;2498;spiny
+又;752;or again;696;or again
+双;753;pair;697;pair
+桑;754;mulberry;698;mulberry
+隻;755;vessels;699;vessels
+護;756;safeguard;700;safeguard
+獲;757;seize;701;seize
+奴;758;guy;702;guy
+怒;759;angry;703;angry
+友;760;friend;704;friend
+抜;761;slip out;705;slip out
+投;762;throw;706;throw
+没;763;drown;707;drown
+股;764;thigh;2454;thigh
+設;765;establishment;708;establishment
+撃;766;beat;709;beat
+殻;767;husk;710;husk
+支;768;branch;711;branch
+技;769;skill;712;skill
+枝;770;bough;713;bough
+肢;771;limb;714;limb
+茎;772;stalk;715;stalk
+怪;773;suspicious;716;suspicious
+軽;774;lightly;717;lightly
+叔;775;uncle;718;uncle
+督;776;coach;719;coach
+寂;777;loneliness;720;loneliness
+淑;778;graceful;721;graceful
+反;779;anti-;722;anti-
+坂;780;slope;723;slope
+板;781;plank;724;plank
+返;782;return;725;return
+販;783;marketing;726;marketing
+爪;784;claw;727;claw
+妥;785;gentle;728;gentle
+乳;786;milk;729;milk
+浮;787;floating;730;floating
+淫;788;lewd;2298;lewd
+将;789;leader;731;leader
+奨;790;exhort;732;exhort
+采;791;grab;2090;grab
+採;792;pick;733;pick
+菜;793;vegetable;734;vegetable
+受;794;accept;735;accept
+授;795;impart;736;impart
+愛;796;love;737;love
+曖;797;unclear;2437;equivocal
+払;798;pay;738;pay
+広;799;wide;739;wide
+勾;800;hooked;2148;flexed
+拡;801;broaden;740;broaden
+鉱;802;mineral;741;mineral
+弁;803;valve;742;valve
+雄;804;male;743;male
+台;805;pedestal;744;pedestal
+怠;806;neglect;745;neglect
+治;807;reign;746;reign
+冶;808;metallurgy;2137;metallurgy
+始;809;commence;747;commence
+胎;810;womb;748;womb
+窓;811;window;749;window
+去;812;gone;750;gone
+法;813;method;751;method
+会;814;meeting;752;meeting
+至;815;climax;753;climax
+室;816;room;754;room
+到;817;arrival;755;arrival
+致;818;doth;756;doth
+互;819;mutually;757;mutually
+棄;820;abandon;758;abandon
+育;821;bring up;759;bring up
+撤;822;remove;760;remove
+充;823;allot;761;allot
+銃;824;gun;762;gun
+硫;825;sulfur;763;sulfur
+流;826;current;764;current
+允;827;license;765;license
+唆;828;tempt;766;tempt
+出;829;exit;767;exit
+山;830;mountain;768;mountain
+拙;831;bungling;769;bungling
+岩;832;boulder;770;boulder
+炭;833;charcoal;771;charcoal
+岐;834;branch off;772;branch off
+峠;835;mountain pass;773;mountain pass
+崩;836;crumble;774;crumble
+密;837;secrecy;775;secrecy
+蜜;838;honey;776;honey
+嵐;839;storm;777;storm
+崎;840;promontory;778;promontory
+崖;841;bluffs;2227;bluffs
+入;842;enter;779;enter
+込;843;crowded;780;crowded
+分;844;part;781;part
+貧;845;poverty;782;poverty
+頒;846;partition;783;partition
+公;847;public;784;public
+松;848;pine tree;785;pine tree
+翁;849;venerable old man;786;venerable old man
+訟;850;sue;787;sue
+谷;851;valley;788;valley
+浴;852;bathe;789;bathe
+容;853;contain;790;contain
+溶;854;melt;791;melt
+欲;855;longing;792;longing
+裕;856;abundant;793;abundant
+鉛;857;lead (metal);794;lead (metal)
+沿;858;run alongside;795;run alongside
+賞;859;prize;796;prize
+党;860;party;797;party
+堂;861;hall;798;hall
+常;862;usual;799;usual
+裳;863;skirt;800;skirt
+掌;864;manipulate;801;manipulate
+皮;865;pelt;802;pelt
+波;866;waves;803;waves
+婆;867;old woman;804;old woman
+披;868;expose;805;expose
+破;869;rend;806;rend
+被;870;incur;807;incur
+残;871;remainder;808;remainder
+殉;872;martyrdom;809;martyrdom
+殊;873;particularly;810;particularly
+殖;874;augment;811;augment
+列;875;file;812;file
+裂;876;split;813;split
+烈;877;ardent;814;ardent
+死;878;death;815;death
+葬;879;interment;816;interment
+瞬;880;wink;817;wink
+耳;881;ear;818;ear
+取;882;take;819;take
+趣;883;gist;820;gist
+最;884;utmost;821;utmost
+撮;885;snapshot;822;snapshot
+恥;886;shame;823;shame
+職;887;post;824;post
+聖;888;holy;825;holy
+敢;889;daring;826;daring
+聴;890;listen;827;listen
+懐;891;pocket;828;pocket
+慢;892;ridicule;829;ridicule
+漫;893;loose;830;loose
+買;894;buy;831;buy
+置;895;placement;832;placement
+罰;896;penalty;833;penalty
+寧;897;rather;834;rather
+濁;898;voiced;835;voiced
+環;899;ring;836;ring
+還;900;send back;837;send back
+夫;901;husband;838;husband
+扶;902;aid;839;aid
+渓;903;mountain stream;840;mountain stream
+規;904;standard;841;standard
+替;905;exchange;842;exchange
+賛;906;approve;843;approve
+潜;907;submerge;844;submerge
+失;908;lose;845;lose
+鉄;909;iron;846;iron
+迭;910;alternate;847;alternate
+臣;911;retainer;848;retainer
+姫;912;princess;849;princess
+蔵;913;storehouse;850;storehouse
+臓;914;entrails;851;entrails
+賢;915;intelligent;852;intelligent
+腎;916;kidney;2453;kidney
+堅;917;strict;853;strict
+臨;918;look to;854;look to
+覧;919;perusal;855;perusal
+巨;920;gigantic;856;gigantic
+拒;921;repel;857;repel
+力;922;power;858;power
+男;923;man;859;man
+労;924;labor;860;labor
+募;925;recruit;861;recruit
+劣;926;inferiority;862;inferiority
+功;927;achievement;863;achievement
+勧;928;persuade;864;persuade
+努;929;toil;865;toil
+勃;930;uprising;2858;erection
+励;931;encourage;866;encourage
+加;932;add;867;add
+賀;933;congratulations;868;congratulations
+架;934;erect;869;erect
+脇;935;armpit;870;armpit
+脅;936;threaten;871;threaten
+協;937;co-;872;co-
+行;938;going;873;going
+律;939;rhythm;874;rhythm
+復;940;restore;875;restore
+得;941;gain;876;gain
+従;942;accompany;877;accompany
+徒;943;junior;878;junior
+待;944;wait;879;wait
+往;945;journey;880;journey
+征;946;subjugate;881;subjugate
+径;947;diameter;882;diameter
+彼;948;he;883;he
+役;949;duty;884;duty
+徳;950;benevolence;885;benevolence
+徹;951;penetrate;886;penetrate
+徴;952;indications;887;indications
+懲;953;penal;888;penal
+微;954;delicate;889;delicate
+街;955;boulevard;890;boulevard
+桁;956;girder;2483;girder
+衡;957;equilibrium;891;equilibrium
+稿;958;draft;892;draft
+稼;959;earnings;893;earnings
+程;960;extent;894;extent
+税;961;tax;895;tax
+稚;962;immature;896;immature
+和;963;harmony;897;harmony
+移;964;shift;898;shift
+秒;965;second;899;second
+秋;966;autumn;900;autumn
+愁;967;distress;901;distress
+私;968;private;902;private
+秩;969;regularity;903;regularity
+秘;970;secret;904;secret
+称;971;appellation;905;appellation
+利;972;profit;906;profit
+梨;973;pear tree;907;pear tree
+穫;974;harvest;908;harvest
+穂;975;ear of a plant;909;ear of a plant
+稲;976;rice plant;910;rice plant
+香;977;incense;911;incense
+季;978;seasons;912;seasons
+委;979;committee;913;committee
+秀;980;excel;914;excel
+透;981;transparent;915;transparent
+誘;982;entice;916;entice
+稽;983;training;2088;training
+穀;984;cereals;917;cereals
+菌;985;germ;918;germ
+萎;986;numb;2355;numb
+米;987;rice;919;rice
+粉;988;flour;920;flour
+粘;989;sticky;921;sticky
+粒;990;grains;922;grains
+粧;991;cosmetics;923;cosmetics
+迷;992;astray;924;astray
+粋;993;chic;925;chic
+謎;994;riddle;2709;riddle
+糧;995;provisions;926;provisions
+菊;996;chrysanthemum;927;chrysanthemum
+奥;997;core;928;core
+数;998;number;929;number
+楼;999;watchtower;930;watchtower
+類;1000;sort;931;sort
+漆;1001;lacquer;932;lacquer
+膝;1002;knee;2461;knee
+様;1003;Esq.;933;Esq.
+求;1004;request;934;request
+球;1005;ball;935;ball
+救;1006;salvation;936;salvation
+竹;1007;bamboo;937;bamboo
+笑;1008;laugh;938;laugh
+笠;1009;bamboo hat;939;bamboo hat
+笹;1010;bamboo grass;940;bamboo grass
+箋;1011;stationery;2991;stationary
+筋;1012;muscle;941;muscle
+箱;1013;box;942;box
+筆;1014;writing brush;943;writing brush
+筒;1015;cylinder;944;cylinder
+等;1016;etc.;945;etc.
+算;1017;calculate;946;calculate
+答;1018;solution;947;solution
+策;1019;scheme;948;scheme
+簿;1020;register;949;register
+築;1021;fabricate;950;fabricate
+籠;1022;basket;2638;cage
+人;1023;person;951;person
+佐;1024;assistant;952;assistant
+侶;1025;partner;2121;partner
+但;1026;however;953;however
+住;1027;dwell;954;dwell
+位;1028;rank;955;rank
+仲;1029;go-between;956;go-between
+体;1030;body;957;body
+悠;1031;remote;958;remote
+件;1032;affair;959;affair
+仕;1033;attend;960;attend
+他;1034;other;961;other
+伏;1035;prostrated;962;prostrated
+伝;1036;transmit;963;transmit
+仏;1037;Buddha;964;Buddha
+休;1038;rest;965;rest
+仮;1039;provisional;966;provisional
+伎;1040;performing artist;2122;performing artist
+伯;1041;chief;967;chief
+俗;1042;vulgar;968;vulgar
+信;1043;faith;969;faith
+佳;1044;excellent;970;excellent
+依;1045;reliant;971;reliant
+例;1046;example;972;example
+個;1047;individual;973;individual
+健;1048;healthy;974;healthy
+側;1049;side;975;side
+侍;1050;waiter;976;waiter
+停;1051;halt;977;halt
+値;1052;price;978;price
+倣;1053;emulate;979;emulate
+傲;1054;arrogance
+倒;1055;overthrow;980;overthrow
+偵;1056;spy;981;spy
+僧;1057;Buddhist priest;982;Buddhist priest
+億;1058;hundred million;983;hundred million
+儀;1059;ceremony;984;ceremony
+償;1060;reparation;985;reparation
+仙;1061;hermit;986;hermit
+催;1062;sponsor;987;sponsor
+仁;1063;humanity;988;humanity
+侮;1064;scorn;989;scorn
+使;1065;use;990;use
+便;1066;convenience;991;convenience
+倍;1067;double;992;double
+優;1068;tenderness;993;tenderness
+伐;1069;fell;994;fell
+宿;1070;inn;995;inn
+傷;1071;wound;996;wound
+保;1072;protect;997;protect
+褒;1073;praise;998;praise
+傑;1074;greatness;999;greatness
+付;1075;adhere;1000;adhere
+符;1076;token;1001;token
+府;1077;municipality;1002;municipality
+任;1078;responsibility;1003;responsibility
+賃;1079;fare;1004;fare
+代;1080;substitute;1005;substitute
+袋;1081;sack;1006;sack
+貸;1082;lend;1007;lend
+化;1083;change;1008;change
+花;1084;flower;1009;flower
+貨;1085;freight;1010;freight
+傾;1086;lean;1011;lean
+何;1087;what;1012;what
+荷;1088;baggage;1013;baggage
+俊;1089;sagacious;1014;sagacious
+傍;1090;bystander;1015;bystander
+俺;1091;myself;2058;myself
+久;1092;long time;1016;long time
+畝;1093;furrow;1017;furrow
+囚;1094;captured;1018;captured
+内;1095;inside;1019;inside
+丙;1096;third class;1020;third class
+柄;1097;design;1021;design
+肉;1098;meat;1022;meat
+腐;1099;rot;1023;rot
+座;1100;sit;1024;sit
+挫;1101;sprain;2845;sprain
+卒;1102;graduate;1025;graduate
+傘;1103;umbrella;1026;umbrella
+匁;1104;monme;1027;monme
+以;1105;by means of;1028;by means of
+似;1106;similar;1029;similar
+併;1107;join;1030;join
+瓦;1108;tile;1031;tile
+瓶;1109;flower pot;1032;flower pot
+宮;1110;Shinto shrine;1033;Shinto shrine
+営;1111;occupation;1034;occupation
+善;1112;virtuous;1035;virtuous
+膳;1113;dining tray;2468;dining tray
+年;1114;year;1036;year
+夜;1115;night;1037;night
+液;1116;fluid;1038;fluid
+塚;1117;hillock;1039;hillock
+幣;1118;cash;1040;cash
+蔽;1119;cover over;2358;cover over
+弊;1120;abuse;1041;abuse
+喚;1121;yell;1042;yell
+換;1122;interchange;1043;interchange
+融;1123;dissolve;1044;dissolve
+施;1124;alms;1045;alms
+旋;1125;rotation;1046;rotation
+遊;1126;play;1047;play
+旅;1127;trip;1048;trip
+勿;1128;not;1049;not
+物;1129;thing;1050;thing
+易;1130;easy;1051;easy
+賜;1131;grant;1052;grant
+尿;1132;urine;1053;urine
+尼;1133;nun;1054;nun
+尻;1134;buttocks;2220;buttocks
+泥;1135;mud;1055;mud
+塀;1136;fence;1056;fence
+履;1137;footgear;1057;footgear
+屋;1138;roof;1058;roof
+握;1139;grip;1059;grip
+屈;1140;yield;1060;yield
+掘;1141;dig;1061;dig
+堀;1142;ditch;1062;ditch
+居;1143;reside;1063;reside
+据;1144;set;1064;set
+裾;1145;hem;2624;hem
+層;1146;stratum;1065;stratum
+局;1147;bureau;1066;bureau
+遅;1148;slow;1067;slow
+漏;1149;leak;1068;leak
+刷;1150;printing;1069;printing
+尺;1151;shaku;1070;shaku
+尽;1152;exhaust;1071;exhaust
+沢;1153;swamp;1072;swamp
+訳;1154;translate;1073;translate
+択;1155;choose;1074;choose
+昼;1156;daytime;1075;daytime
+戸;1157;door;1076;door
+肩;1158;shoulder;1077;shoulder
+房;1159;tassel;1078;tassel
+扇;1160;fan;1079;fan
+炉;1161;hearth;1080;hearth
+戻;1162;re-;1081;re-
+涙;1163;tears;1082;tears
+雇;1164;employ;1083;employ
+顧;1165;look back;1084;look back
+啓;1166;disclose;1085;disclose
+示;1167;show;1086;show
+礼;1168;salutation;1087;salutation
+祥;1169;auspicious;1088;auspicious
+祝;1170;celebrate;1089;celebrate
+福;1171;blessing;1090;blessing
+祉;1172;welfare;1091;welfare
+社;1173;company;1092;company
+視;1174;inspection;1093;inspection
+奈;1175;Nara;1094;Nara
+尉;1176;military officer;1095;military officer
+慰;1177;consolation;1096;consolation
+款;1178;goodwill;1097;goodwill
+禁;1179;prohibition;1098;prohibition
+襟;1180;collar;1099;collar
+宗;1181;religion;1100;religion
+崇;1182;adore;1101;adore
+祭;1183;ritual;1102;ritual
+察;1184;guess;1103;guess
+擦;1185;grate;1104;grate
+由;1186;wherefore;1105;wherefore
+抽;1187;pluck;1106;pluck
+油;1188;oil;1107;oil
+袖;1189;sleeve;1108;sleeve
+宙;1190;mid-air;1109;mid-air
+届;1191;deliver;1110;deliver
+笛;1192;flute;1111;flute
+軸;1193;axis;1112;axis
+甲;1194;armor;1113;armor
+押;1195;push;1114;push
+岬;1196;headland;1115;headland
+挿;1197;insert;1116;insert
+申;1198;speaketh;1117;speaketh
+伸;1199;expand;1118;expand
+神;1200;gods;1119;gods
+捜;1201;search;1120;search
+果;1202;fruit;1121;fruit
+菓;1203;confectionary;1122;confectionary
+課;1204;chapter;1123;chapter
+裸;1205;naked;1124;naked
+斤;1206;ax;1125;ax
+析;1207;chop;1126;chop
+所;1208;place;1127;place
+祈;1209;pray;1128;pray
+近;1210;near;1129;near
+折;1211;fold;1130;fold
+哲;1212;philosophy;1131;philosophy
+逝;1213;departed;1132;departed
+誓;1214;vow;1133;vow
+斬;1215;chop off;2092;chop off
+暫;1216;temporarily;1134;temporarily
+漸;1217;steadily;1135;steadily
+断;1218;severance;1136;severance
+質;1219;substance;1137;substance
+斥;1220;reject;1138;reject
+訴;1221;accusation;1139;accusation
+昨;1222;yesterday;1140;yesterday
+詐;1223;lie;1141;lie
+作;1224;make;1142;make
+雪;1225;snow;1143;snow
+録;1226;record;1144;record
+剥;1227;peel off;2145;peel off
+尋;1228;inquire;1145;inquire
+急;1229;hurry;1146;hurry
+穏;1230;calm;1147;calm
+侵;1231;encroach;1148;encroach
+浸;1232;immersed;1149;immersed
+寝;1233;lie down;1150;lie down
+婦;1234;lady;1151;lady
+掃;1235;sweep;1152;sweep
+当;1236;hit;1153;hit
+彙;1237;glossary;2997;glossary
+争;1238;contend;1154;contend
+浄;1239;clean;1155;clean
+事;1240;matter;1156;matter
+唐;1241;T'ang;1157;T'ang
+糖;1242;sugar;1158;sugar
+康;1243;sane;1159;sane
+逮;1244;apprehend;1160;apprehend
+伊;1245;Italy;1161;Italy
+君;1246;old boy;1162;old boy
+群;1247;flock;1163;flock
+耐;1248;-proof;1164;-proof
+需;1249;demand;1165;demand
+儒;1250;Confucian;1166;Confucian
+端;1251;edge;1167;edge
+両;1252;both;1168;both
+満;1253;full;1169;full
+画;1254;brush-stroke;1170;brush stroke
+歯;1255;tooth;1171;tooth
+曲;1256;bend;1172;bend
+曹;1257;cadet;1173;cadet
+遭;1258;encounter;1174;encounter
+漕;1259;rowing;1175;rowing
+槽;1260;vat;1176;vat
+斗;1261;Big Dipper;1177;Big Dipper
+料;1262;fee;1178;fee
+科;1263;department;1179;department
+図;1264;map;1180;map
+用;1265;utilize;1181;utilize
+庸;1266;comfortable;1182;comfortable
+備;1267;equip;1183;equip
+昔;1268;once upon a time;1184;once upon a time
+錯;1269;confused;1185;confused
+借;1270;borrow;1186;borrow
+惜;1271;pity;1187;pity
+措;1272;set aside;1188;set aside
+散;1273;scatter;1189;scatter
+廿;1274;twenty;1190;twenty
+庶;1275;commoner;1191;commoner
+遮;1276;intercept;1192;intercept
+席;1277;seat;1193;seat
+度;1278;degrees;1194;degrees
+渡;1279;transit;1195;transit
+奔;1280;bustle;1196;bustle
+噴;1281;erupt;1197;erupt
+墳;1282;tomb;1198;tomb
+憤;1283;aroused;1199;aroused
+焼;1284;bake;1200;bake
+暁;1285;daybreak;1201;daybreak
+半;1286;half;1202;half
+伴;1287;consort;1203;consort
+畔;1288;paddy ridge;1204;paddy ridge
+判;1289;judgment;1205;judgment
+拳;1290;fist;2917;fist
+券;1291;ticket;1206;ticket
+巻;1292;scroll;1207;scroll
+圏;1293;sphere;1208;sphere
+勝;1294;victory;1209;victory
+藤;1295;wisteria;1210;wisteria
+謄;1296;facsimile;1211;facsimile
+片;1297;one-sided;1212;one-sided
+版;1298;printing block;1213;printing block
+之;1299;of;1214;of
+乏;1300;destitution;1215;destitution
+芝;1301;turf;1216;turf
+不;1302;negative;1217;negative
+否;1303;negate;1218;negate
+杯;1304;cupfuls;1219;cupfuls
+矢;1305;dart;1220;dart
+矯;1306;rectify;1221;rectify
+族;1307;tribe;1222;tribe
+知;1308;know;1223;know
+智;1309;wisdom;1224;wisdom
+挨;1310;shove;2248;shove
+矛;1311;halberd;1225;halberd
+柔;1312;tender;1226;tender
+務;1313;task;1227;task
+霧;1314;fog;1228;fog
+班;1315;squad;1229;squad
+帰;1316;homecoming;1230;homecoming
+弓;1317;bow;1231;bow
+引;1318;pull;1232;pull
+弔;1319;condolences;1233;condolences
+弘;1320;vast;1234;vast
+強;1321;strong;1235;strong
+弥;1322;more and more;2241;more and more
+弱;1323;weak;1236;weak
+溺;1324;drowning;2308;drowning
+沸;1325;seethe;1237;seethe
+費;1326;expense;1238;expense
+第;1327;No.;1239;No.
+弟;1328;younger brother;1240;younger brother
+巧;1329;adroit;1241;adroit
+号;1330;nickname;1242;nickname
+朽;1331;decay;1243;decay
+誇;1332;boast;1244;boast
+顎;1333;chin;2795;chin
+汚;1334;dirty;1245;dirty
+与;1335;bestow;1246;bestow
+写;1336;copy;1247;copy
+身;1337;somebody;1248;somebody
+射;1338;shoot;1249;shoot
+謝;1339;apologize;1250;apologize
+老;1340;old man;1251;old man
+考;1341;consider;1252;consider
+孝;1342;filial piety;1253;filial piety
+教;1343;teach;1254;teach
+拷;1344;torture;1255;torture
+者;1345;someone;1256;someone
+煮;1346;boil;1257;boil
+著;1347;renowned;1258;renowned
+箸;1348;chopsticks;2640;chopsticks
+署;1349;signature;1259;signature
+暑;1350;sultry;1260;sultry
+諸;1351;various;1261;various
+猪;1352;boar;1262;boar
+渚;1353;strand;1263;strand
+賭;1354;gamble;1264;gamble
+峡;1355;gorge;1265;gorge
+狭;1356;cramped;1266;cramped
+挟;1357;sandwiched;1267;sandwiched
+頬;1358;cheek;2792;cheek
+追;1359;chase;1268;chase
+阜;1360;large hill;2928;large hill
+師;1361;expert;1269;expert
+帥;1362;commander;1270;commander
+官;1363;bureaucrat;1271;bureaucrat
+棺;1364;coffin;1272;coffin
+管;1365;pipe;1273;pipe
+父;1366;father;1274;father
+釜;1367;cauldron;2332;cauldron
+交;1368;mingle;1275;mingle
+効;1369;merit;1276;merit
+較;1370;contrast;1277;contrast
+校;1371;exam;1278;exam
+足;1372;leg;1279;leg
+促;1373;stimulate;1280;stimulate
+捉;1374;nab;2260;nab
+距;1375;long-distance;1281;long-distance
+路;1376;path;1282;path
+露;1377;dew;1283;dew
+跳;1378;hop;1284;hop
+躍;1379;leap;1285;leap
+践;1380;tread;1286;tread
+踏;1381;step;1287;step
+踪;1382;trail
+骨;1383;skeleton;1288;skeleton
+滑;1384;slippery;1289;slippery
+髄;1385;marrow;1290;marrow
+禍;1386;calamity;1291;calamity
+渦;1387;whirlpool;1292;whirlpool
+鍋;1388;pot;2757;pot
+過;1389;overdo;1293;overdo
+阪;1390;Heights;1294;Heights
+阿;1391;Africa;1295;Africa
+際;1392;occasion;1296;occasion
+障;1393;hinder;1297;hinder
+隙;1394;chink;2426;chink
+随;1395;follow;1298;follow
+陪;1396;auxiliary;1299;auxiliary
+陽;1397;sunshine;1300;sunshine
+陳;1398;line up;1301;line up
+防;1399;ward off;1302;ward off
+附;1400;affixed;1303;affixed
+院;1401;Inst.;1304;Inst.
+陣;1402;camp;1305;camp
+隊;1403;regiment;1306;regiment
+墜;1404;crash;1307;crash
+降;1405;descend;1308;descend
+階;1406;story;1309;story
+陛;1407;highness;1310;highness
+隣;1408;neighboring;1311;neighboring
+隔;1409;isolate;1312;isolate
+隠;1410;conceal;1313;conceal
+堕;1411;degenerate;1314;degenerate
+陥;1412;collapse;1315;collapse
+穴;1413;hole;1316;hole
+空;1414;empty;1317;empty
+控;1415;withdraw;1318;withdraw
+突;1416;stab;1319;stab
+究;1417;research;1320;research
+窒;1418;plug up;1321;plug up
+窃;1419;stealth;1322;stealth
+窟;1420;cavern;2615;cavern
+窪;1421;depression;1323;depression
+搾;1422;squeeze;1324;squeeze
+窯;1423;kiln;1325;kiln
+窮;1424;hard up;1326;hard up
+探;1425;grope;1327;grope
+深;1426;deep;1328;deep
+丘;1427;hill;1329;hill
+岳;1428;Point;1330;Point
+兵;1429;soldier;1331;soldier
+浜;1430;seacoast;1332;seacoast
+糸;1431;thread;1333;thread
+織;1432;weave;1334;weave
+繕;1433;darning;1335;darning
+縮;1434;shrink;1336;shrink
+繁;1435;luxuriant;1337;luxuriant
+縦;1436;vertical;1338;vertical
+緻;1437;fine
+線;1438;line;1339;line
+綻;1439;come apart at the seams;2670;come apart at the seams
+締;1440;tighten;1340;tighten
+維;1441;fiber;1341;fiber
+羅;1442;gauze;1342;gauze
+練;1443;practice;1343;practice
+緒;1444;thong;1344;thong
+続;1445;continue;1345;continue
+絵;1446;picture;1346;picture
+統;1447;overall;1347;overall
+絞;1448;strangle;1348;strangle
+給;1449;salary;1349;salary
+絡;1450;entwine;1350;entwine
+結;1451;tie;1351;tie
+終;1452;end;1352;end
+級;1453;class;1353;class
+紀;1454;chronicle;1354;chronicle
+紅;1455;crimson;1355;crimson
+納;1456;settlement;1356;settlement
+紡;1457;spinning;1357;spinning
+紛;1458;distract;1358;distract
+紹;1459;introduce;1359;introduce
+経;1460;sutra;1360;sutra
+紳;1461;sire;1361;sire
+約;1462;promise;1362;promise
+細;1463;dainty;1363;dainty
+累;1464;accumulate;1364;accumulate
+索;1465;cord;1365;cord
+総;1466;general;1366;general
+綿;1467;cotton;1367;cotton
+絹;1468;silk;1368;silk
+繰;1469;winding;1369;winding
+継;1470;inherit;1370;inherit
+緑;1471;green;1371;green
+縁;1472;affinity;1372;affinity
+網;1473;netting;1373;netting
+緊;1474;tense;1374;tense
+紫;1475;purple;1375;purple
+縛;1476;truss;1376;truss
+縄;1477;straw rope;1377;straw rope
+幼;1478;infancy;1378;infancy
+後;1479;behind;1379;behind
+幽;1480;faint;1380;faint
+幾;1481;how many;1381;how many
+機;1482;mechanism;1382;mechanism
+畿;1483;capital suburbs;2887;capital suburbs
+玄;1484;mysterious;1383;mysterious
+畜;1485;livestock;1384;livestock
+蓄;1486;amass;1385;amass
+弦;1487;bowstring;1386;bowstring
+擁;1488;hug;1387;hug
+滋;1489;nourishing;1388;nourishing
+慈;1490;mercy;1389;mercy
+磁;1491;magnet;1390;magnet
+系;1492;lineage;1391;lineage
+係;1493;person in charge;1392;person in charge
+孫;1494;grandchild;1393;grandchild
+懸;1495;suspend;1394;suspend
+遜;1496;modest;2422;modest
+却;1497;instead;1395;instead
+脚;1498;shins;1396;shins
+卸;1499;wholesale;1397;wholesale
+御;1500;honorable;1398;honorable
+服;1501;clothing;1399;clothing
+命;1502;fate;1400;fate
+令;1503;orders;1401;orders
+零;1504;zero;1402;zero
+齢;1505;age;1403;age
+冷;1506;cool;1404;cool
+領;1507;jurisdiction;1405;jurisdiction
+鈴;1508;small bell;1406;small bell
+勇;1509;courage;1407;courage
+湧;1510;bubble up;2284;bubble up
+通;1511;traffic;1408;traffic
+踊;1512;jump;1409;jump
+疑;1513;doubt;1410;doubt
+擬;1514;mimic;1411;mimic
+凝;1515;congeal;1412;congeal
+範;1516;pattern;1413;pattern
+犯;1517;crime;1414;crime
+氾;1518;widespread;2301;widespread
+厄;1519;unlucky;1415;unlucky
+危;1520;dangerous;1416;dangerous
+宛;1521;address;1417;address
+腕;1522;arm;1418;arm
+苑;1523;garden;1419;garden
+怨;1524;grudge;1420;grudge
+柳;1525;willow;1421;willow
+卵;1526;egg;1422;egg
+留;1527;detain;1423;detain
+瑠;1528;marine blue;2555;marine blue
+貿;1529;trade;1424;trade
+印;1530;stamp;1425;stamp
+臼;1531;mortar;2063;mortar
+毀;1532;break;2067;break
+興;1533;entertain;1426;entertain
+酉;1534;sign of the bird;1427;sign of the bird
+酒;1535;saké;1428;saké
+酌;1536;bartending;1429;bartending
+酎;1537;hooch;2748;hooch
+酵;1538;fermentation;1430;fermentation
+酷;1539;cruel;1431;cruel
+酬;1540;repay;1432;repay
+酪;1541;dairy products;1433;dairy products
+酢;1542;vinegar;1434;vinegar
+酔;1543;drunk;1435;drunk
+配;1544;distribute;1436;distribute
+酸;1545;acid;1437;acid
+猶;1546;waver;1438;waver
+尊;1547;revered;1439;revered
+豆;1548;beans;1440;beans
+頭;1549;head;1441;head
+短;1550;short;1442;short
+豊;1551;bountiful;1443;bountiful
+鼓;1552;drum;1444;drum
+喜;1553;rejoice;1445;rejoice
+樹;1554;timber-trees;1446;timber-trees
+皿;1555;dish;1447;dish
+血;1556;blood;1448;blood
+盆;1557;basin;1449;basin
+盟;1558;alliance;1450;alliance
+盗;1559;steal;1451;steal
+温;1560;warm;1452;warm
+蓋;1561;lid;2388;lid
+監;1562;oversee;1453;oversee
+濫;1563;overflow;1454;overflow
+鑑;1564;specimen;1455;specimen
+藍;1565;indigo;2371;indigo
+猛;1566;fierce;1456;fierce
+盛;1567;boom;1457;boom
+塩;1568;salt;1458;salt
+銀;1569;silver;1459;silver
+恨;1570;resentment;1460;resentment
+根;1571;root;1461;root
+即;1572;instant;1462;instant
+爵;1573;baron;1463;baron
+節;1574;node;1464;node
+退;1575;retreat;1465;retreat
+限;1576;limit;1466;limit
+眼;1577;eyeball;1467;eyeball
+良;1578;good;1468;good
+朗;1579;melodious;1469;melodious
+浪;1580;wandering;1470;wandering
+娘;1581;daughter;1471;daughter
+食;1582;eat;1472;eat
+飯;1583;meal;1473;meal
+飲;1584;drink;1474;drink
+飢;1585;hungry;1475;hungry
+餓;1586;starve;1476;starve
+飾;1587;decorate;1477;decorate
+餌;1588;feed;2797;feed
+館;1589;Bldg.;1478;Bldg.
+餅;1590;mochi;2802;mochi
+養;1591;foster;1479;foster
+飽;1592;sated;1480;sated
+既;1593;previously;1481;previously
+概;1594;outline;1482;outline
+慨;1595;rue;1483;rue
+平;1596;even;1484;even
+呼;1597;call;1485;call
+坪;1598;two-mat area;1486;two-mat area
+評;1599;evaluate;1487;evaluate
+刈;1600;reap;1488;reap
+刹;1601;moment;2144;moment
+希;1602;hope;1489;hope
+凶;1603;villain;1490;villain
+胸;1604;bosom;1491;bosom
+離;1605;detach;1492;detach
+璃;1606;crystal;2048;crystal
+殺;1607;kill;1493;kill
+爽;1608;bracing;2855;bracing
+純;1609;genuine;1494;genuine
+頓;1610;immediate;2788;immediate
+鈍;1611;dull;1495;dull
+辛;1612;spicy;1496;spicy
+辞;1613;resign;1497;resign
+梓;1614;catalpa;1498;catalpa
+宰;1615;superintend;1499;superintend
+壁;1616;wall;1500;wall
+璧;1617;holed gem
+避;1618;evade;1501;evade
+新;1619;new;1502;new
+薪;1620;firewood;1503;firewood
+親;1621;parent;1504;parent
+幸;1622;happiness;1505;happiness
+執;1623;tenacious;1506;tenacious
+摯;1624;clasp
+報;1625;report;1507;report
+叫;1626;shout;1508;shout
+糾;1627;twist;1509;twist
+収;1628;income;1510;income
+卑;1629;lowly;1511;lowly
+碑;1630;tombstone;1512;tombstone
+陸;1631;land;1513;land
+睦;1632;intimate;1514;intimate
+勢;1633;forces;1515;forces
+熱;1634;heat;1516;heat
+菱;1635;diamond;1517;diamond
+陵;1636;mausoleum;1518;mausoleum
+亥;1637;sign of the hog;1519;sign of the hog
+核;1638;nucleus;1520;nucleus
+刻;1639;engrave;1521;engrave
+該;1640;above-stated;1522;above-stated
+骸;1641;remains;2874;remains
+劾;1642;censure;1523;censure
+述;1643;mention;1524;mention
+術;1644;art;1525;art
+寒;1645;cold;1526;cold
+塞;1646;block up;2214;block up
+醸;1647;brew;1527;brew
+譲;1648;defer;1528;defer
+壌;1649;lot;1529;lot
+嬢;1650;lass;1530;lass
+毒;1651;poison;1531;poison
+素;1652;elementary;1532;elementary
+麦;1653;barley;1533;barley
+青;1654;blue;1534;blue
+精;1655;refined;1535;refined
+請;1656;solicit;1536;solicit
+情;1657;feelings;1537;feelings
+晴;1658;clear up;1538;clear up
+清;1659;pure;1539;pure
+静;1660;quiet;1540;quiet
+責;1661;blame;1541;blame
+績;1662;exploits;1542;exploits
+積;1663;volume;1543;volume
+債;1664;bond;1544;bond
+漬;1665;pickling;1545;pickling
+表;1666;surface;1546;surface
+俵;1667;bag;1547;bag
+潔;1668;undefiled;1548;undefiled
+契;1669;pledge;1549;pledge
+喫;1670;consume;1550;consume
+害;1671;harm;1551;harm
+轄;1672;control;1552;control
+割;1673;proportion;1553;proportion
+憲;1674;constitution;1554;constitution
+生;1675;life;1555;life
+星;1676;star;1556;star
+醒;1677;awakening;2750;awakening
+姓;1678;surname;1557;surname
+性;1679;sex;1558;sex
+牲;1680;animal sacrifice;1559;animal sacrifice
+産;1681;products;1560;products
+隆;1682;hump;1561;hump
+峰;1683;summit;1562;summit
+蜂;1684;bee;2687;bee
+縫;1685;sew;1563;sew
+拝;1686;worship;1564;worship
+寿;1687;longevity;1565;longevity
+鋳;1688;casting;1566;casting
+籍;1689;enroll;1567;enroll
+春;1690;springtime;1568;springtime
+椿;1691;camellia;1569;camellia
+泰;1692;peaceful;1570;peaceful
+奏;1693;play music;1571;play music
+実;1694;reality;1572;reality
+奉;1695;dedicate;1573;dedicate
+俸;1696;stipend;1574;stipend
+棒;1697;rod;1575;rod
+謹;1698;discreet;1576;discreet
+僅;1699;trifle;2116;trifle
+勤;1700;diligence;1577;diligence
+漢;1701;Sino-;1578;Sino-
+嘆;1702;sigh;1579;sigh
+難;1703;difficult;1580;difficult
+華;1704;splendor;1581;splendor
+垂;1705;droop;1582;droop
+唾;1706;saliva;2165;saliva
+睡;1707;drowsy;1583;drowsy
+錘;1708;spindle;1584;spindle
+乗;1709;ride;1585;ride
+剰;1710;surplus;1586;surplus
+今;1711;now;1587;now
+含;1712;include;1588;include
+貪;1713;covet
+吟;1714;versify;1589;versify
+念;1715;wish;1590;wish
+捻;1716;wrench;2251;wrenching
+琴;1717;harp;1591;harp
+陰;1718;shade;1592;shade
+予;1719;beforehand;1593;beforehand
+序;1720;preface;1594;preface
+預;1721;deposit;1595;deposit
+野;1722;plains;1596;plains
+兼;1723;concurrently;1597;concurrently
+嫌;1724;dislike;1598;dislike
+鎌;1725;sickle;1599;sickle
+謙;1726;self-effacing;1600;self-effacing
+廉;1727;bargain;1601;bargain
+西;1728;west;1602;west
+価;1729;value;1603;value
+要;1730;need;1604;need
+腰;1731;loins;1605;loins
+票;1732;ballot;1606;ballot
+漂;1733;drift;1607;drift
+標;1734;signpost;1608;signpost
+栗;1735;chestnut;1609;chestnut
+慄;1736;shudder
+遷;1737;transition;1610;transition
+覆;1738;capsize;1611;capsize
+煙;1739;smoke;1612;smoke
+南;1740;south;1613;south
+楠;1741;camphor tree;1614;camphor tree
+献;1742;offering;1615;offering
+門;1743;gates;1616;gates
+問;1744;question;1617;question
+閲;1745;review;1618;review
+閥;1746;clique;1619;clique
+間;1747;interval;1620;interval
+闇;1748;pitch dark;2777;pitch dark
+簡;1749;simplicity;1621;simplicity
+開;1750;open;1622;open
+閉;1751;closed;1623;closed
+閣;1752;tower;1624;tower
+閑;1753;leisure;1625;leisure
+聞;1754;hear;1626;hear
+潤;1755;wet;1627;wet
+欄;1756;column;1628;column
+闘;1757;fight;1629;fight
+倉;1758;godown;1630;godown
+創;1759;genesis;1631;genesis
+非;1760;un-;1632;un-
+俳;1761;haiku;1633;haiku
+排;1762;repudiate;1634;repudiate
+悲;1763;sad;1635;sad
+罪;1764;guilt;1636;guilt
+輩;1765;comrade;1637;comrade
+扉;1766;front door;1638;front door
+侯;1767;marquis;1639;marquis
+喉;1768;throat;2164;throat
+候;1769;climate;1640;climate
+決;1770;decide;1641;decide
+快;1771;cheerful;1642;cheerful
+偉;1772;admirable;1643;admirable
+違;1773;difference;1644;difference
+緯;1774;horizontal;1645;horizontal
+衛;1775;defense;1646;defense
+韓;1776;Korea;1647;Korea
+干;1777;dry;1648;dry
+肝;1778;liver;1649;liver
+刊;1779;publish;1650;publish
+汗;1780;sweat;1651;sweat
+軒;1781;flats;1652;flats
+岸;1782;beach;1653;beach
+幹;1783;tree trunk;1654;tree trunk
+芋;1784;potato;1655;potato
+宇;1785;eaves;1656;eaves
+余;1786;too much;1657;too much
+除;1787;exclude;1658;exclude
+徐;1788;gradually;1659;gradually
+叙;1789;confer;1660;confer
+途;1790;route;1661;route
+斜;1791;diagonal;1662;diagonal
+塗;1792;paint;1663;paint
+束;1793;bundle;1664;bundle
+頼;1794;trust;1665;trust
+瀬;1795;rapids;1666;rapids
+勅;1796;imperial order;1667;imperial order
+疎;1797;alienate;1668;alienate
+辣;1798;bitter
+速;1799;quick;1669;quick
+整;1800;organize;1670;organize
+剣;1801;saber;1671;saber
+険;1802;precipitous;1672;precipitous
+検;1803;examination;1673;examination
+倹;1804;frugal;1674;frugal
+重;1805;heavy;1675;heavy
+動;1806;move;1676;move
+腫;1807;tumor;2467;tumor
+勲;1808;meritorious deed;1677;meritorious deed
+働;1809;work;1678;work
+種;1810;species;1679;species
+衝;1811;collide;1680;collide
+薫;1812;fragrant;1681;fragrant
+病;1813;ill;1682;ill
+痴;1814;stupid;1683;stupid
+痘;1815;pox;1684;pox
+症;1816;symptoms;1685;symptoms
+瘍;1817;carbuncle
+痩;1818;lose weight;2577;lose weight
+疾;1819;rapidly;1686;rapidly
+嫉;1820;envy;2202;envy
+痢;1821;diarrhea;1687;diarrhea
+痕;1822;scar;2578;scar
+疲;1823;tired;1688;tired
+疫;1824;epidemic;1689;epidemic
+痛;1825;pain;1690;pain
+癖;1826;mannerism;1691;mannerism
+匿;1827;hide;1692;hide
+匠;1828;artisan;1693;artisan
+医;1829;doctor;1694;doctor
+匹;1830;equal;1695;equal
+区;1831;ward;1696;ward
+枢;1832;hinge;1697;hinge
+殴;1833;assault;1698;assault
+欧;1834;Europe;1699;Europe
+抑;1835;repress;1700;repress
+仰;1836;faceup;1701;faceup
+迎;1837;welcome;1702;welcome
+登;1838;ascend;1703;ascend
+澄;1839;lucidity;1704;lucidity
+発;1840;discharge;1705;discharge
+廃;1841;abolish;1706;abolish
+僚;1842;colleague;1707;colleague
+瞭;1843;obvious;2582;obvious
+寮;1844;dormitory;1708;dormitory
+療;1845;heal;1709;heal
+彫;1846;carve;1710;carve
+形;1847;shape;1711;shape
+影;1848;shadow;1712;shadow
+杉;1849;cedar;1713;cedar
+彩;1850;coloring;1714;coloring
+彰;1851;patent;1715;patent
+彦;1852;lad;1716;lad
+顔;1853;face;1717;face
+須;1854;ought;1718;ought
+膨;1855;swell;1719;swell
+参;1856;visit;1720;visit
+惨;1857;wretched;1721;wretched
+修;1858;discipline;1722;discipline
+珍;1859;rare;1723;rare
+診;1860;checkup;1724;checkup
+文;1861;sentence;1725;sentence
+対;1862;vis-a-vis;1726;vis-a-vis
+紋;1863;family crest;1727;family crest
+蚊;1864;mosquito;1728;mosquito
+斑;1865;speckled;2556;speckled
+斉;1866;adjusted;1729;adjusted
+剤;1867;dose;1730;dose
+済;1868;finish;1731;finish
+斎;1869;purification;1732;purification
+粛;1870;solemn;1733;solemn
+塁;1871;bases;1734;bases
+楽;1872;music;1735;music
+薬;1873;medicine;1736;medicine
+率;1874;ratio;1737;ratio
+渋;1875;astringent;1738;astringent
+摂;1876;vicarious;1739;vicarious
+央;1877;center;1740;center
+英;1878;England;1741;England
+映;1879;reflect;1742;reflect
+赤;1880;red;1743;red
+赦;1881;pardon;1744;pardon
+変;1882;unusual;1745;unusual
+跡;1883;tracks;1746;tracks
+蛮;1884;barbarian;1747;barbarian
+恋;1885;romance;1748;romance
+湾;1886;gulf;1749;gulf
+黄;1887;yellow;1750;yellow
+横;1888;sideways;1751;sideways
+把;1889;grasp;1752;grasp
+色;1890;color;1753;color
+絶;1891;discontinue;1754;discontinue
+艶;1892;glossy;1755;glossy
+肥;1893;fertilizer;1756;fertilizer
+甘;1894;sweet;1757;sweet
+紺;1895;navy blue;1758;navy blue
+某;1896;so-and-so;1759;so-and-so
+謀;1897;conspire;1760;conspire
+媒;1898;mediator;1761;mediator
+欺;1899;deceit;1762;deceit
+棋;1900;chess piece;1763;chess piece
+旗;1901;national flag;1764;national flag
+期;1902;period;1765;period
+碁;1903;Go;1766;Go
+基;1904;fundamentals;1767;fundamentals
+甚;1905;tremendously;1768;tremendously
+勘;1906;intuition;1769;intuition
+堪;1907;withstand;1770;withstand
+貴;1908;precious;1771;precious
+遺;1909;bequeath;1772;bequeath
+遣;1910;dispatch;1773;dispatch
+潰;1911;defile;2319;defile
+舞;1912;dance;1774;dance
+無;1913;nothingness;1775;nothingness
+組;1914;association;1776;association
+粗;1915;coarse;1777;coarse
+租;1916;tariff;1778;tariff
+狙;1917;aim at;2344;aim at
+祖;1918;ancestor;1779;ancestor
+阻;1919;thwart;1780;thwart
+査;1920;investigate;1781;investigate
+助;1921;help;1782;help
+宜;1922;best regards;1783;best regards
+畳;1923;tatami mat;1784;tatami mat
+並;1924;row;1785;row
+普;1925;universal;1786;universal
+譜;1926;musical score;1787;musical score
+湿;1927;damp;1788;damp
+顕;1928;appear;1789;appear
+繊;1929;slender;1790;slender
+霊;1930;spirits;1791;spirits
+業;1931;profession;1792;profession
+撲;1932;slap;1793;slap
+僕;1933;me;1794;me
+共;1934;together;1795;together
+供;1935;submit;1796;submit
+異;1936;uncommon;1797;uncommon
+翼;1937;wing;1798;wing
+戴;1938;accept humbly;2702;accept humbly
+洪;1939;deluge;1799;deluge
+港;1940;harbor;1800;harbor
+暴;1941;outburst;1801;outburst
+爆;1942;bomb;1802;bomb
+恭;1943;respect;1803;respect
+選;1944;elect;1804;elect
+殿;1945;Mr.;1805;Mr.
+井;1946;well;1806;well
+丼;1947;donburi;2884;domburi
+囲;1948;surround;1807;surround
+耕;1949;till;1808;till
+亜;1950;Asia;1809;Asia
+悪;1951;bad;1810;bad
+円;1952;circle;1811;circle
+角;1953;angle;1812;angle
+触;1954;contact;1813;contact
+解;1955;unravel;1814;unravel
+再;1956;again;1815;again
+講;1957;lecture;1816;lecture
+購;1958;subscription;1817;subscription
+構;1959;posture;1818;posture
+溝;1960;gutter;1819;gutter
+論;1961;argument;1820;argument
+倫;1962;ethics;1821;ethics
+輪;1963;wheel;1822;wheel
+偏;1964;partial;1823;partial
+遍;1965;everywhere;1824;everywhere
+編;1966;compilation;1825;compilation
+冊;1967;tome;1826;tome
+柵;1968;palisade;2507;palisade
+典;1969;code;1827;code
+氏;1970;family name;1828;family name
+紙;1971;paper;1829;paper
+婚;1972;marriage;1830;marriage
+低;1973;lower;1831;lower
+抵;1974;resist;1832;resist
+底;1975;bottom;1833;bottom
+民;1976;people;1834;people
+眠;1977;sleep;1835;sleep
+捕;1978;catch;1836;catch
+哺;1979;suckle
+浦;1980;bay;1837;bay
+蒲;1981;bullrush;1838;bullrush
+舗;1982;shop;1839;shop
+補;1983;supplement;1840;supplement
+邸;1984;residence;1841;residence
+郭;1985;enclosure;1842;enclosure
+郡;1986;county;1843;county
+郊;1987;outskirts;1844;outskirts
+部;1988;section;1845;section
+都;1989;metropolis;1846;metropolis
+郵;1990;mail;1847;mail
+邦;1991;home country;1848;home country
+那;1992;interrogative;2960;interrogative
+郷;1993;hometown;1849;hometown
+響;1994;echo;1850;echo
+郎;1995;son;1851;son
+廊;1996;corridor;1852;corridor
+盾;1997;shield;1853;shield
+循;1998;sequential;1854;sequential
+派;1999;faction;1855;faction
+脈;2000;vein;1856;vein
+衆;2001;masses;1857;masses
+逓;2002;parcel post;1858;parcel post
+段;2003;grade;1859;grade
+鍛;2004;forge;1860;forge
+后;2005;empress;1861;empress
+幻;2006;phantasm;1862;phantasm
+司;2007;director;1863;director
+伺;2008;pay respects;1864;pay respects
+詞;2009;parts of speech;1865;parts of speech
+飼;2010;domesticate;1866;domesticate
+嗣;2011;heir;1867;heir
+舟;2012;boat;1868;boat
+舶;2013;liner;1869;liner
+航;2014;navigate;1870;navigate
+舷;2015;gunwale;2675;gunwale
+般;2016;carrier;1871;carrier
+盤;2017;tray;1872;tray
+搬;2018;conveyor;1873;conveyor
+船;2019;ship;1874;ship
+艦;2020;warship;1875;warship
+艇;2021;rowboat;1876;rowboat
+瓜;2022;melon;1877;melon
+弧;2023;arc;1878;arc
+孤;2024;orphan;1879;orphan
+繭;2025;cocoon;1880;cocoon
+益;2026;benefit;1881;benefit
+暇;2027;spare time;1882;spare time
+敷;2028;spread;1883;spread
+来;2029;come;1884;come
+気;2030;spirit;1885;spirit
+汽;2031;vapor;1886;vapor
+飛;2032;fly;1887;fly
+沈;2033;sink;1888;sink
+枕;2034;pillow;2472;pillow
+妻;2035;wife;1889;wife
+凄;2036;nifty;2133;nifty
+衰;2037;decline;1890;decline
+衷;2038;inmost;1891;inmost
+面;2039;mask;1892;mask
+麺;2040;noodles;2752;noodles
+革;2041;leather;1893;leather
+靴;2042;shoes;1894;shoes
+覇;2043;hegemony;1895;hegemony
+声;2044;voice;1896;voice
+眉;2045;eyebrow;2583;eyebrow
+呉;2046;give;1897;give
+娯;2047;recreation;1898;recreation
+誤;2048;mistake;1899;mistake
+蒸;2049;steam;1900;steam
+承;2050;acquiesce;1901;acquiesce
+函;2051;bin;1902;bin
+極;2052;poles;1903;poles
+牙;2053;tusk;1904;tusk
+芽;2054;bud;1905;bud
+邪;2055;wicked;1906;wicked
+雅;2056;gracious;1907;gracious
+釈;2057;interpretation;1908;interpretation
+番;2058;turn;1909;turn
+審;2059;hearing;1910;hearing
+翻;2060;flip;1911;flip
+藩;2061;clan;1912;clan
+毛;2062;fur;1913;fur
+耗;2063;decrease;1914;decrease
+尾;2064;tail;1915;tail
+宅;2065;home;1916;home
+託;2066;consign;1917;consign
+為;2067;do;1918;do
+偽;2068;falsehood;1919;falsehood
+畏;2069;apprehensive;2569;apprehensive
+長;2070;long;1920;long
+張;2071;lengthen;1921;lengthen
+帳;2072;notebook;1922;notebook
+脹;2073;dilate;1923;dilate
+髪;2074;hair of the head;1924;hair of the head
+展;2075;unfold;1925;unfold
+喪;2076;miss;1926;miss
+巣;2077;nest;1927;nest
+単;2078;simple;1928;simple
+戦;2079;war;1929;war
+禅;2080;Zen;1930;Zen
+弾;2081;bullet;1931;bullet
+桜;2082;cherry tree;1932;cherry tree
+獣;2083;animal;1933;animal
+脳;2084;brain;1934;brain
+悩;2085;trouble;1935;trouble
+厳;2086;stern;1936;stern
+鎖;2087;chain;1937;chain
+挙;2088;raise;1938;raise
+誉;2089;reputation;1939;reputation
+猟;2090;game hunting;1940;game hunting
+鳥;2091;bird;1941;bird
+鳴;2092;chirp;1942;chirp
+鶴;2093;crane;1943;crane
+烏;2094;crow;1944;crow
+蔦;2095;vine;1945;vine
+鳩;2096;pigeon;1946;pigeon
+鶏;2097;chicken;1947;chicken
+島;2098;island;1948;island
+暖;2099;warmth;1949;warmth
+媛;2100;beautiful woman;1950;beautiful woman
+援;2101;abet;1951;abet
+緩;2102;slacken;1952;slacken
+属;2103;belong;1953;belong
+嘱;2104;entrust;1954;entrust
+偶;2105;accidentally;1955;accidentally
+遇;2106;interview;1956;interview
+愚;2107;foolish;1957;foolish
+隅;2108;corner;1958;corner
+逆;2109;inverted;1959;inverted
+塑;2110;model;1960;model
+遡;2111;go upstream;2847;go upstream
+岡;2112;Mount;1961;Mount
+鋼;2113;steel;1962;steel
+綱;2114;hawser;1963;hawser
+剛;2115;sturdy;1964;sturdy
+缶;2116;tin can;1965;tin can
+陶;2117;pottery;1966;pottery
+揺;2118;swing;1967;swing
+謡;2119;Noh chanting;1968;Noh chanting
+鬱;2120;gloom
+就;2121;concerning;1969;concerning
+蹴;2122;kick;2742;kick
+懇;2123;sociable;1970;sociable
+墾;2124;groundbreaking;1971;groundbreaking
+貌;2125;countenance;2733;countenance
+免;2126;excuse;1972;excuse
+逸;2127;elude;1973;elude
+晩;2128;nightfall;1974;nightfall
+勉;2129;exertion;1975;exertion
+象;2130;elephant;1976;elephant
+像;2131;statue;1977;statue
+馬;2132;horse;1978;horse
+駒;2133;pony;1979;pony
+験;2134;verification;1980;verification
+騎;2135;equestrian;1981;equestrian
+駐;2136;parking;1982;parking
+駆;2137;drive;1983;drive
+駅;2138;station;1984;station
+騒;2139;boisterous;1985;boisterous
+駄;2140;burdensome;1986;burdensome
+驚;2141;wonder;1987;wonder
+篤;2142;fervent;1988;fervent
+罵;2143;insult;2699;insult
+騰;2144;inflation;1989;inflation
+虎;2145;tiger;1990;tiger
+虜;2146;captive;1991;captive
+膚;2147;skin;1992;skin
+虚;2148;void;1993;void
+戯;2149;frolic;1994;frolic
+虞;2150;uneasiness;1995;uneasiness
+慮;2151;prudence;1996;prudence
+劇;2152;drama;1997;drama
+虐;2153;tyrannize;1998;tyrannize
+鹿;2154;deer;1999;deer
+麓;2155;foot of a mountain;2839;foot of a mountain
+薦;2156;recommend;2000;recommend
+慶;2157;jubilation;2001;jubilation
+麗;2158;lovely;2002;lovely
+熊;2159;bear;2003;bear
+能;2160;ability;2004;ability
+態;2161;attitude;2005;attitude
+寅;2162;sign of the tiger;2006;sign of the tiger
+演;2163;performance;2007;performance
+辰;2164;sign of the dragon;2008;sign of the dragon
+辱;2165;embarrass;2009;embarrass
+震;2166;quake;2010;quake
+振;2167;shake;2011;shake
+娠;2168;with child;2012;with child
+唇;2169;lips;2013;lips
+農;2170;agriculture;2014;agriculture
+濃;2171;concentrated;2015;concentrated
+送;2172;send off;2016;send off
+関;2173;connection;2017;connection
+咲;2174;blossom;2018;blossom
+鬼;2175;ghost;2019;ghost
+醜;2176;ugly;2020;ugly
+魂;2177;soul;2021;soul
+魔;2178;witch;2022;witch
+魅;2179;fascination;2023;fascination
+塊;2180;clod;2024;clod
+襲;2181;attack;2025;attack
+嚇;2182;upbraid;2026;upbraid
+朕;2183;majestic plural;2027;majestic plural
+雰;2184;atmosphere;2028;atmosphere
+箇;2185;item;2029;item
+錬;2186;tempering;2030;tempering
+遵;2187;abide by;2031;abide by
+罷;2188;quit;2032;quit
+屯;2189;barracks;2033;barracks
+且;2190;moreover;2034;moreover
+藻;2191;seaweed;2035;seaweed
+隷;2192;slave;2036;slave
+癒;2193;healing;2037;healing
+璽;2194;imperial seal;2075;imperial seal
+潟;2195;lagoon;2039;lagoon
+丹;2196;cinnabar;2038;cinnabar
+丑;2197;sign of the cow;2040;sign of the cow
+羞;2198;humiliate
+卯;2199;sign of the hare;2041;sign of the hare
+巳;2200;sign of the snake;2042;sign of the snake
+此;2201;this here;2043;this here
+柴;2202;brushwood;2044;brushwood
+些;2203;whit;2046;whit
+砦;2204;fort;2045;fort
+髭;2205;beard;2047;beard
+禽;2206;fowl;2049;fowl
+檎;2207;apple;2050;apple
+憐;2208;sympathize with;2051;sympathize with
+燐;2209;phosphorus;2052;phosphorus
+麟;2210;camelopard;2053;camelopard
+鱗;2211;scaled;2054;scaled
+奄;2212;encompassing;2055;encompassing
+庵;2213;hermitage;2056;hermitage
+掩;2214;shrouded;2057;shrouded
+悛;2215;make amends;2059;make amends
+駿;2216;steed;2060;steed
+峻;2217;steep;2061;steep
+竣;2218;complete a job;2062;complete a job
+犀;2219;rhinoceros;2069;rhinoceros
+皐;2220;lunar month;2070;lunar month
+畷;2221;rice-field footpath;2072;rice-field footpath
+綴;2222;mend;2073;mend
+鎧;2223;suit of armor;2076;suit of armor
+凱;2224;triumph;2077;triumph
+呑;2225;quaff;2080;quaff
+韮;2226;leek;2081;leek
+籤;2227;lottery;2082;lottery
+懺;2228;penitential;2083;penitential
+芻;2229;hay;2084;hay
+雛;2230;chick;2085;chick
+趨;2231;scurry;2086;scurry
+尤;2232;understandably;2087;understandably
+厖;2233;immense;2089;immense
+或;2234;a;2091;a
+兎;2235;rabbit;2093;rabbit
+也;2236;est;2094;est
+巴;2237;comma-design;2096;comma-design
+疋;2238;critters;2098;critters
+菫;2239;violet;2099;violet
+曼;2240;mandala;2100;mandala
+云;2241;quote;2102;quote
+莫;2242;shalt;2105;shalt
+而;2243;and then;3006;and then
+倭;2244;Yamato;2106;Yamato
+侠;2245;chivalry;2107;chivalry
+倦;2246;fed up;2108;fed up
+俄;2247;abrupt;2110;abrupt
+佃;2248;work a field;2111;work a field
+仔;2249;animal offspring;2113;animal offspring
+仇;2250;foe;2114;foe
+伽;2251;look after;2115;look after
+儲;2252;make a profit;2118;make a profit
+僑;2253;emigrant;2120;emigrant
+倶;2254;mate;2124;mate
+侃;2255;forthright;2123;integrity
+偲;2256;memorial;2129;memorial
+侭;2257;as is;2125;as is
+脩;2258;dried meat;2130;dried meat
+倅;2259;my son;2131;my son
+做;2260;make do;2132;make do
+冴;2261;sharp;2134;sharp
+凋;2262;wilt;2135;wilt
+凌;2263;pull through;2136;pull through
+凛;2264;stately;2138;stately
+凧;2265;kite;2139;kite
+凪;2266;lull;2140;lull
+夙;2267;earlybird;2141;earlybird
+鳳;2268;phoenix;2142;phoenix
+剽;2269;menace
+劉;2270;slaughter;2143;slaughter
+剃;2271;shave;2146;shave
+厭;2272;despondent;2149;despondent
+雁;2273;wild goose;2150;wild goose
+贋;2274;counterfeit;2151;counterfeit
+厨;2275;kitchen;2152;kitchen
+仄;2276;insinuate;2153;insinuate
+哨;2277;scout;2154;scout
+咎;2278;reprehend;2156;reprehend
+囁;2279;whisper;2157;whisper
+喋;2280;chatter;2158;chatter
+嘩;2281;quarrel;2160;quarrel
+噂;2282;gossip;2161;gossip
+咳;2283;cough;2162;cough
+喧;2284;clamor;2163;clamor
+叩;2285;bash;2166;bash
+嘘;2286;fib;2167;fib
+啄;2287;peck at;2168;peck at
+吠;2288;barking;2170;barking
+吊;2289;dangle;2171;dangle
+噛;2290;chew;2172;chew
+叶;2291;within my ability;2173;within my ability
+吻;2292;sides of the mouth;2174;sides of the mouth
+吃;2293;stammer;2175;stammer
+噺;2294;spin a tale;2176;spin a tale
+噌;2295;miso;2177;miso
+邑;2296;city walls;2180;city walls
+呆;2297;dumbfounded;2181;dumbfounded
+喰;2298;ingest;2182;ingest
+埴;2299;clay;2183;clay
+坤;2300;authochthonous;2184;authochthonous
+壕;2301;dugout;2186;dugout
+垢;2302;blemish;2187;blemish
+坦;2303;flat;2188;flat
+埠;2304;wharf;2189;wharf
+堰;2305;dam;2191;dam
+堵;2306;railing;2192;railing
+嬰;2307;suckling infant;2193;suckling infant
+姦;2308;violate;2194;violate
+婢;2309;handmaiden;2196;handmaiden
+婉;2310;well finished;2197;well finished
+娼;2311;harlot;2198;harlot
+妓;2312;courtesan;2199;courtesan
+娃;2313;fair;2200;fair
+姪;2314;niece;2201;niece
+嬬;2315;mistress;2203;mistress
+姥;2316;aged woman;2204;aged woman
+姑;2317;mother-in-law;2205;mother-in-law
+姐;2318;young miss;2206;young miss
+嬉;2319;overjoyed;2207;overjoyed
+孕;2320;expecting;2208;expecting
+孜;2321;assiduous;2209;assiduous
+宥;2322;soothe;2210;soothe
+寓;2323;imply;2211;imply
+宏;2324;extensive;2212;extensive
+牢;2325;jail;2213;jail
+宋;2326;Sung dynasty;2215;Sung dynasty
+宍;2327;venison;2216;venison
+屠;2328;butchering;2217;butchering
+屁;2329;fart;2218;fart
+屑;2330;rubbish;2219;rubbish
+屡;2331;frequently;2221;frequently
+屍;2332;corpse;2222;corpse
+屏;2333;folding screen;2223;folding screen
+嵩;2334;high-reaching;2224;high-reaching
+崚;2335;rugged mountains;2225;rugged mountains
+嶺;2336;mountaintop;2228;mountaintop
+嵌;2337;fit into;2229;fit into
+帖;2338;quire;2231;quire
+幡;2339;banner;2232;banner
+幟;2340;pennant;2233;pennant
+庖;2341;cleaver;2234;cleaver
+廓;2342;licensed quarters;2235;licensed quarters
+庇;2343;overhang;2236;overhang
+鷹;2344;hawk;2237;hawk
+庄;2345;shire;2238;shire
+廟;2346;tomb sanctuary;2239;tomb sanctuary
+彊;2347;strengthen;2240;strengthen
+弛;2348;loosen;2242;loosen
+粥;2349;rice gruel;2243;rice gruel
+挽;2350;lathe;2244;lathe
+撞;2351;bump into;2245;bump into
+扮;2352;disguise;2246;disguise
+捏;2353;knead
+掴;2354;clutch;2249;clutch
+捺;2355;impress;2250;impress
+掻;2356;scratch;2252;scratch
+撰;2357;assortment;2253;assortment
+揃;2358;muster;2255;muster
+捌;2359;deal with;2256;deal with
+按;2360;press down on;2259;press down on
+播;2361;disseminate;2262;disseminate
+揖;2362;collect;2263;collect
+托;2363;receptacle;2264;receptacle
+捧;2364;devote;2265;dedicate
+撚;2365;twirl;2266;twirl
+挺;2366;counter for tools;2267;counter for tools
+擾;2367;commotion;2268;commotion
+撫;2368;petting;2270;petting
+撒;2369;sprinkle;2271;sprinkle
+擢;2370;outstanding;2272;outstanding
+摺;2371;rubbing;2258;rubbing
+捷;2372;spoils;2273;spoils
+抉;2373;gouge out;2274;gouge out
+怯;2374;wince;2275;wince
+惟;2375;ponder;2276;ponder
+惚;2376;infatuation;2277;infatuation
+怜;2377;quickwitted;2278;quickwitted
+惇;2378;considerate;2279;considerate
+恰;2379;as if;2281;as if
+恢;2380;enlarge;2282;enlarge
+悌;2381;respect for elders;2283;respect for elders
+澪;2382;canal;2285;canal
+洸;2383;glistening;2286;glistening
+滉;2384;bounding main;2287;bounding main
+漱;2385;gargle;2288;gargle
+洲;2386;continent;2289;continent
+洵;2387;swirling waters;2290;swirling waters
+滲;2388;seep;2291;seep
+洒;2389;rinse;2292;rinse
+沐;2390;douse;2293;douse
+泪;2391;teardrops;2294;teardrops
+渾;2392;gushing;2295;gushing
+涜;2393;blaspheme;2297;blaspheme
+梁;2394;roofbeam;2299;roofbeam
+澱;2395;sediment;2300;sediment
+洛;2396;old Kyoto;2302;old Kyoto
+汝;2397;thou;2303;thou
+漉;2398;filter;2304;filter
+瀕;2399;on the verge of;2305;on the verge of
+濠;2400;moat;2306;moat
+溌;2401;spray;2307;spray
+湊;2402;port;2309;port
+淋;2403;solitude;2310;solitude
+浩;2404;abounding;2311;abounding
+汀;2405;water's edge;2312;water's edge
+鴻;2406;large goose;2313;large goose
+潅;2407;souse;2314;souse
+溢;2408;brimming;2315;brimming
+湛;2409;inundate;2317;inundate
+淳;2410;immaculate;2318;immaculate
+渥;2411;moisten;2320;moisten
+灘;2412;rough seas;2321;rough seas
+汲;2413;draw water;2322;draw water
+瀞;2414;river pool;2323;river pool
+溜;2415;cumulation;2324;cumulation
+渕;2416;abyss;2325;abyss
+沌;2417;chaos;2326;chaos
+濾;2418;strainer;2328;strainer
+濡;2419;drench;2329;drench
+淀;2420;eddy;2330;eddy
+涅;2421;black soil;2331;fabrication
+斧;2422;hatchet;2333;hatchet
+爺;2423;grandpa;2334;grandpa
+猾;2424;sly;2335;sly
+猥;2425;indecent;2336;indecent
+狡;2426;cunning;2337;cunning
+狸;2427;racoon dog;2338;racoon dog
+狼;2428;wolf;2339;wolf
+狽;2429;flustered;2340;flustered
+狗;2430;pup;2341;pup
+狐;2431;fox;2342;fox
+狛;2432;a-un;2343;a-un
+獅;2433;lion;2345;lion
+狒;2434;baboon;2346;baboon
+莨;2435;tobacco;2347;tobacco
+茉;2436;jasmine;2348;jasmine
+莉;2437;hawthorn;2349;hawthorn
+苺;2438;strawberry;2350;strawberry
+萩;2439;bush clover;2351;bush clover
+藝;2440;technique [old];2352;technique [old]
+薙;2441;trim;2353;trim
+蓑;2442;straw raincoat;2354;straw raincoat
+苔;2443;moss;2356;moss
+蕩;2444;prodigal;2357;prodigal
+蔓;2445;tendril;2359;tendril
+蓮;2446;lotus;2360;lotus
+芙;2447;lotus flower;2361;lotus flower
+蓉;2448;lotus blossom;2362;lotus blossom
+蘭;2449;orchid;2363;orchid
+芦;2450;hollow reed;2364;hollow reed
+薯;2451;yam;2365;yam
+菖;2452;iris;2366;iris
+蕉;2453;banana;2367;banana
+蕎;2454;buckwheat;2369;buckwheat
+蕗;2455;butterbur;2370;butterbur
+茄;2456;eggplant;2372;eggplant
+蔭;2457;behind the scenes;2374;behind the scenes
+蓬;2458;wormwood;2375;wormwood
+芥;2459;mustard;2376;mustard
+萌;2460;germinate;2377;germinate
+葡;2461;grape;2378;grape
+萄;2462;grape vine;2379;grape vine
+蘇;2463;resurrect;2380;resurrect
+蕃;2464;grow wild;2381;grow wild
+苓;2465;cocklebur;2382;cocklebur
+菰;2466;rush mat;2383;rush mat
+蒙;2467;darken;2384;darken
+茅;2468;grassy reed;2385;grassy reed
+芭;2469;plantain;2386;plantain
+苅;2470;mow;2387;mow
+葱;2471;onion;2389;onion
+葵;2472;hollyhock;2391;hollyhock
+葺;2473;shingling;2392;shingling
+蕊;2474;stamen;2393;stamen
+茸;2475;mushroom;2394;mushroom
+蒔;2476;sowing;2395;sowing
+芹;2477;parsley;2396;parsley
+苫;2478;thatching;2397;thatching
+蒼;2479;pale blue;2399;pale blue
+藁;2480;straw;2400;straw
+蕪;2481;turnip;2401;turnip
+藷;2482;sweet potato;2402;sweet potato
+薮;2483;quack;2403;quack
+蒜;2484;garlic;2404;garlic
+蕨;2485;bracken;2405;bracken
+蔚;2486;grow plentiful;2406;grow plentiful
+茜;2487;madder red;2407;madder red
+莞;2488;candle rush;2408;candle rush
+蒐;2489;collector;2409;collector
+菅;2490;sedge;2410;sedge
+葦;2491;ditch reed;2411;ditch reed
+迪;2492;Way;2412;Way
+辿;2493;track down;2413;track down
+這;2494;crawl;2414;crawl
+迂;2495;detour;2415;detour
+遁;2496;shirk;2416;elude
+逢;2497;tryst;2417;tryst
+遥;2498;far off;2418;far off
+遼;2499;faraway;2419;remote
+逼;2500;pressing;2420;pressing
+迄;2501;until;2421;until
+逗;2502;standstill;2423;standstill
+鄭;2503;courtesy;2425;courtesy
+隕;2504;falling
+隈;2505;nook;2427;nook
+憑;2506;possessed;2428;possessed
+惹;2507;attract;2429;attract
+悉;2508;without exception;2430;without exception
+忽;2509;instantaneously;2431;instantaneously
+惣;2510;firstborn son;2432;firstborn son
+愈;2511;in the nick of time;2433;in the nick of time
+恕;2512;sensitive;2434;sensitive
+昴;2513;overarching;2435;overarching
+晋;2514;progress;2436;progress
+晟;2515;aglow;2438;aglow
+暈;2516;halo;2439;halo
+暉;2517;glitter;2440;glitter
+旱;2518;dry weather;2441;dry weather
+晏;2519;clear skies;2442;clear skies
+晨;2520;morrow;2443;morrow
+晒;2521;bleaching;2444;bleaching
+晃;2522;limpid;2446;limpid
+曝;2523;air out;2447;air out
+曙;2524;dawn;2448;dawn
+昂;2525;elevate;2449;elevate
+昏;2526;dusk;2451;dusk
+晦;2527;last day of the month;2452;last day of the month
+膿;2528;pus;2455;pus
+腑;2529;viscera;2456;viscera
+胱;2530;bladder;2457;bladder
+胚;2531;embryo;2458;embryo
+肛;2532;anus;2459;anus
+脆;2533;fragile;2462;fragile
+肋;2534;rib;2463;rib
+腔;2535;body cavity;2465;body cavity
+肱;2536;armrest;2469;armrest
+胡;2537;uncivilized;2470;uncivilized
+楓;2538;maple tree;2471;maple tree
+楊;2539;purple willow;2473;purple willow
+椋;2540;Oriental elm;2474;Oriental elm
+榛;2541;hazel;2475;hazel
+櫛;2542;comb;2476;comb
+槌;2543;wooden hammer;2477;wooden hammer
+樵;2544;mallet;2478;mallet
+梯;2545;ladder;2479;ladder
+柑;2546;citrus tree;2482;citrus tree
+杭;2547;picket;2484;picket
+柊;2548;holly;2485;holly
+柚;2549;citron;2486;citron
+椀;2550;wooden bowl;2487;wooden bowl
+栂;2551;hemlock;2488;hemlock
+柾;2552;spindle tree;2489;spindle tree
+榊;2553;sacred tree;2490;sacred Shinto tree
+樫;2554;evergreen oak;2491;evergreen oak
+槙;2555;black pine;2492;Chinese black pine
+楢;2556;Japanese oak;2493;Japanese oak
+橘;2557;mandarin orange;2494;mandarin orange
+桧;2558;Japanese cypress;2495;Japanese cypress
+棲;2559;roost;2496;roost
+栖;2560;nestle;2497;nestle
+桔;2561;bellflower;2499;bellflower
+杜;2562;temple grove;2500;temple grove
+杷;2563;grain rake;2501;grain rake
+梶;2564;oar;2502;oar
+杵;2565;wooden pestle;2503;wooden pestle
+杖;2566;cane;2504;cane
+樽;2567;barrel;2506;barrel
+櫓;2568;turret;2508;turret
+橿;2569;sturdy oak;2509;sturdy oak
+杓;2570;wooden ladle;2510;wooden ladle
+李;2571;damson;2511;damson
+棉;2572;raw cotton;2512;raw cotton
+楯;2573;escutcheon;2513;escutcheon
+榎;2574;hackberry;2514;hackberry
+樺;2575;birch;2515;birch
+槍;2576;lance;2516;lance
+柘;2577;wild mulberry;2517;wild mulberry
+梱;2578;bale;2518;bale
+枇;2579;loquat;2519;loquat
+樋;2580;downspout;2520;downspout
+橇;2581;sled;2521;sled
+槃;2582;enjoyment;2522;enjoyment
+栞;2583;bookmark;2523;bookmark
+椰;2584;coconut tree;2524;coconut tree
+檀;2585;sandalwood;2525;sandalwood
+樗;2586;sumac;2526;sumac
+槻;2587;zelkova;2527;zelkova
+椙;2588;cryptomeria;2528;cryptomeria
+彬;2589;copious;2529;copious
+桶;2590;bucket;2530;bucket
+楕;2591;ellipse;2531;ellipse
+樒;2592;star-anise;2532;star-anise
+毬;2593;furball;2533;furball
+燿;2594;twinkle;2534;twinkle
+燎;2595;watchfire;2535;watchfire
+炬;2596;torch;2536;torch
+焚;2597;kindle;2537;kindle
+灸;2598;moxa;2538;moxa
+煽;2599;fanning;2540;fanning
+煤;2600;soot;2541;soot
+煉;2601;firing;2542;firing
+燦;2602;dazzling;2543;dazzling
+灼;2603;refulgent;2544;refulgent
+烙;2604;branding;2545;branding
+焔;2605;flames;2546;flames
+烹;2606;stew;2549;stew
+牽;2607;tug;2550;tug
+牝;2608;female animal;2551;female animal
+牡;2609;male animal;2552;male animal
+琳;2610;chime;2554;chime
+琉;2611;lapis lazuli;2557;lapis lazuli
+瑳;2612;burnish;2559;burnish
+琢;2613;hone;2560;hone
+珊;2614;coral;2561;coral
+瑚;2615;coral reef;2562;coral reef
+瑞;2616;fortunate;2563;fortunate
+玖;2617;jet;2565;jet
+瑛;2618;crystal stone;2566;crystal stone
+玲;2619;tinkling;2568;tinkling
+畢;2620;lastly;2570;lastly
+畦;2621;paddy-field ridge;2571;paddy-field ridge
+痒;2622;itch;2572;itch
+痰;2623;phlegm;2573;phlegm
+疹;2624;measles;2574;measles
+痔;2625;hemorrhoids;2575;hemorrhoids
+癌;2626;cancer;2576;cancer
+痺;2627;paralysis;2579;paralysis
+眸;2628;apple of the eye;2580;apple of the eye
+眩;2629;dizzy;2581;dizzy
+雉;2630;pheasant;2584;pheasant
+矩;2631;carpenter's square;2585;carpenter's square
+磐;2632;crag;2586;crag
+碇;2633;grapnel;2587;grapnel
+碧;2634;blue-green;2588;blue-green
+硯;2635;inkstone;2589;inkstone
+砥;2636;grindstone;2590;grindstone
+碗;2637;teacup;2591;teacup
+碍;2638;obstacle;2592;obstacle
+碩;2639;illustrious;2593;illustrious
+磯;2640;rocky beach;2594;rocky beach
+砺;2641;whetstone;2595;whetstone
+碓;2642;mill;2596;mill
+禦;2643;fend off;2597;fend off
+祷;2644;beseech;2598;beseech
+祐;2645;ancestral tablet;2599;ancestral tablet
+祇;2646;local god;2600;local god
+祢;2647;ancestral shrine;2601;ancestral shrine
+禄;2648;salarium;2602;salarium
+禎;2649;felicitation;2603;felicitation
+秤;2650;balancing scales;2604;balancing scales
+黍;2651;millet;2605;millet
+禿;2652;bald;2606;bald
+稔;2653;bear fruit;2607;bear fruit
+稗;2654;crabgrass;2608;crabgrass
+穣;2655;bumper crop;2609;bumper crop
+稜;2656;imperial authority;2610;imperial authority
+稀;2657;sparse;2611;sparse
+穆;2658;obeisant;2612;obeisant
+窺;2659;peep;2613;peep
+窄;2660;tight;2614;tight
+穿;2661;drill;2616;drill
+竃;2662;kitchen stove;2617;kitchen stove
+竪;2663;longness;2618;longness
+颯;2664;rustling;2619;rustling
+站;2665;outpost;2620;outpost
+靖;2666;repose;2621;repose
+妾;2667;concubine;2622;concubine
+衿;2668;lapel;2623;lapel
+袷;2669;lined kimono;2625;lined kimono
+袴;2670;pleated skirt;2626;pleated skirt
+襖;2671;sliding door;2627;sliding door
+笙;2672;Chinese panpipe;2628;Chinese panpipe
+筏;2673;raft;2629;raft
+簾;2674;bamboo blinds;2630;bamboo blinds
+箪;2675;rattan box;2631;rattan box
+竿;2676;pole;2632;pole
+箆;2677;spatula;2633;spatula
+箔;2678;foil;2634;foil
+笥;2679;wardrobe;2635;wardrobe
+箭;2680;arrow shaft;2636;arrow shaft
+筑;2681;ancient harp;2637;ancient harp
+篠;2682;slender bamboo;2639;slender bamboo
+纂;2683;redaction;2641;redaction
+竺;2684;bamboo cane;2642;bamboo cane
+箕;2685;winnowing fan;2643;winnowing fan
+笈;2686;backpack;2644;backpack
+篇;2687;livraison;2645;livraison
+筈;2688;should;2646;should
+簸;2689;winnow;2647;winnow
+粕;2690;settlings;2648;settlings
+糟;2691;lees;2649;lees
+糊;2692;paste;2650;paste
+籾;2693;unhulled rice;2651;unhulled rice
+糠;2694;rice bran;2652;rice bran
+糞;2695;excrement;2653;excrement
+粟;2696;foxtail millet;2654;foxtail millet
+繋;2697;link up;2655;link up
+綸;2698;twine;2656;twine
+絨;2699;carpet yarn;2657;carpet yarn
+絆;2700;ties;2658;ties
+緋;2701;scarlet;2659;scarlet
+綜;2702;synthesis;2660;synthesis
+紐;2703;string;2661;string
+紘;2704;chinstrap;2662;chinstrap
+纏;2705;summarize;2663;summarize
+絢;2706;gorgeous;2664;gorgeous
+繍;2707;embroidery;2665;embroidery
+紬;2708;pongee;2666;pongee
+綺;2709;ornate;2667;ornate
+綾;2710;damask;2668;damask
+絃;2711;catgut;2669;catgut
+縞;2712;stripe;2671;stripe
+綬;2713;gimp;2672;gimp
+紗;2714;gossamer;2673;gossamer
+舵;2715;rudder;2674;rudder
+聯;2716;strung together;2676;strung together
+聡;2717;attentive;2677;attentive
+聘;2718;summons;2678;summons
+耽;2719;addiction;2679;addiction
+耶;2720;exclamation;2680;exclamation
+蚤;2721;flea;2681;flea
+蟹;2722;crab;2682;crab
+蛋;2723;protein;2683;protein
+蟄;2724;hibernation;2684;hibernation
+蝿;2725;housefly;2685;housefly
+蟻;2726;ant;2686;ant
+蝋;2727;wax;2688;wax
+蝦;2728;shrimp;2689;shrimp
+蛸;2729;octopus;2690;octopus
+螺;2730;screw;2691;screw
+蝉;2731;cicada;2692;cicada
+蛙;2732;frog;2693;frog
+蛾;2733;moth;2694;moth
+蛤;2734;clam;2695;clam
+蛭;2735;leech;2696;leech
+蛎;2736;oyster;2697;oyster
+罫;2737;ruled lines;2698;ruled lines
+袈;2738;stole;2700;stole
+裟;2739;monk's sash;2701;monk's sash
+截;2740;incision;2703;incision
+哉;2741;I wonder;2704;I wonder
+詢;2742;counsel;2705;counsel
+諄;2743;polite;2706;polite
+讐;2744;vendetta;2707;vendetta
+諌;2745;remonstrate;2708;remonstrate
+諒;2746;verify;2710;verify
+讃;2747;compliment;2711;compliment
+訊;2748;query;2713;query
+訣;2749;split up;2714;split up
+詫;2750;beg another's pardon;2721;beg pardon
+誼;2751;familiarity;2719;familiarity
+謬;2752;fallible;2720;fallible
+訝;2753;wary
+諺;2754;proverb;2723;proverb
+誹;2755;slander;2724;slander
+謂;2756;so-called;2725;so-called
+諜;2757;secret agent;2726;secret agent
+註;2758;footnote;2727;footnote
+譬;2759;parable;2728;parable
+轟;2760;rumble;2729;rumble
+輔;2761;reinforce;2730;reinforce
+輻;2762;spoke;2731;spoke
+輯;2763;assemble;2732;assemble
+豹;2764;panther;2734;panther
+賎;2765;despicable;2735;despicable
+貰;2766;get;2737;get
+賑;2767;bustling;2739;bustling
+贖;2768;expiate
+躓;2769;stumble;2740;stumble
+蹄;2770;hoof;2741;hoof
+蹟;2771;vestiges;2743;vestiges
+跨;2772;straddle;2744;straddle
+跪;2773;kneel;2745;kneel
+醤;2774;soy sauce;2746;soy sauce
+醍;2775;whey;2747;whey
+醐;2776;ghee;2749;ghee
+醇;2777;strong saké;2751;strong saké
+麹;2778;malt;2753;malt
+釦;2779;button;2754;button
+銚;2780;keg;2755;keg
+鋤;2781;plow;2756;plow
+鋸;2782;handsaw;2759;handsaw
+錐;2783;awl;2760;awl
+鍬;2784;hoe;2762;hoe
+鋲;2785;rivet;2763;rivet
+錫;2786;tin;2764;tin
+錨;2787;anchor;2765;anchor
+釘;2788;nail;2766;nail
+鑓;2789;javelin;2767;javelin
+鋒;2790;sword's point;2768;sword's point
+鎚;2791;hammer;2769;hammer
+鉦;2792;carillion;2770;carillion
+錆;2793;rust;2771;rust
+鍾;2794;cluster;2772;cluster
+鋏;2795;scissors;2773;scissors
+閃;2796;flash;2774;flash
+悶;2797;agony;2775;agony
+閤;2798;side gate;2776;side gate
+雫;2799;trickle;2778;trickle
+霞;2800;haze;2779;haze
+翰;2801;quill;2780;quill
+斡;2802;auspices;2781;auspices
+鞍;2803;saddle;2782;saddle
+鞭;2804;whip;2783;whip
+鞘;2805;saddle straps;2784;saddle straps
+鞄;2806;briefcase;2785;briefcase
+靭;2807;pliable;2786;pliable
+鞠;2808;terminate;2787;terminate
+顛;2809;overturn;2789;overturn
+穎;2810;brush tip;2790;brush tip
+頗;2811;exceedingly;2793;exceedingly
+頌;2812;accolade;2794;accolade
+頚;2813;neck and throat;2796;neck and throat
+餐;2814;repast;2798;repast
+饗;2815;feast;2799;feast
+蝕;2816;eclipse;2800;eclipse
+飴;2817;sweets;2801;sweets
+駕;2818;stretcher;2803;stretcher
+騨;2819;piebald;2804;piebald
+馳;2820;rush;2805;rush
+騙;2821;cheat;2806;cheat
+馴;2822;tame;2807;tame
+駁;2823;rebuttal;2808;rebuttal
+駈;2824;gallop;2809;gallop
+驢;2825;donkey;2810;donkey
+鰻;2826;eel;2811;eel
+鯛;2827;sea bream;2812;sea bream
+鰯;2828;sardine;2813;sardine
+鱒;2829;trout;2814;trout
+鮭;2830;salmon;2815;salmon
+鮪;2831;tuna;2816;tuna
+鮎;2832;sweet smelt;2817;sweet smelt
+鯵;2833;horse mackerel;2818;horse mackerel
+鱈;2834;cod;2819;cod
+鯖;2835;mackerel;2820;mackerel
+鮫;2836;shark;2821;shark
+鰹;2837;bonito;2822;bonito
+鰍;2838;bullhead;2823;bullhead
+鰐;2839;alligator;2824;alligator
+鮒;2840;crucian carp;2825;crucian carp
+鮨;2841;sushi;2826;sushi
+鰭;2842;fish fin;2827;fish fin
+鴎;2843;seagull;2828;seagull
+鵬;2844;roc;2829;roc
+鸚;2845;parakeet;2830;parakeet
+鵡;2846;parrot;2831;parrot
+鵜;2847;cormorant;2832;cormorant
+鷺;2848;heron;2833;heron
+鷲;2849;eagle;2834;eagle
+鴨;2850;wild duck;2835;wild duck
+鳶;2851;black kite;2836;black kite
+梟;2852;owl;2837;owl
+塵;2853;dust;2838;dust
+麒;2854;giraffe;2840;giraffe
+舅;2855;father-in-law;2064;father-in-law
+鼠;2856;mouse;2065;mouse
+鑿;2857;bore;2066;bore
+艘;2858;small craft;2068;small craft
+瞑;2859;close the eyes;2842;close the eyes
+暝;2860;murky;2843;murky
+坐;2861;sitting in meditation;2844;sitting in meditation
+朔;2862;first day of the month;2846;first day of the month
+曳;2863;tow;2848;drag
+洩;2864;dribble out;2849;dribble out
+彗;2865;comet;2850;comet
+慧;2866;astute;2851;astute
+爾;2867;let it be;2074;let it be
+嘉;2868;applaud;2852;applaud
+兇;2869;evil;2853;evil
+兜;2870;helmet;2854;helmet
+靄;2871;mist
+劫;2872;kalpa;2857;kalpa
+歎;2873;bemoan;2859;bemoan
+輿;2874;palanquin;2860;palanquin
+歪;2875;warped;2862;warped
+翠;2876;jade green;2863;jade green
+黛;2877;blue-black;2864;blue-black
+鼎;2878;tripod;2865;tripod
+鹵;2879;rocksalt;2866;rocksalt
+鹸;2880;lye;2867;lye
+虔;2881;reserved;2868;reserved
+燕;2882;swallow;2869;swallow
+嘗;2883;lick;2870;lick
+殆;2884;almost;2871;almost
+牌;2885;mahjong tiles;2873;mahjong tiles
+覗;2886;peek;2875;peek
+齟;2887;disagree
+齬;2888;discord
+秦;2889;Manchu dynasty;2877;Manchu dynasty
+雀;2890;sparrow;2878;sparrow
+隼;2891;peregrine falcon;2879;peregrine falcon
+耀;2892;shimmering;2880;shimmering
+夷;2893;ebisu;2881;ebisu
+嚢;2894;cyst;2883;cyst
+暢;2895;carefree;2885;carefree
+廻;2896;circling;2886;circling
+欣;2897;elation;2888;elation
+毅;2898;stalwart;2889;stalwart
+斯;2899;this;2890;this
+匙;2900;wooden spoon;2891;wooden spoon
+匡;2901;set straight;2892;set straight
+肇;2902;founding;2893;founding
+麿;2903;Utamaro;2894;Utamaro
+叢;2904;conglomerate;2895;conglomerate
+肴;2905;entreat;2896;entreat
+斐;2906;symmetrically patterned;2897;symmetrically patterned
+卿;2907;magistrate;2898;magistrate
+翫;2908;fiddle with;2899;fiddle with
+於;2909;within;2900;within
+套;2910;hackneyed;2901;hackneyed
+叛;2911;rebellion;2902;rebellion
+尖;2912;sharp point;2903;sharp point
+壷;2913;crock;2904;crock
+叡;2914;sapience;2905;sapience
+酋;2915;chieftain;2906;chieftain
+鴬;2916;nightingale;2907;nightingale
+赫;2917;incandescent;2908;incandescent
+臥;2918;supinate;2909;supinate
+甥;2919;nephew;2910;nephew
+瓢;2920;gourd;2911;gourd
+琵;2921;biwa;2912;biwa
+琶;2922;lute;2913;lute
+叉;2923;forked;2914;forked
+乖;2924;disobey
+畠;2925;dry field;2916;dry field
+圃;2926;vegetable patch;2918;vegetable patch
+丞;2927;helping hand;2919;helping hand
+亮;2928;translucent;2920;translucent
+胤;2929;blood relative;2921;blood relative
+疏;2930;transcription;2922;transcription
+膏;2931;ointment;2923;ointment
+魁;2932;pioneer;2924;pioneer
+馨;2933;ambrosial;2925;ambrosial
+牒;2934;label;2926;label
+瞥;2935;glimpse;2927;glimpse
+睾;2936;testicle;2929;testicle
+巫;2937;sorceress;2930;sorceress
+敦;2938;empathetic;2931;empathetic
+奎;2939;Andromeda;2932;Andromeda
+翔;2940;soar;2933;soar
+皓;2941;beaming;2934;beaming
+黎;2942;tenebrous;2935;tenebrous
+赳;2943;bold;2936;bold
+已;2944;stop short;2937;stop short
+棘;2945;thornbush;2938;thornbush
+祟;2946;haunt;2945;cast a spell
+甦;2947;resucitate;2940;resuscitate
+剪;2948;pruning;2941;pruning
+躾;2949;upbringing;2942;upbringing
+夥;2950;plentiful;2943;plentiful
+鼾;2951;snore;2944;snore
+陀;2952;steeply inclined;2955;Shakyamuni Buddha
+粁;2953;kilometer;2946;kilometer
+糎;2954;centimeter;2947;centimeter
+粍;2955;millimeter;2948;millimeter
+噸;2956;ton;2949;ton
+哩;2957;mile;2950;mile
+浬;2958;nautical mile;2951;nautical mile
+吋;2959;inch;2952;inch
+呎;2960;foot;2953;feet
+梵;2961;brahman;2954;brahman
+薩;2962;bodhisattva;2956;bodhisattva
+菩;2963;bo tree;2957;bo tree
+唖;2964;babble;2958;babble
+牟;2965;moo;2961;moo
+迦;2966;Sanskrit ka;2959;Sanskrit ka
+珈;2967;jeweled hairpin;2962;jeweled hairpin
+琲;2968;beaded hairpin;2963;beaded hairpin
+檜;2969;Japanese cypress [old];2964;Japanese cypress [old]
+轡;2970;tinkling bell;2965;bridle's bit
+淵;2971;abyss [old];2966;abyss [old]
+伍;2972;V;2967;V
+什;2973;X;2968;X
+萬;2974;ten thousand [old];2969;ten thousand [old]
+邁;2975;pass through;2970;pass through
+燭;2976;candlelight;2539;candlelight
+逞;2977;tough;2971;tough
+燈;2978;lamp [old];2972;lamp [old]
+裡;2979;back [old];2973;back [old]
+薗;2980;park [alternate];2974;park [alternate]
+鋪;2981;shop [alternate];2975;shop [alternate]
+嶋;2982;island [alternate];2976;island [alternate]
+峯;2983;summit [alternate];2977;summit [alternate]
+埜;2984;plains [old];2979;plains [old]
+龍;2985;dragon [old];2981;dragon [old]
+寵;2986;patronage;2982;patronage
+聾;2987;deafness;2983;deafness
+慾;2988;longing [old];2984;longing [old]
+嶽;2989;Point [old];2987;Point [old]
+國;2990;country [old];2988;country [old]
+脛;2991;shin;2989;shin
+勁;2992;formidable;2990;formidable
+祀;2993;enshrine;2992;enshrine
+祓;2994;exorcism;2993;exorcism
+躇;2995;dither;2994;dither
+壽;2996;longevity [old];2995;longevity [old]
+躊;2997;hesitate;2996;hesitate
+饅;2998;bean jam;2998;bean jam
+嘔;2999;retch;2999;retch
+鼈;3000;snapping turtle;3000;snapping turtle
+尭;;;2095;lofty
+甫;;;2097;offspring
+卜;;;2103;augury
+喬;;;2104;heaven-high
+佼;;;2109;comely
+伶;;;2112;minstrel
+僻;;;2117;biased
+倖;;;2119;bliss
+佑;;;2126;adjutant
+俣;;;2127;fork in a road
+傭;;;2128;hire
+峨;;;2226;high mountain
+嵯;;;2230;rocky
+掠;;;2247;pillage
+撹;;;2257;churn up
+郁;;;2424;cultured
+熔;;;2547;fuse metal
+瑶;;;2553;precious stone
+珪;;;2564;silicon
+詑;;;2718;prevarication
+諏;;;2722;advise
+鏑;;;2758;arrowhead
+欝;;;2856;depressed
+巽;;;2861;southeast
+孟;;;2872;start
+彪;;;2876;mottled
+舜;;;2915;rose of Sharon
+聚;;;2939;crowd
+巌;;;2978;boulder [old]
+舘;;;2980;Bldg. [old]
+亙;;;2985;span [old]
+躯;;;2986;body [old]
+亨;;;3001;go smoothly
+侑;;;3002;condone
+梧;;;3003;parasol tree
+欽;;;3004;circumspect
+煕;;;3005;cheer
+掟;;;3007;mandate

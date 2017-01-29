@@ -1,26 +1,25 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import { strokes, contents } from '../data/radkfile.json';
-import kradfile from '../data/kradfile.json';
+import { radicalToKanji, kanjiToRadical, radicalsByStroke } from './data';
 
 function refineKanji(radicalList) {
   if (radicalList.length === 0) {
     return [];
   }
   else if (radicalList.length === 1) {
-    return contents[radicalList[0]];
+    return radicalToKanji[radicalList[0]];
   }
   else {
     const restrictors = radicalList.slice(1);
-    return contents[radicalList[0]].filter((kanji) =>
-      restrictors.every((x) => contents[x].indexOf(kanji) !== -1)
+    return radicalToKanji[radicalList[0]].filter((kanji) =>
+      restrictors.every((x) => radicalToKanji[x].indexOf(kanji) !== -1)
     );
   }
 }
 
 function refineRadicals(kanji) {
   return kanji.reduce((radicals, kanji) => {
-    radicals.unshift(...kradfile[kanji]);
+    radicals.unshift(...kanjiToRadical[kanji]);
     return radicals;
   }, []);
 }
@@ -50,11 +49,11 @@ export const RadicalSearch = ({ selected, onToggle, onComplete }) => {
     <div>
       <div>
         {
-          Object.keys(strokes).map((count) => (
+          Object.keys(radicalsByStroke).map((strokes) => (
             <StrokeBox
-              key={`strokes${count}`}
-              strokes={count}
-              contents={strokes[count]}
+              key={`strokes${strokes}`}
+              strokes={strokes}
+              contents={radicalsByStroke[strokes]}
               selected={selected}
               onToggle={onToggle}
               possibleRadicals={selected.length !== 0 && possibleRadicals}

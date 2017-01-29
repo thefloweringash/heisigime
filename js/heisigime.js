@@ -4,7 +4,7 @@ import Levenshtein from 'levenshtein';
 import Heap from 'heap';
 import { takeHeap } from './util';
 import { WordListFilter } from './wordlistfilter';
-import { words as RTKv6 } from './words';
+import { RTKv6 } from './data';
 
 export class HeisigIME extends Component {
   constructor() {

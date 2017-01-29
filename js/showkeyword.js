@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { kanjiToRadical } from './data';
 
 function splitPhrase(dictionary, phrase) {
   const result = [];
   let partial  = null;
   for (const x of phrase) {
-    if (dictionary[x]) {
+    if (dictionary[x] || kanjiToRadical.hasOwnProperty(x)) {
       if (partial) {
         result.push(partial);
         partial = null;
@@ -28,19 +29,32 @@ export const ShowKeyword = ({ phrase, dictionary, onKanjiClicked }) => {
     <span>
       {
         split.map((w, i) => {
-          const keyword = dictionary[w[0]];
-          if (keyword) {
-            return (
-              <ruby key={i}>
-                <rb onClick={() => onKanjiClicked(w)}>{w}</rb>
-                <rp>(</rp>
-                <rt>{keyword}</rt>
-                <rp>)</rp>
-              </ruby>
-            );
+          if (w.length === 1) {
+            const character = w[0];
+            const keyword   = dictionary[character];
+            if (keyword) {
+              return (
+                <ruby key={i}>
+                  <rb onClick={() => onKanjiClicked(character)}>{character}</rb>
+                  <rp>(</rp>
+                  <rt>{keyword}</rt>
+                  <rp>)</rp>
+                </ruby>
+              );
+            }
+            else if (kanjiToRadical.hasOwnProperty(character)) {
+              return (
+                <span
+                  key={i}
+                  onClick={() => onKanjiClicked(character)}
+                >
+                  {character}
+                </span>
+              );
+            }
           }
           else {
-            return <span key={i} className="boring">{w}</span>
+            return <span key={i} className="boring">{w}</span>;
           }
         })
       }

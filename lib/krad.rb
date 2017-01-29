@@ -9,14 +9,6 @@ class KRAD < FileTransformer
     @kanji_contents = {}
   end
 
-  def ingest_file!(filename)
-    File.open(filename, 'r') do |fh|
-      fh.each_line
-        .reject { |l| l =~ /^#/ }
-        .each { |line| self.ingest_line!(line) }
-    end
-  end
-
   def ingest_line!(kradfile_line)
     kanji, _separator, *radicals = kradfile_line.split(' ')
     kanji_contents[kanji] = radicals
