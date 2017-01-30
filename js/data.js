@@ -1,5 +1,7 @@
 import kradfile from '../json_data/kradfile.json';
 import keywords from '../json_data/keywords.json';
+import radicals_ from '../json_data/radicals.json';
+import { groupBy } from './util';
 
 function reverseLookupMap() {
   let reverse = {};
@@ -23,24 +25,14 @@ function makeRadicalToKanji(krad) {
   return result;
 }
 
-function makeRadicalsByStroke(radicals) {
-  const result = {};
-  for (const radical of Object.keys(radicals)) {
-    const strokes = radicals[radical];
-    let target    = result[strokes];
-    if (!target) {
-      target = (result[strokes] = []);
-    }
-    target.push(radical);
-  }
-  return result;
-}
-
 export const RTKv6        = keywords;
 export const RTKv6Inverse = reverseLookupMap(RTKv6);
 
 export const kanjiToRadical = kradfile;
 export const radicalToKanji = makeRadicalToKanji(kanjiToRadical);
 
+// Use the decomposition radicals so our UI always has all used radicals.
 export const radicals         = Object.keys(radicalToKanji);
-export const radicalsByStroke = {'?': radicals};
+
+// But categorise them by radical information from radkfile-u-jis208.txt
+export const radicalsByStroke = groupBy(radicals, (radical) => radicals_[radical] || '?');

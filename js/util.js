@@ -28,3 +28,16 @@ export function takeHeap(heap, n) {
   }
   return result;
 }
+
+export function groupBy(xs, keyfn) {
+  const result = {};
+  for (const x of xs) {
+    const key  = keyfn(x);
+    let target = result[key];
+    if (!target) {
+      target = (result[key] = []);
+    }
+    target.push(x);
+  }
+  return result;
+}

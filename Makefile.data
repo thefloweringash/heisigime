@@ -1,5 +1,5 @@
 .PHONY: all
-all: json_data/kradfile.json json_data/keywords.json
+all: json_data/kradfile.json json_data/keywords.json json_data/radicals.json
 
 json_data/.made:
 	mkdir -p json_data && touch $@
@@ -9,3 +9,6 @@ json_data/kradfile.json: data/kradfile-u lib/krad.rb | json_data/.made
 
 json_data/keywords.json: data/rtk-keywords.txt lib/keywords.rb | json_data/.made
 	ruby lib/keywords.rb $@ $<
+
+json_data/radicals.json: data/radkfile-u-jis208.txt lib/radicals.rb | json_data/.made
+	ruby lib/radicals.rb $@ $<
