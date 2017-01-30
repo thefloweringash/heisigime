@@ -53,7 +53,7 @@ export class HeisigIME extends Component {
     if (candidates) {
       for (const candidate of candidates) {
         const [kanji, keyword] = candidate;
-        const distance         = new Levenshtein(query, keyword).distance;
+        const distance         = new Levenshtein(query, keyword.toLowerCase()).distance;
         sorted.push({ kanji, keyword, distance });
       }
     }

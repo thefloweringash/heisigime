@@ -8,7 +8,7 @@ export class WordListFilter {
     this.prefix_size = prefix_size;
 
     for (const entry of words) {
-      for (const idx of scan(entry[1], prefix_size)) {
+      for (const idx of scan(entry[1].toLowerCase(), prefix_size)) {
         this.addCompletion(idx, entry);
       }
     }
