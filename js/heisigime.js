@@ -31,22 +31,20 @@ export class HeisigIME extends Component {
         key={kanji}
         title={keyword}
         className={classes}
-        onClick={() => this.completed(kanji)}>
+        onClick={() => this.completed(kanji)}
+      >
         {kanji}
       </div>
     );
   }
 
   setQuery(query) {
-    this.setState({
-      query,
-      candidates: query !== '' ? this.search(query, 50) : [],
-    });
+    const candidates = query !== '' ? this.search(query, 50) : [];
+    this.setState({ query, candidates });
   }
 
   search(query, max) {
-    query        = query.toLowerCase();
-    const result = [];
+    query = query.toLowerCase();
 
     const sorted     = new Heap((x, y) => x.distance - y.distance);
     const candidates = this.wordlist.fetch(query);
@@ -57,7 +55,7 @@ export class HeisigIME extends Component {
         sorted.push({ kanji, keyword, distance });
       }
     }
-    return takeHeap(sorted, 50);
+    return takeHeap(sorted, max);
   }
 
   handleKeyDown(event) {
