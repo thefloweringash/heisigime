@@ -53,9 +53,9 @@ export const ShowKeyword = ({ phrase, dictionary, onKanjiClicked }) => {
               );
             }
           }
-          else {
-            return <span key={i} className="boring">{w}</span>;
-          }
+
+          // fallthrough
+          return <span key={i} className="boring">{w}</span>;
         })
       }
       </span>
