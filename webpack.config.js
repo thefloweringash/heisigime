@@ -15,38 +15,36 @@ module.exports = {
     publicPath: '/',
   },
   module:{
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
         exclude: /node_modules/,
-        query: {
-          presets: [
-            ['env', {
-              targets: { browsers: supportedBrowsers },
-            }],
-            'react',
-          ],
-          plugins: ['transform-runtime'],
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['env', {
+                  targets: { browsers: supportedBrowsers },
+                  modules: false,
+                }],
+                'react',
+              ],
+              plugins: ['transform-runtime'],
+            },
+          },
+        ],
       },
       {
         test: /.css$/,
-        loader: "style!css"
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.less$/,
-        loader: "style!css!postcss!less"
+        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
       },
-      {
-        test: /.json$/,
-        loader: "json"
-      }
     ],
   },
-  postcss: [
-    autoprefixer({ browsers: supportedBrowsers }),
-  ],
   devServer: {
     stats: 'errors-only',
     contentBase: './dist',
@@ -56,6 +54,15 @@ module.exports = {
     new webpack.EnvironmentPlugin([
       "NODE_ENV"
     ]),
+
+    new webpack.LoaderOptionsPlugin({
+      test: /\.less$/,
+      options: {
+        postcss: [
+          autoprefixer({ browsers: supportedBrowsers }),
+        ],
+      }
+    }),
 
     // Static data
     new CopyWebpackPlugin([
