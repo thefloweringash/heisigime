@@ -6,6 +6,7 @@
   "scripts": {
     "start": "make -f Makefile.data && webpack-dev-server --inline --hot",
     "build": "make -f Makefile.data && NODE_ENV=production webpack --optimize-minimize",
+    "build-index": "make -f Makefile.data && NODE_ENV=production webpack --config webpack-index.config.js --optimize-minimize",
     "test": "make -f Makefile.data && karma start --single-run"
   },
   "author": "Andrew Childs <lorne@cons.org.nz>",
@@ -18,8 +19,10 @@
     "babel-preset-env": "^1.0.0",
     "babel-preset-react": "^6.16.0",
     "chai": "^3.5.0",
+    "cheerio": "^0.22.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
+    "isomorphic-style-loader": "^1.1.0",
     "json-loader": "^0.5.4",
     "karma": "^1.3.0",
     "karma-chai": "^0.1.0",
@@ -30,6 +33,8 @@
     "less-loader": "^2.2.3",
     "mocha": "^3.2.0",
     "postcss-loader": "^1.2.0",
+    "raw-loader": "^0.5.1",
+    "static-site-generator-webpack-plugin": "^3.1.0",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"

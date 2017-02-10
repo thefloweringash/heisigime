@@ -1,4 +1,3 @@
-// -*- mode: web -*-
 import React, { Component } from 'react';
 import Kuromoji from 'kuromoji';
 import Wanakana from 'wanakana';
@@ -6,8 +5,15 @@ import { HeisigIME } from './heisigime';
 import { RadicalSearch } from './radicalsearch';
 import { RTKv6Inverse, kanjiToRadical } from './data';
 import { ShowKeyword } from './showkeyword';
-import 'normalize.css/normalize.css';
-import '../css/app.less';
+import normalize from 'normalize.css/normalize.css';
+import stylesheet from '../css/app.less';
+
+export const css = [normalize, stylesheet];
+if (typeof window !== 'undefined') {
+  for (const c of css) {
+    c._insertCss();
+  }
+}
 
 const Dictionaries = [
   {
@@ -231,5 +237,3 @@ export class App extends Component {
     );
   }
 }
-
-

@@ -5,6 +5,8 @@ node_js:
 script:
   - yarn test
   - yarn build
+  - yarn build-index
+  - rm dist/index.js dist/index.js.map
 
 deploy:
   skip_cleanup: true
