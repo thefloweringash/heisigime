@@ -1,4 +1,6 @@
-/dist/app.js
+/dist/*.js
+/dist/*.js.map
 /dist/dict
 /node_modules
 /json_data
+/tmp

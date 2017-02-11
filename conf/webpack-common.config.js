@@ -1,6 +1,6 @@
-const path              = require('path');
-const webpack           = require('webpack');
-const autoprefixer      = require('autoprefixer');
+const path         = require('path');
+const webpack      = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 const supportedBrowsers = [
   'last 1 version',
@@ -10,9 +10,10 @@ module.exports = {
   target:    "web",
   entry:     { main: './js/main.js' },
   output:    {
-    path:       path.resolve(__dirname, '../dist'),
-    filename:   '[name].js',
-    publicPath: '/',
+    path:          path.resolve(__dirname, '../dist'),
+    filename:      '[name].js',
+    chunkFilename: '[id].js',
+    publicPath:    '/',
   },
   module:    {
     rules: [

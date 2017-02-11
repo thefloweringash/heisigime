@@ -6,7 +6,7 @@ script:
   - yarn test
   - yarn build
   - yarn build-index
-  - rm dist/index.js dist/index.js.map
+  - mv tmp/index.html dist/index.html
 
 deploy:
   skip_cleanup: true

@@ -3,7 +3,7 @@ import Kuromoji from 'kuromoji';
 import Wanakana from 'wanakana';
 import { HeisigIME } from './heisigime';
 import { RadicalSearch } from './radicalsearch';
-import { RTKv6Inverse, kanjiToRadical } from './data';
+import { RTKv6Inverse } from './data/rtkv6';
 import { ShowKeyword } from './showkeyword';
 import normalize from 'normalize.css/normalize.css';
 import stylesheet from '../css/app.less';
@@ -39,30 +39,35 @@ const Dictionaries = [
   },
 ];
 
-const TokenizerLoader = {
+class LazyLoader {
+  constructor(startLoad) {
+    this.startLoad = startLoad;
+  }
+
   load() {
     if (!this.promise) {
-      this.promise = new Promise((ok, fail) => {
-        Kuromoji.builder({ dicPath: "/dict/" }).build(
-          (err, tokenizer) => {
-            if (err) {
-              fail(err);
-            } else {
-              ok(tokenizer);
-            }
-          }
-        );
-      });
-      this.promise.then((tokenizer) => {
-        this.tokenizer = tokenizer;
-      });
+      this.promise = this.startLoad();
     }
     return this.promise;
-  },
-  isLoaded() {
-    return !!this.tokenizer;
   }
-};
+}
+
+const TokenizerLoader = new LazyLoader(() =>
+  new Promise((ok, fail) => {
+    Kuromoji.builder({ dicPath: "/dict/" }).build(
+      (err, tokenizer) => {
+        if (err) {
+          fail(err);
+        } else {
+          ok(tokenizer);
+        }
+      }
+    );
+  })
+);
+
+const RadicalDataLoader = new LazyLoader(() =>
+  require.ensure([], (require) => require('./data/radicals.js'), 'radicals'));
 
 const posClasses = {
   助詞:  'particle',
@@ -75,7 +80,7 @@ const posClasses = {
   接頭詞: 'prefix',
 };
 
-const Token = ({ surface_form, reading, pos, onKanjiClicked }) => {
+const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }) => {
   const posClass = posClasses[pos] || '';
   if (surface_form === reading || Wanakana.isKana(surface_form)) {
     return <span className={`token ${posClass}`}>{surface_form}</span>;
@@ -86,6 +91,7 @@ const Token = ({ surface_form, reading, pos, onKanjiClicked }) => {
         <rb>
           <ShowKeyword
             dictionary={RTKv6Inverse}
+            kanjiToRadical={kanjiToRadical}
             phrase={surface_form}
             onKanjiClicked={onKanjiClicked}
           />
@@ -104,31 +110,30 @@ export class App extends Component {
     this.state = {
       result:           '',
       dictionary:       null,
-      haveTokenizer:    TokenizerLoader.isLoaded(),
-      useTokenizer:     false,
+      tokenizer:        null,
+      radicalData:      null,
       selectedRadicals: [],
       showRadicalUI:    false,
     };
 
     this.characterSelected = this.characterSelected.bind(this);
-    this.closeDict         = this.closeDict.bind(this);
-    this.toggleTokenizer   = this.toggleTokenizer.bind(this);
-    this.toggleRadical     = this.toggleRadical.bind(this);
-    this.refineRadicals    = this.refineRadicals.bind(this);
-    this.clearRadicals     = this.clearRadicals.bind(this);
-    this.toggleRadicalUI   = this.toggleRadicalUI.bind(this);
+
+    this.closeDict       = this.closeDict.bind(this);
+    this.toggleTokenizer = this.toggleTokenizer.bind(this);
+    this.toggleRadicalUI = this.toggleRadicalUI.bind(this);
+
+    this.toggleRadical  = this.toggleRadical.bind(this);
+    this.refineRadicals = this.refineRadicals.bind(this);
+    this.clearRadicals  = this.clearRadicals.bind(this);
   }
 
   toggleTokenizer() {
-    if (!this.state.useTokenizer) {
-      this.setState({ useTokenizer: true });
+    if (this.state.tokenizer) {
+      this.setState({ tokenizer: null });
+    } else {
       TokenizerLoader.load().then((tokenizer) => {
-        this.tokenizer = tokenizer;
-        this.setState({ haveTokenizer: true });
+        this.setState({ tokenizer });
       });
-    }
-    else {
-      this.setState({ useTokenizer: false });
     }
   }
 
@@ -167,7 +172,13 @@ export class App extends Component {
   }
 
   toggleRadicalUI() {
-    this.setState({ showRadicalUI: !this.state.showRadicalUI });
+    const showRadicalUI = !this.state.showRadicalUI;
+    this.setState({ showRadicalUI });
+    if (showRadicalUI) {
+      RadicalDataLoader.load().then((radicalData) => {
+        this.setState({ radicalData });
+      })
+    }
   }
 
   clearRadicals() {
@@ -175,15 +186,17 @@ export class App extends Component {
   }
 
   refineRadicals(kanji) {
-    const selectedRadicals = this.state.selectedRadicals.slice();
+    const { kanjiToRadical } = this.state.radicalData;
+    const selectedRadicals   = this.state.selectedRadicals.slice();
     selectedRadicals.unshift(...kanjiToRadical[kanji]);
     this.setState({ selectedRadicals });
   }
 
   render() {
-    const tokenized = (this.state.useTokenizer && this.tokenizer) ?
-      this.tokenizer.tokenize(this.state.result) :
-      this.fakeTokenize(this.state.result);
+    const { tokenizer, result } = this.state;
+    const tokenized             = tokenizer ?
+      tokenizer.tokenize(result) :
+      this.fakeTokenize(result);
     return (
       <div className="app">
         <div className="imePane">
@@ -196,7 +209,13 @@ export class App extends Component {
 
           <div className="inputs">
             <div className="reverse">
-              {tokenized.map((token, i) => <Token key={i} {...token} onKanjiClicked={this.refineRadicals}/>)}
+              {tokenized.map((token, i) => (
+                <Token
+                  key={i}
+                  {...token}
+                  onKanjiClicked={this.state.radicalData && this.refineRadicals}
+                />
+              ))}
             </div>
             <input
               className="result"
@@ -207,7 +226,7 @@ export class App extends Component {
             <HeisigIME
               onInput={this.characterSelected}
             />
-            {this.state.showRadicalUI && (
+            {this.state.showRadicalUI && this.state.radicalData && (
               <div>
                 <button
                   onClick={this.clearRadicals}
@@ -218,6 +237,7 @@ export class App extends Component {
                   onToggle={this.toggleRadical}
                   selected={this.state.selectedRadicals}
                   onComplete={this.characterSelected}
+                  {...this.state.radicalData}
                 />
               </div>
             )}

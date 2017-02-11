@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { kanjiToRadical } from './data';
 
-function splitPhrase(dictionary, phrase) {
+function splitPhrase(dictionary, kanjiToRadical, phrase) {
   const result = [];
   let partial  = null;
   for (const x of phrase) {
-    if (dictionary[x] || kanjiToRadical.hasOwnProperty(x)) {
+    if (dictionary[x] || (kanjiToRadical && kanjiToRadical.hasOwnProperty(x))) {
       if (partial) {
         result.push(partial);
         partial = null;
@@ -23,8 +22,8 @@ function splitPhrase(dictionary, phrase) {
   return result;
 }
 
-export const ShowKeyword = ({ phrase, dictionary, onKanjiClicked }) => {
-  const split = splitPhrase(dictionary, phrase);
+export const ShowKeyword = ({ phrase, dictionary, kanjiToRadical, onKanjiClicked }) => {
+  const split = splitPhrase(dictionary, kanjiToRadical, phrase);
   return (
     <span>
       {
@@ -35,7 +34,7 @@ export const ShowKeyword = ({ phrase, dictionary, onKanjiClicked }) => {
             if (keyword) {
               return (
                 <ruby key={i}>
-                  <rb onClick={() => onKanjiClicked(character)}>{character}</rb>
+                  <rb onClick={onKanjiClicked && (() => onKanjiClicked(character))}>{character}</rb>
                   <rp>(</rp>
                   <rt>{keyword}</rt>
                   <rp>)</rp>
@@ -46,7 +45,7 @@ export const ShowKeyword = ({ phrase, dictionary, onKanjiClicked }) => {
               return (
                 <span
                   key={i}
-                  onClick={() => onKanjiClicked(character)}
+                  onClick={onKanjiClicked && (() => onKanjiClicked(character))}
                 >
                   {character}
                 </span>

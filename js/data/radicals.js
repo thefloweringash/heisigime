@@ -1,15 +1,6 @@
-import kradfile from '../json_data/kradfile.json';
-import keywords from '../json_data/keywords.json';
-import radicals_ from '../json_data/radicals.json';
-import { groupBy } from './util';
-
-function reverseLookupMap() {
-  let reverse = {};
-  for (const [kanji, keyword] of RTKv6) {
-    reverse[kanji] = keyword;
-  }
-  return reverse;
-}
+import kradfile from '../../json_data/kradfile.json';
+import radicals_ from '../../json_data/radicals.json';
+import { groupBy } from '../util';
 
 function makeRadicalToKanji(krad) {
   const result = {};
@@ -24,9 +15,6 @@ function makeRadicalToKanji(krad) {
   }
   return result;
 }
-
-export const RTKv6        = keywords;
-export const RTKv6Inverse = reverseLookupMap(RTKv6);
 
 export const kanjiToRadical = kradfile;
 export const radicalToKanji = makeRadicalToKanji(kanjiToRadical);

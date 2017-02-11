@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import { radicalToKanji, kanjiToRadical, radicalsByStroke } from './data';
 
-function refineKanji(radicalList) {
+function refineKanji(radicalToKanji, radicalList) {
   if (radicalList.length === 0) {
     return [];
   }
@@ -17,7 +16,7 @@ function refineKanji(radicalList) {
   }
 }
 
-function refineRadicals(kanji) {
+function refineRadicals(kanjiToRadical, kanji) {
   return kanji.reduce((radicals, kanji) => {
     radicals.unshift(...kanjiToRadical[kanji]);
     return radicals;
@@ -42,9 +41,12 @@ const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }) 
     ))}
   </span>;
 
-export const RadicalSearch = ({ selected, onToggle, onComplete }) => {
-  const kanjiCandidates  = refineKanji(selected);
-  const possibleRadicals = refineRadicals(kanjiCandidates);
+export const RadicalSearch = ({
+  selected, onToggle, onComplete,
+  radicalToKanji, kanjiToRadical, radicalsByStroke
+}) => {
+  const kanjiCandidates  = refineKanji(radicalToKanji, selected);
+  const possibleRadicals = refineRadicals(kanjiToRadical, kanjiCandidates);
   return (
     <div>
       <div>
