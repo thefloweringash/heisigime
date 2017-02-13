@@ -214,6 +214,7 @@ export class App extends Component {
                   key={i}
                   {...token}
                   onKanjiClicked={this.state.radicalData && this.refineRadicals}
+                  kanjiToRadical={this.state.radicalData && this.state.radicalData.kanjiToRadical}
                 />
               ))}
             </div>

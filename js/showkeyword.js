@@ -41,7 +41,7 @@ export const ShowKeyword = ({ phrase, dictionary, kanjiToRadical, onKanjiClicked
                 </ruby>
               );
             }
-            else if (kanjiToRadical.hasOwnProperty(character)) {
+            else if (kanjiToRadical && kanjiToRadical.hasOwnProperty(character)) {
               return (
                 <span
                   key={i}
