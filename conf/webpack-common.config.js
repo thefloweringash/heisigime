@@ -1,6 +1,7 @@
-const path         = require('path');
-const webpack      = require('webpack');
-const autoprefixer = require('autoprefixer');
+const path               = require('path');
+const webpack            = require('webpack');
+const autoprefixer       = require('autoprefixer');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const supportedBrowsers = [
   'last 1 version',
@@ -54,6 +55,12 @@ module.exports = {
   plugins:   [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+    }),
+
+    new WebpackShellPlugin({
+      onBuildStart: [
+        'make -f Makefile.data',
+      ],
     }),
 
     new webpack.NamedModulesPlugin(),
