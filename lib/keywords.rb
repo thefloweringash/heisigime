@@ -2,13 +2,7 @@ require_relative './file_transformer'
 
 require 'json'
 
-class Keywords < FileTransformer
-  attr_reader :keywords
-
-  def initialize
-    @keywords = []
-  end
-
+class Keywords < FileTransformer[keywords: []]
   def ingest_line!(line)
     kanji, v6frame, v6keyword = line.split(';')
     return if v6frame.empty?

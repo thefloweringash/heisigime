@@ -1,6 +1,28 @@
 #!/usr/bin/env ruby
 
 class FileTransformer
+  def self.[](attr_map)
+    raise 'Single attributes only' unless attr_map.size == 1
+    attr_name, attr_default = attr_map.shift
+
+    Class.new(FileTransformer) do
+      attr_accessor attr_name
+
+      define_method(:_initialize_attr) do
+        self.public_send(:"#{attr_name}=", attr_default)
+      end
+
+      def initialize
+        super
+        _initialize_attr
+      end
+
+      define_method(:generate) do
+        JSON.generate(self.public_send(attr_name))
+      end
+    end
+  end
+
   def dump(outfile)
     File.open(outfile, 'w') do |fh|
       fh.puts(self.generate)

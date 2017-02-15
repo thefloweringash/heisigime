@@ -2,20 +2,10 @@ require_relative './file_transformer'
 
 require 'json'
 
-class Radicals < FileTransformer
-  attr_reader :radicals
-
-  def initialize
-    @radicals = {}
-  end
-
+class Radicals < FileTransformer[radicals: {}]
   def ingest_line!(line)
     radical, strokes = line.split(':')
     radicals[radical] = strokes
-  end
-
-  def generate
-    JSON.generate(radicals)
   end
 end
 
