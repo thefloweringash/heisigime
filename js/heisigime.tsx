@@ -1,12 +1,30 @@
-import React, { Component } from 'react';
-import Wanakana from 'wanakana';
-import Levenshtein from 'levenshtein';
-import Heap from 'heap';
-import { takeHeap } from './util';
-import { WordListFilter } from './wordlistfilter';
-import { RTKv6 } from './data/rtkv6';
+import Heap from "heap";
+import Levenshtein from "levenshtein";
+import React, { Component, KeyboardEvent } from "react";
+import Wanakana from "wanakana";
+import { RTKv6 } from "./data/rtkv6";
+import { takeHeap } from "./util";
+import { WordListFilter } from "./wordlistfilter";
 
-export class HeisigIME extends Component {
+interface Props {
+  onInput: (character: string) => void,
+}
+
+interface State {
+  query: string,
+  candidates: Candidate[],
+}
+
+interface Candidate {
+  kanji: string,
+  keyword: string,
+  distance: number,
+}
+
+export class HeisigIME extends Component<Props, State> {
+
+  wordlist: WordListFilter<string>;
+
   constructor() {
     super();
 
@@ -15,12 +33,12 @@ export class HeisigIME extends Component {
     this.state = { query: '', candidates: [] };
   }
 
-  completed(character) {
+  completed(character: string) {
     this.props.onInput(character);
     this.setQuery('');
   }
 
-  renderItem({ kanji, keyword, distance }, hilighted) {
+  renderItem({ kanji, keyword, distance }: Candidate, hilighted: boolean) {
     let classes = 'completion';
     if (hilighted) {
       classes += ' hilighted'
@@ -38,15 +56,15 @@ export class HeisigIME extends Component {
     );
   }
 
-  setQuery(query) {
+  setQuery(query: string) {
     const candidates = query !== '' ? this.search(query, 50) : [];
     this.setState({ query, candidates });
   }
 
-  search(query, max) {
+  search(query: string, max: number): Candidate[] {
     query = query.toLowerCase();
 
-    const sorted     = new Heap((x, y) => x.distance - y.distance);
+    const sorted     = new Heap<Candidate>((x, y) => x.distance - y.distance);
     const candidates = this.wordlist.fetch(query);
     if (candidates) {
       for (const candidate of candidates) {
@@ -58,7 +76,7 @@ export class HeisigIME extends Component {
     return takeHeap(sorted, max);
   }
 
-  handleKeyDown(event) {
+  handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.getModifierState("Control")) {
       if (event.keyCode === 74) {
         this.completed(Wanakana.toHiragana(this.state.query));
@@ -90,7 +108,7 @@ export class HeisigIME extends Component {
           onKeyDown={(evt) => this.handleKeyDown(evt)}
           autoComplete="off" autoCorrect="off" autoCapitalize="off"/>
         <div className="completions">
-          {this.state.candidates.map((c) => this.renderItem(c))}
+          {this.state.candidates.map((c) => this.renderItem(c, false))}
         </div>
       </div>
     );

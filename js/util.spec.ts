@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import { scan } from './util';
 
 describe('scan', () => {

@@ -1,4 +1,6 @@
-export function *scan(str, n) {
+import Heap from "heap";
+
+export function *scan(str: string, n: number) {
   if (str.length <= n) {
     yield str;
     return;
@@ -8,7 +10,11 @@ export function *scan(str, n) {
   }
 }
 
-export function contains(collection, element, equal) {
+export function contains<T>(
+  collection: Iterable<T>,
+  element: T,
+  equal: (x: T, y: T) => boolean = (x, y) => x == y
+): boolean {
   for (const cand of collection) {
     if (equal(element, cand)) {
       return true;
@@ -17,7 +23,7 @@ export function contains(collection, element, equal) {
   return false;
 }
 
-export function takeHeap(heap, n) {
+export function takeHeap<T>(heap: Heap<T>, n: number): Array<T> {
   const result = [];
   for (let i = 0; i < n; i++) {
     const element = heap.pop();
@@ -29,8 +35,8 @@ export function takeHeap(heap, n) {
   return result;
 }
 
-export function groupBy(xs, keyfn) {
-  const result = {};
+export function groupBy<T>(xs: Iterable<T>, keyfn: (t: T) => string) {
+  const result: { [x: string]: Array<T> | undefined } = {};
   for (const x of xs) {
     const key  = keyfn(x);
     let target = result[key];

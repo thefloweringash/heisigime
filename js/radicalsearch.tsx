@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { css, StyleSheet } from "aphrodite";
+import React from "react";
+import { IKanjiToRadical, IRadicalsByStroke, IRadicalToKanji } from "./data/radicals";
 
-function refineKanji(radicalToKanji, radicalList) {
+function refineKanji(radicalToKanji: IRadicalToKanji, radicalList: string[]) {
   if (radicalList.length === 0) {
     return [];
   }
@@ -16,14 +17,22 @@ function refineKanji(radicalToKanji, radicalList) {
   }
 }
 
-function refineRadicals(kanjiToRadical, kanji) {
+function refineRadicals(kanjiToRadical: IKanjiToRadical, kanji: string[]) {
   return kanji.reduce((radicals, kanji) => {
     radicals.unshift(...kanjiToRadical[kanji]);
     return radicals;
   }, []);
 }
 
-const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }) =>
+interface StrokeBoxProps {
+  selected: string[],
+  strokes: string,
+  contents: string[],
+  onToggle: (radical: string) => void,
+  possibleRadicals: string[],
+}
+
+const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }: StrokeBoxProps) =>
   <span>
     <div className={css(styles.strokeDivider)}>{strokes}</div>
     {contents.map((radical) => (
@@ -41,10 +50,19 @@ const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }) 
     ))}
   </span>;
 
+interface RadicalSearchProps {
+  selected: string[],
+  onToggle: (radical: string) => void,
+  onComplete: (kanji: string) => void,
+  radicalToKanji: IRadicalToKanji,
+  kanjiToRadical: IKanjiToRadical,
+  radicalsByStroke: IRadicalsByStroke,
+}
+
 export const RadicalSearch = ({
   selected, onToggle, onComplete,
   radicalToKanji, kanjiToRadical, radicalsByStroke
-}) => {
+}: RadicalSearchProps) => {
   const kanjiCandidates  = refineKanji(radicalToKanji, selected);
   const possibleRadicals = refineRadicals(kanjiToRadical, kanjiCandidates);
   return (

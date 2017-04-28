@@ -9,7 +9,7 @@ const supportedBrowsers = [
 
 module.exports = {
   target:    "web",
-  entry:     { main: './js/main.js' },
+  entry:     { main: './js/main.tsx' },
   output:    {
     path:          path.resolve(__dirname, '../dist'),
     filename:      '[name].js',
@@ -38,6 +38,28 @@ module.exports = {
         ],
       },
       {
+        test:    /\.tsx?$/,
+        exclude: /node_modules/,
+        use:     [
+          {
+            loader:  'babel-loader',
+            options: {
+              presets: [
+                ['env', {
+                  targets: { browsers: supportedBrowsers },
+                  modules: false,
+                }],
+                'react',
+              ],
+              plugins: ['transform-runtime'],
+            },
+          },
+          {
+            loader:  'ts-loader',
+          },
+        ],
+      },
+      {
         test: /.css$/,
         use:  ["isomorphic-style-loader", "css-loader"],
       },
@@ -50,6 +72,15 @@ module.exports = {
   devServer: {
     stats:       'errors-only',
     contentBase: './dist',
+  },
+  resolve: {
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js',
+      '.jsx',
+      '.json'
+    ],
   },
   devtool:   'source-map',
   plugins:   [

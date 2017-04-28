@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
-import Kuromoji from 'kuromoji';
-import Wanakana from 'wanakana';
-import { HeisigIME } from './heisigime';
-import { RadicalSearch } from './radicalsearch';
-import { RTKv6Inverse } from './data/rtkv6';
-import { ShowKeyword } from './showkeyword';
-import normalize from 'normalize.css/normalize.css';
-import stylesheet from '../css/app.less';
+import * as Kuromoji from "kuromoji";
+import { IpadicFeatures, Tokenizer } from "kuromoji";
+import normalize from "normalize.css/normalize.css";
+import React, { Component } from "react";
+import Wanakana from "wanakana";
+import stylesheet from "../css/app.less";
+import { IKanjiToRadical } from "./data/radicals";
+import { RTKv6Inverse } from "./data/rtkv6";
+import { HeisigIME } from "./heisigime";
+import { RadicalSearch } from "./radicalsearch";
+import { ShowKeyword } from "./showkeyword";
+import * as Radicals from './data/radicals';
+
+type IRadicalData = typeof Radicals;
 
 export const css = [normalize, stylesheet];
 if (typeof window !== 'undefined') {
@@ -15,7 +20,13 @@ if (typeof window !== 'undefined') {
   }
 }
 
-const Dictionaries = [
+interface Dictionary {
+  label: string,
+  inline: boolean,
+  url: (query: string) => string,
+}
+
+const Dictionaries: Dictionary[] = [
   {
     label:  'Jisho',
     inline: true,
@@ -39,12 +50,14 @@ const Dictionaries = [
   },
 ];
 
-class LazyLoader {
-  constructor(startLoad) {
+class LazyLoader<T> {
+  promise: Promise<T>;
+
+  constructor(public startLoad: () => Promise<T>) {
     this.startLoad = startLoad;
   }
 
-  load() {
+  load(): Promise<T> {
     if (!this.promise) {
       this.promise = this.startLoad();
     }
@@ -52,10 +65,10 @@ class LazyLoader {
   }
 }
 
-const TokenizerLoader = new LazyLoader(() =>
-  new Promise((ok, fail) => {
+const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
+  new Promise<Tokenizer<IpadicFeatures>>((ok, fail) => {
     Kuromoji.builder({ dicPath: "/dict/" }).build(
-      (err, tokenizer) => {
+      (err: Error, tokenizer: Tokenizer<IpadicFeatures>) => {
         if (err) {
           fail(err);
         } else {
@@ -66,10 +79,10 @@ const TokenizerLoader = new LazyLoader(() =>
   })
 );
 
-const RadicalDataLoader = new LazyLoader(() =>
-  require.ensure([], (require) => require('./data/radicals.js'), 'radicals'));
+const RadicalDataLoader = new LazyLoader<IRadicalData>(
+  () => System.import('./data/radicals'));
 
-const posClasses = {
+const posClasses: { [pos: string]: string } = {
   助詞:  'particle',
   形容詞: 'adjective',
   名詞:  'noun',
@@ -80,7 +93,12 @@ const posClasses = {
   接頭詞: 'prefix',
 };
 
-const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }) => {
+interface TokenProps extends IpadicFeatures {
+  kanjiToRadical: IKanjiToRadical,
+  onKanjiClicked: (kanji: string) => void,
+}
+
+const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: TokenProps) => {
   const posClass = posClasses[pos] || '';
   if (surface_form === reading || Wanakana.isKana(surface_form)) {
     return <span className={`token ${posClass}`}>{surface_form}</span>;
@@ -104,7 +122,20 @@ const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }) =
   }
 };
 
-export class App extends Component {
+interface AppProps {
+}
+
+interface AppState {
+  tokenizer: Tokenizer<IpadicFeatures>;
+  result: string;
+  selectedRadicals: Array<string>;
+  radicalData: IRadicalData;
+  showRadicalUI: boolean;
+  dictionaryURL?: string;
+  dictionary: string;
+}
+
+export class App extends Component<AppProps, AppState> {
   constructor() {
     super();
     this.state = {
@@ -137,11 +168,11 @@ export class App extends Component {
     }
   }
 
-  characterSelected(char) {
+  characterSelected(char: string) {
     this.setState((prev) => ({ result: prev.result + char }));
   }
 
-  showDict(dictionary) {
+  showDict(dictionary: Dictionary) {
     const dictionaryURL = dictionary.url(this.state.result);
     if (dictionary.inline) {
       this.setState({ dictionaryURL });
@@ -155,11 +186,23 @@ export class App extends Component {
     this.setState({ dictionaryURL: null });
   }
 
-  fakeTokenize(result) {
-    return [{ word_type: "UNKNOWN", surface_form: result }];
+  fakeTokenize(result: string): IpadicFeatures[] {
+    return [{
+      word_type:       "UNKNOWN",
+      surface_form:    result,
+      word_id:         -1,
+      word_position:   -1,
+      pos:             '',
+      pos_detail_1:    '',
+      pos_detail_2:    '',
+      pos_detail_3:    '',
+      conjugated_type: '',
+      conjugated_form: '',
+      basic_form:      '',
+    }];
   }
 
-  toggleRadical(radical) {
+  toggleRadical(radical: string) {
     const selectedRadicals = this.state.selectedRadicals.slice();
     let index              = selectedRadicals.indexOf(radical);
     if (index === -1) {
@@ -185,7 +228,7 @@ export class App extends Component {
     this.setState({ selectedRadicals: [] });
   }
 
-  refineRadicals(kanji) {
+  refineRadicals(kanji: string) {
     const { kanjiToRadical } = this.state.radicalData;
     const selectedRadicals   = this.state.selectedRadicals.slice();
     selectedRadicals.unshift(...kanjiToRadical[kanji]);
@@ -193,10 +236,11 @@ export class App extends Component {
   }
 
   render() {
-    const { tokenizer, result } = this.state;
-    const tokenized             = tokenizer ?
+    const { tokenizer, result }       = this.state;
+    const tokenized: IpadicFeatures[] = tokenizer ?
       tokenizer.tokenize(result) :
       this.fakeTokenize(result);
+
     return (
       <div className="app">
         <div className="imePane">
