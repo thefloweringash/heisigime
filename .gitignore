@@ -4,3 +4,7 @@
 /node_modules
 /json_data
 /tmp
+# Rubymine
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
