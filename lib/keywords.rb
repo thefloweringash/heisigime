@@ -6,8 +6,7 @@ class Keywords < FileTransformer[keywords: []]
   def ingest_line!(line)
     kanji, v6frame, v6keyword = line.split(';')
     return if v6frame.empty?
-    v6frame = Integer(v6frame)
-    keywords[v6frame] = [kanji, v6keyword]
+    keywords[Integer(v6frame)] = [kanji, v6keyword]
   end
 
   def generate
