@@ -1,10 +1,10 @@
 declare module "wanakana" {
-  interface Wanakana {
+  interface IWanakana {
     toHiragana(input: string): string;
     toKatakana(input: string): string;
     isKana(input: string): boolean;
   }
 
-  const module : Wanakana;
-  export = module;
+  const Wanakana: IWanakana;
+  export default Wanakana;
 }

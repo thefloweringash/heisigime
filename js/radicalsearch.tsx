@@ -15,13 +15,13 @@ function refineKanji(radicalToKanji: IRadicalToKanji, radicalList: string[]): st
   else {
     const restrictors = radicalList.slice(1);
     return base.filter((kanji) =>
-      restrictors.every((x) => (radicalToKanji[x] as string[]).indexOf(kanji) !== -1)
+      restrictors.every((x) => (radicalToKanji[x] as string[]).indexOf(kanji) !== -1),
     );
   }
 }
 
-function refineRadicals(kanjiToRadical: IKanjiToRadical, kanji: string[]): string[] {
-  return kanji.reduce((radicals: string[], kanji) => {
+function refineRadicals(kanjiToRadical: IKanjiToRadical, selectedKanji: string[]): string[] {
+  return selectedKanji.reduce((radicals: string[], kanji) => {
     const contents = kanjiToRadical[kanji];
     if (contents) {
       radicals.unshift(...contents);
@@ -30,15 +30,15 @@ function refineRadicals(kanjiToRadical: IKanjiToRadical, kanji: string[]): strin
   }, []);
 }
 
-interface StrokeBoxProps {
-  selected: string[],
-  strokes: string,
-  contents: string[],
-  onToggle: (radical: string) => void,
-  possibleRadicals?: string[],
+interface IStrokeBoxProps {
+  selected: string[];
+  strokes: string;
+  contents: string[];
+  onToggle: (radical: string) => void;
+  possibleRadicals?: string[];
 }
 
-const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }: StrokeBoxProps) =>
+const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }: IStrokeBoxProps) =>
   <span>
     <div className={css(styles.strokeDivider)}>{strokes}</div>
     {contents.map((radical) => (
@@ -56,19 +56,19 @@ const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }: 
     ))}
   </span>;
 
-interface RadicalSearchProps {
-  selected: string[],
-  onToggle: (radical: string) => void,
-  onComplete: (kanji: string) => void,
-  radicalToKanji: IRadicalToKanji,
-  kanjiToRadical: IKanjiToRadical,
-  radicalsByStroke: IRadicalsByStroke,
+interface IRadicalSearchProps {
+  selected: string[];
+  onToggle: (radical: string) => void;
+  onComplete: (kanji: string) => void;
+  radicalToKanji: IRadicalToKanji;
+  kanjiToRadical: IKanjiToRadical;
+  radicalsByStroke: IRadicalsByStroke;
 }
 
 export const RadicalSearch = ({
   selected, onToggle, onComplete,
-  radicalToKanji, kanjiToRadical, radicalsByStroke
-}: RadicalSearchProps) => {
+  radicalToKanji, kanjiToRadical, radicalsByStroke,
+}: IRadicalSearchProps) => {
   const kanjiCandidates  = refineKanji(radicalToKanji, selected);
   const possibleRadicals = refineRadicals(kanjiToRadical, kanjiCandidates);
   return (
@@ -96,32 +96,32 @@ export const RadicalSearch = ({
               onClick={() => onComplete(kanji)}
             >
               {kanji}
-            </div>
+            </div>,
           )
         }
       </div>
     </div>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
   radical:       {
-    display: 'inline-block',
-    border:  '2px solid transparent',
+    display: "inline-block",
+    border:  "2px solid transparent",
   },
   diminished:    {
-    color: '#aaa',
+    color: "#aaa",
   },
   selected:      {
-    border: '2px solid green',
+    border: "2px solid green",
   },
   strokeDivider: {
-    background: '#0080c0',
-    padding:    '0.3em 0.5em',
-    display:    'inline-block',
-    textAlign:  'center',
+    background: "#0080c0",
+    padding:    "0.3em 0.5em",
+    display:    "inline-block",
+    textAlign:  "center",
   },
   candidate:     {
-    display: 'inline-block',
-  }
+    display: "inline-block",
+  },
 });

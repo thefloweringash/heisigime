@@ -6,44 +6,56 @@ import { RTKv6 } from "./data/rtkv6";
 import { takeHeap } from "./util";
 import { WordListFilter } from "./wordlistfilter";
 
-interface Props {
-  onInput: (character: string) => void,
+interface IProps {
+  onInput: (character: string) => void;
 }
 
-interface State {
-  query: string,
-  candidates: Candidate[],
+interface IState {
+  query: string;
+  candidates: ICandidate[];
 }
 
-interface Candidate {
-  kanji: string,
-  keyword: string,
-  distance: number,
+interface ICandidate {
+  kanji: string;
+  keyword: string;
+  distance: number;
 }
 
-export class HeisigIME extends Component<Props, State> {
-
-  wordlist: WordListFilter<string>;
+export class HeisigIME extends Component<IProps, IState> {
+  private readonly wordlist: WordListFilter<string> = new WordListFilter(RTKv6, 2);
 
   constructor() {
     super();
-
-    this.wordlist = new WordListFilter(RTKv6, 2);
-
-    this.state = { query: '', candidates: [] };
+    this.state = { query: "", candidates: [] };
   }
 
-  completed(character: string) {
+  public render() {
+    return (
+      <div className="ime">
+        <input
+          value={this.state.query}
+          onChange={(event) => this.setQuery(event.target.value)}
+          placeholder="Keyword"
+          onKeyDown={(evt) => this.handleKeyDown(evt)}
+          autoComplete="off" autoCorrect="off" autoCapitalize="off"/>
+        <div className="completions">
+          {this.state.candidates.map((c) => this.renderItem(c, false))}
+        </div>
+      </div>
+    );
+  }
+
+  private completed(character: string) {
     this.props.onInput(character);
-    this.setQuery('');
+    this.setQuery("");
   }
 
-  renderItem({ kanji, keyword, distance }: Candidate, hilighted: boolean) {
-    let classes = 'completion';
+  private renderItem({ kanji, keyword, distance }: ICandidate, hilighted: boolean) {
+    let classes = "completion";
     if (hilighted) {
-      classes += ' hilighted'
+      classes += " hilighted";
     }
-    classes += distance <= 2 ? ' close' : ' far';
+    classes += distance <= 2 ? " close" : " far";
     return (
       <div
         key={kanji}
@@ -56,15 +68,15 @@ export class HeisigIME extends Component<Props, State> {
     );
   }
 
-  setQuery(query: string) {
-    const candidates = query !== '' ? this.search(query, 50) : [];
+  private setQuery(query: string) {
+    const candidates = query !== "" ? this.search(query, 50) : [];
     this.setState({ query, candidates });
   }
 
-  search(query: string, max: number): Candidate[] {
+  private search(query: string, max: number): ICandidate[] {
     query = query.toLowerCase();
 
-    const sorted     = new Heap<Candidate>((x, y) => x.distance - y.distance);
+    const sorted     = new Heap<ICandidate>((x, y) => x.distance - y.distance);
     const candidates = this.wordlist.fetch(query);
     if (candidates) {
       for (const candidate of candidates) {
@@ -76,7 +88,7 @@ export class HeisigIME extends Component<Props, State> {
     return takeHeap(sorted, max);
   }
 
-  handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+  private handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.getModifierState("Control")) {
       if (event.keyCode === 74) {
         this.completed(Wanakana.toHiragana(this.state.query));
@@ -96,21 +108,5 @@ export class HeisigIME extends Component<Props, State> {
         }
       }
     }
-  }
-
-  render() {
-    return (
-      <div className="ime">
-        <input
-          value={this.state.query}
-          onChange={(event) => this.setQuery(event.target.value)}
-          placeholder="Keyword"
-          onKeyDown={(evt) => this.handleKeyDown(evt)}
-          autoComplete="off" autoCorrect="off" autoCapitalize="off"/>
-        <div className="completions">
-          {this.state.candidates.map((c) => this.renderItem(c, false))}
-        </div>
-      </div>
-    );
   }
 }

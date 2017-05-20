@@ -13,7 +13,7 @@ export function *scan(str: string, n: number) {
 export function contains<T>(
   collection: Iterable<T>,
   element: T,
-  equal: (x: T, y: T) => boolean = (x, y) => x == y
+  equal: (x: T, y: T) => boolean = (x, y) => x === y,
 ): boolean {
   for (const cand of collection) {
     if (equal(element, cand)) {
@@ -23,7 +23,7 @@ export function contains<T>(
   return false;
 }
 
-export function takeHeap<T>(heap: Heap<T>, n: number): Array<T> {
+export function takeHeap<T>(heap: Heap<T>, n: number): T[] {
   const result = [];
   for (let i = 0; i < n; i++) {
     const element = heap.pop();
@@ -36,7 +36,7 @@ export function takeHeap<T>(heap: Heap<T>, n: number): Array<T> {
 }
 
 export function groupBy<T>(xs: Iterable<T>, keyfn: (t: T) => string) {
-  const result: { [x: string]: Array<T> | undefined } = {};
+  const result: { [x: string]: T[] | undefined } = {};
   for (const x of xs) {
     const key  = keyfn(x);
     let target = result[key];
@@ -49,13 +49,13 @@ export function groupBy<T>(xs: Iterable<T>, keyfn: (t: T) => string) {
 }
 
 export class LazyLoader<T> {
-  promise: Promise<T>;
+  private promise: Promise<T>;
 
   constructor(public startLoad: () => Promise<T>) {
     this.startLoad = startLoad;
   }
 
-  load(): Promise<T> {
+  public load(): Promise<T> {
     if (!this.promise) {
       this.promise = this.startLoad();
     }

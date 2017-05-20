@@ -1,28 +1,33 @@
 import { contains, scan } from "./util";
 
-const current = Symbol('current');
+const current = Symbol("current");
 
-interface FilterTree<T> {
-  current: Array<[T, string]>,
-  children?: { [letter: string]: FilterTree<T> }
+interface IFilterTree<T> {
+  current: Array<[T, string]>;
+  children?: { [letter: string]: IFilterTree<T> };
 }
 
 export class WordListFilter<T> {
-  completions: FilterTree<T>;
+  public readonly completions: IFilterTree<T>; // public for test
 
-  constructor(words: Array<[T, string]>, public prefix_size: number) {
+  constructor(words: Array<[T, string]>, private prefixSize: number) {
     this.completions = { current: words };
 
-    this.prefix_size = prefix_size;
+    this.prefixSize = prefixSize;
 
     for (const entry of words) {
-      for (const idx of scan(entry[1].toLowerCase(), prefix_size)) {
+      for (const idx of scan(entry[1].toLowerCase(), prefixSize)) {
         this.addCompletion(idx, entry);
       }
     }
   }
 
-  addCompletion(index: string, value: [T, string]) {
+  public fetch(query: string): Array<[T, string]> | undefined {
+    const map = this.mapForQuery(query);
+    return map && map.current;
+  }
+
+  private addCompletion(index: string, value: [T, string]) {
     let branch = this.completions;
     for (const step of index) {
       let nextbranch = branch.children && branch.children[step];
@@ -43,9 +48,9 @@ export class WordListFilter<T> {
     }
   }
 
-  mapForQuery(query: string): FilterTree<T> | undefined {
+  private mapForQuery(query: string): IFilterTree<T> | undefined {
     let branch = this.completions;
-    for (const step of query.substr(0, this.prefix_size)) {
+    for (const step of query.substr(0, this.prefixSize)) {
       if (branch.children && branch.children[step]) {
         branch = branch.children[step];
       }
@@ -56,8 +61,4 @@ export class WordListFilter<T> {
     return branch;
   }
 
-  fetch(query: string): Array<[T, string]> | undefined {
-    const map = this.mapForQuery(query);
-    return map && map.current;
-  }
 }

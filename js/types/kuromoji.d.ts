@@ -1,6 +1,7 @@
 /// <reference types="doublearray" />
 
 // Copied from @types/kuromoji, but renamed namespace -> module.
+/* tslint:disable */
 
 declare module "kuromoji" {
 

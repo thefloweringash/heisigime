@@ -1,12 +1,12 @@
 import { expect } from "chai";
 import { WordListFilter } from "./wordlistfilter";
 
-describe('wordlistfilter', () => {
-  it('makes a coherent filter tree', () => {
-    let w1: [string, string] = ["word1", "abcd"];
-    let w2: [string, string] = ["word2", "abce"];
+describe("wordlistfilter", () => {
+  it("makes a coherent filter tree", () => {
+    const w1: [string, string] = ["word1", "abcd"];
+    const w2: [string, string] = ["word2", "abce"];
     expect(
-      new WordListFilter<string>([w1, w2], 2).completions
+      new WordListFilter<string>([w1, w2], 2).completions,
     ).to.eql(
       {
         current:  [w1, w2],
@@ -15,7 +15,7 @@ describe('wordlistfilter', () => {
             current:  [w1, w2],
             children: {
               b: {
-                current: [w1, w2]
+                current: [w1, w2],
               },
             },
           },
@@ -23,7 +23,7 @@ describe('wordlistfilter', () => {
             current:  [w1, w2],
             children: {
               c: {
-                current: [w1, w2]
+                current: [w1, w2],
               },
             },
           },
@@ -36,10 +36,10 @@ describe('wordlistfilter', () => {
               e: {
                 current: [w2],
               },
-            }
+            },
           },
-        }
-      }
+        },
+      },
     );
-  })
+  });
 });

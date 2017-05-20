@@ -4,6 +4,7 @@ node_js:
 
 script:
   - yarn test
+  - yarn lint
   - yarn build
   - yarn build-index
   - mv tmp/index.html dist/index.html

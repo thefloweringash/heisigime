@@ -1,9 +1,9 @@
 import * as Kuromoji from "kuromoji";
 import { IpadicFeatures, Tokenizer } from "kuromoji";
-import normalize from "normalize.css/normalize.css";
+import normalize from "normalize.css/normalize.css";  // tslint:disable-line
 import React, { Component } from "react";
 import Wanakana from "wanakana";
-import stylesheet from "../css/app.less";
+import stylesheet from "../css/app.less";  // tslint:disable-line
 import * as Radicals from "./data/radicals";
 import { IKanjiToRadical } from "./data/radicals";
 import { RTKv6Inverse } from "./data/rtkv6";
@@ -15,42 +15,41 @@ import { LazyLoader } from "./util";
 type IRadicalData = typeof Radicals;
 
 export const css = [normalize, stylesheet];
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   for (const c of css) {
     c._insertCss();
   }
 }
 
-interface Dictionary {
-  label: string,
-  inline: boolean,
-  url: (query: string) => string,
+interface IDictionary {
+  label: string;
+  inline: boolean;
+  url: (query: string) => string;
 }
 
-const Dictionaries: Dictionary[] = [
+const Dictionaries: IDictionary[] = [
   {
-    label:  'Jisho',
+    label:  "Jisho",
     inline: true,
     url(query) {
       return `http://jisho.org/search/${query}`;
     },
   },
   {
-    label:  'Google',
+    label:  "Google",
     inline: false,
     url(query) {
       return `https://google.com/search?q=${query}`;
     },
   },
   {
-    label:  'Translate',
+    label:  "Translate",
     inline: false,
     url(query) {
-      return `https://translate.google.com/#ja/en/${query}`
-    }
+      return `https://translate.google.com/#ja/en/${query}`;
+    },
   },
 ];
-
 
 const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
   new Promise<Tokenizer<IpadicFeatures>>((ok, fail) => {
@@ -58,35 +57,36 @@ const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
       (err: Error, tokenizer: Tokenizer<IpadicFeatures>) => {
         if (err) {
           fail(err);
-        } else {
+        }
+        else {
           ok(tokenizer);
         }
-      }
+      },
     );
-  })
+  }),
 );
 
 const RadicalDataLoader = new LazyLoader<IRadicalData>(
-  () => System.import('./data/radicals'));
+  () => System.import("./data/radicals"));
 
 const posClasses: { [pos: string]: string } = {
-  助詞:  'particle',
-  形容詞: 'adjective',
-  名詞:  'noun',
-  動詞:  'verb',
-  副詞:  'adverb',
-  助動詞: 'auxiliary-verb',
-  記号:  'symbol',
-  接頭詞: 'prefix',
+  助詞:  "particle",
+  形容詞: "adjective",
+  名詞:  "noun",
+  動詞:  "verb",
+  副詞:  "adverb",
+  助動詞: "auxiliary-verb",
+  記号:  "symbol",
+  接頭詞: "prefix",
 };
 
-interface TokenProps extends IpadicFeatures {
-  kanjiToRadical?: IKanjiToRadical,
-  onKanjiClicked?: (kanji: string) => void,
+interface ITokenProps extends IpadicFeatures {
+  kanjiToRadical?: IKanjiToRadical;
+  onKanjiClicked?: (kanji: string) => void;
 }
 
-const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: TokenProps) => {
-  const posClass = posClasses[pos] || '';
+const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: ITokenProps) => {
+  const posClass = posClasses[pos] || "";
   if (surface_form === reading || Wanakana.isKana(surface_form)) {
     return <span className={`token ${posClass}`}>{surface_form}</span>;
   }
@@ -109,24 +109,21 @@ const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: T
   }
 };
 
-interface AppProps {
-}
-
-interface AppState {
-  tokenizer?: Tokenizer<IpadicFeatures>
+interface IAppState {
+  tokenizer?: Tokenizer<IpadicFeatures>;
   result: string;
-  selectedRadicals: Array<string>;
+  selectedRadicals: string[];
   radicalData?: IRadicalData;
   showRadicalUI: boolean;
   dictionaryURL?: string;
   dictionary?: string;
 }
 
-export class App extends Component<AppProps, AppState> {
+export class App extends Component<{}, IAppState> {
   constructor() {
     super();
     this.state = {
-      result:           '',
+      result:           "",
       selectedRadicals: [],
       showRadicalUI:    false,
     };
@@ -142,92 +139,7 @@ export class App extends Component<AppProps, AppState> {
     this.clearRadicals  = this.clearRadicals.bind(this);
   }
 
-  toggleTokenizer() {
-    if (this.state.tokenizer) {
-      this.setState({ tokenizer: undefined });
-    } else {
-      TokenizerLoader.load().then((tokenizer) => {
-        this.setState({ tokenizer });
-      });
-    }
-  }
-
-  characterSelected(char: string) {
-    this.setState((prev) => ({ result: prev.result + char }));
-  }
-
-  showDict(dictionary: Dictionary) {
-    const dictionaryURL = dictionary.url(this.state.result);
-    if (dictionary.inline) {
-      this.setState({ dictionaryURL });
-    }
-    else {
-      window.open(dictionaryURL);
-    }
-  }
-
-  closeDict() {
-    this.setState({ dictionaryURL: undefined });
-  }
-
-  fakeTokenize(result: string): IpadicFeatures[] {
-    return [{
-      word_type:       "UNKNOWN",
-      surface_form:    result,
-      word_id:         -1,
-      word_position:   -1,
-      pos:             '',
-      pos_detail_1:    '',
-      pos_detail_2:    '',
-      pos_detail_3:    '',
-      conjugated_type: '',
-      conjugated_form: '',
-      basic_form:      '',
-    }];
-  }
-
-  toggleRadical(radical: string) {
-    const selectedRadicals = this.state.selectedRadicals.slice();
-    let index              = selectedRadicals.indexOf(radical);
-    if (index === -1) {
-      selectedRadicals.push(radical);
-    }
-    else {
-      selectedRadicals.splice(index, 1);
-    }
-    this.setState({ selectedRadicals });
-  }
-
-  toggleRadicalUI() {
-    const showRadicalUI = !this.state.showRadicalUI;
-    this.setState({ showRadicalUI });
-    if (showRadicalUI) {
-      RadicalDataLoader.load().then((radicalData) => {
-        this.setState({ radicalData });
-      })
-    }
-  }
-
-  clearRadicals() {
-    this.setState({ selectedRadicals: [] });
-  }
-
-  refineRadicals(kanji: string) {
-    if (!this.state.radicalData) {
-      throw new Error("Cannot refine without radical data");
-    }
-
-    const { kanjiToRadical } = this.state.radicalData;
-    let addedRadicals        = kanjiToRadical[kanji];
-
-    if (addedRadicals) {
-      const selectedRadicals = this.state.selectedRadicals.slice();
-      selectedRadicals.unshift(...addedRadicals);
-      this.setState({ selectedRadicals });
-    }
-  }
-
-  render() {
+  public render() {
     const { tokenizer, result }       = this.state;
     const tokenized: IpadicFeatures[] = tokenizer ?
       tokenizer.tokenize(result) :
@@ -292,5 +204,90 @@ export class App extends Component<AppProps, AppState> {
          </div>}
       </div>
     );
+  }
+
+  private toggleTokenizer() {
+    if (this.state.tokenizer) {
+      this.setState({ tokenizer: undefined });
+    }
+    else {
+      TokenizerLoader.load().then((tokenizer) => {
+        this.setState({ tokenizer });
+      });
+    }
+  }
+
+  private characterSelected(char: string) {
+    this.setState((prev) => ({ result: prev.result + char }));
+  }
+
+  private showDict(dictionary: IDictionary) {
+    const dictionaryURL = dictionary.url(this.state.result);
+    if (dictionary.inline) {
+      this.setState({ dictionaryURL });
+    }
+    else {
+      window.open(dictionaryURL);
+    }
+  }
+
+  private closeDict() {
+    this.setState({ dictionaryURL: undefined });
+  }
+
+  private fakeTokenize(result: string): IpadicFeatures[] {
+    return [{
+      word_type:       "UNKNOWN",
+      surface_form:    result,
+      word_id:         -1,
+      word_position:   -1,
+      pos:             "",
+      pos_detail_1:    "",
+      pos_detail_2:    "",
+      pos_detail_3:    "",
+      conjugated_type: "",
+      conjugated_form: "",
+      basic_form:      "",
+    }];
+  }
+  private toggleRadical(radical: string) {
+    const selectedRadicals = this.state.selectedRadicals.slice();
+    const index              = selectedRadicals.indexOf(radical);
+    if (index === -1) {
+      selectedRadicals.push(radical);
+    }
+    else {
+      selectedRadicals.splice(index, 1);
+    }
+    this.setState({ selectedRadicals });
+  }
+
+  private toggleRadicalUI() {
+    const showRadicalUI = !this.state.showRadicalUI;
+    this.setState({ showRadicalUI });
+    if (showRadicalUI) {
+      RadicalDataLoader.load().then((radicalData) => {
+        this.setState({ radicalData });
+      });
+    }
+  }
+
+  private clearRadicals() {
+    this.setState({ selectedRadicals: [] });
+  }
+
+  private refineRadicals(kanji: string) {
+    if (!this.state.radicalData) {
+      throw new Error("Cannot refine without radical data");
+    }
+
+    const { kanjiToRadical } = this.state.radicalData;
+    const addedRadicals        = kanjiToRadical[kanji];
+
+    if (addedRadicals) {
+      const selectedRadicals = this.state.selectedRadicals.slice();
+      selectedRadicals.unshift(...addedRadicals);
+      this.setState({ selectedRadicals });
+    }
   }
 }

@@ -8,8 +8,14 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "lib": [
-      "es2015", "dom"
+      "es2015",
+      "dom"
     ],
     "noImplicitAny": true,
     "strictNullChecks": true
-  }}
+  },
+  "include": [
+    "js/**/*.ts",
+    "js/**/*.tsx"
+  ]
+}

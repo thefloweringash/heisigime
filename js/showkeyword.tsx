@@ -1,9 +1,11 @@
 import React from "react";
 import { IKanjiToRadical } from "./data/radicals";
 
-type Dictionary = { [k: string]: any };
+interface IDictionary {
+  [k: string]: any;
+}
 
-function splitPhrase(dictionary: Dictionary, kanjiToRadical: IKanjiToRadical | undefined, phrase: string) {
+function splitPhrase(dictionary: IDictionary, kanjiToRadical: IKanjiToRadical | undefined, phrase: string) {
   const result = [];
   let partial  = null;
   for (const x of phrase) {
@@ -25,15 +27,14 @@ function splitPhrase(dictionary: Dictionary, kanjiToRadical: IKanjiToRadical | u
   return result;
 }
 
-
-interface ShowKeywordProps {
-  phrase: string,
-  dictionary: Dictionary,
-  kanjiToRadical?: IKanjiToRadical,
-  onKanjiClicked?: (kanji: string) => void,
+interface IShowKeywordProps {
+  phrase: string;
+  dictionary: IDictionary;
+  kanjiToRadical?: IKanjiToRadical;
+  onKanjiClicked?: (kanji: string) => void;
 }
 
-export const ShowKeyword = ({ phrase, dictionary, kanjiToRadical, onKanjiClicked }: ShowKeywordProps) => {
+export const ShowKeyword = ({ phrase, dictionary, kanjiToRadical, onKanjiClicked }: IShowKeywordProps) => {
   const split = splitPhrase(dictionary, kanjiToRadical, phrase);
   return (
     <span>

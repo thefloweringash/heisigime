@@ -1,0 +1,29 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules"
+  ],
+  "jsRules": {
+  },
+  "rules": {
+    "object-literal-sort-keys": false,
+    "match-default-export-name": true,
+    "max-classes-per-file": [
+      false
+    ],
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "brace-style": [
+      true,
+      "Stroustrup",
+      {
+        "allowSingleLine": false
+      }
+    ]
+  },
+  "rulesDirectory": []
+}
