@@ -47,3 +47,18 @@ export function groupBy<T>(xs: Iterable<T>, keyfn: (t: T) => string) {
   }
   return result;
 }
+
+export class LazyLoader<T> {
+  promise: Promise<T>;
+
+  constructor(public startLoad: () => Promise<T>) {
+    this.startLoad = startLoad;
+  }
+
+  load(): Promise<T> {
+    if (!this.promise) {
+      this.promise = this.startLoad();
+    }
+    return this.promise;
+  }
+}

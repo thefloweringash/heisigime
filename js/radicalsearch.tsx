@@ -2,24 +2,30 @@ import { css, StyleSheet } from "aphrodite";
 import React from "react";
 import { IKanjiToRadical, IRadicalsByStroke, IRadicalToKanji } from "./data/radicals";
 
-function refineKanji(radicalToKanji: IRadicalToKanji, radicalList: string[]) {
+function refineKanji(radicalToKanji: IRadicalToKanji, radicalList: string[]): string[] {
   if (radicalList.length === 0) {
     return [];
   }
-  else if (radicalList.length === 1) {
-    return radicalToKanji[radicalList[0]];
+
+  const base = radicalToKanji[radicalList[0]] as string[];
+
+  if (radicalList.length === 1) {
+    return base;
   }
   else {
     const restrictors = radicalList.slice(1);
-    return radicalToKanji[radicalList[0]].filter((kanji) =>
-      restrictors.every((x) => radicalToKanji[x].indexOf(kanji) !== -1)
+    return base.filter((kanji) =>
+      restrictors.every((x) => (radicalToKanji[x] as string[]).indexOf(kanji) !== -1)
     );
   }
 }
 
-function refineRadicals(kanjiToRadical: IKanjiToRadical, kanji: string[]) {
-  return kanji.reduce((radicals, kanji) => {
-    radicals.unshift(...kanjiToRadical[kanji]);
+function refineRadicals(kanjiToRadical: IKanjiToRadical, kanji: string[]): string[] {
+  return kanji.reduce((radicals: string[], kanji) => {
+    const contents = kanjiToRadical[kanji];
+    if (contents) {
+      radicals.unshift(...contents);
+    }
     return radicals;
   }, []);
 }
@@ -29,7 +35,7 @@ interface StrokeBoxProps {
   strokes: string,
   contents: string[],
   onToggle: (radical: string) => void,
-  possibleRadicals: string[],
+  possibleRadicals?: string[],
 }
 
 const StrokeBox = ({ selected, strokes, contents, onToggle, possibleRadicals }: StrokeBoxProps) =>
@@ -73,10 +79,10 @@ export const RadicalSearch = ({
             <StrokeBox
               key={`strokes${strokes}`}
               strokes={strokes}
-              contents={radicalsByStroke[strokes]}
+              contents={radicalsByStroke[strokes] as string[]}
               selected={selected}
               onToggle={onToggle}
-              possibleRadicals={selected.length !== 0 && possibleRadicals}
+              possibleRadicals={selected.length !== 0 ? possibleRadicals : undefined}
             />
           ))
         }

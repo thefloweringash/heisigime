@@ -17,7 +17,7 @@ export interface IRadicalsByStroke {
 function makeRadicalToKanji(krad: IKanjiToRadical): IRadicalToKanji {
   const result: IRadicalToKanji = {};
   for (const kanji of Object.keys(krad)) {
-    for (const radical of krad[kanji]) {
+    for (const radical of krad[kanji] as string[]) {
       let target = result[radical];
       if (!target) {
         target = (result[radical] = []);

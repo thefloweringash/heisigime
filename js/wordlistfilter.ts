@@ -43,10 +43,10 @@ export class WordListFilter<T> {
     }
   }
 
-  mapForQuery(query: string): FilterTree<T> {
+  mapForQuery(query: string): FilterTree<T> | undefined {
     let branch = this.completions;
     for (const step of query.substr(0, this.prefix_size)) {
-      if (branch.children[step]) {
+      if (branch.children && branch.children[step]) {
         branch = branch.children[step];
       }
       else {

@@ -4,12 +4,13 @@ import normalize from "normalize.css/normalize.css";
 import React, { Component } from "react";
 import Wanakana from "wanakana";
 import stylesheet from "../css/app.less";
+import * as Radicals from "./data/radicals";
 import { IKanjiToRadical } from "./data/radicals";
 import { RTKv6Inverse } from "./data/rtkv6";
 import { HeisigIME } from "./heisigime";
 import { RadicalSearch } from "./radicalsearch";
 import { ShowKeyword } from "./showkeyword";
-import * as Radicals from './data/radicals';
+import { LazyLoader } from "./util";
 
 type IRadicalData = typeof Radicals;
 
@@ -50,20 +51,6 @@ const Dictionaries: Dictionary[] = [
   },
 ];
 
-class LazyLoader<T> {
-  promise: Promise<T>;
-
-  constructor(public startLoad: () => Promise<T>) {
-    this.startLoad = startLoad;
-  }
-
-  load(): Promise<T> {
-    if (!this.promise) {
-      this.promise = this.startLoad();
-    }
-    return this.promise;
-  }
-}
 
 const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
   new Promise<Tokenizer<IpadicFeatures>>((ok, fail) => {
@@ -94,8 +81,8 @@ const posClasses: { [pos: string]: string } = {
 };
 
 interface TokenProps extends IpadicFeatures {
-  kanjiToRadical: IKanjiToRadical,
-  onKanjiClicked: (kanji: string) => void,
+  kanjiToRadical?: IKanjiToRadical,
+  onKanjiClicked?: (kanji: string) => void,
 }
 
 const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: TokenProps) => {
@@ -126,13 +113,13 @@ interface AppProps {
 }
 
 interface AppState {
-  tokenizer: Tokenizer<IpadicFeatures>;
+  tokenizer?: Tokenizer<IpadicFeatures>
   result: string;
   selectedRadicals: Array<string>;
-  radicalData: IRadicalData;
+  radicalData?: IRadicalData;
   showRadicalUI: boolean;
   dictionaryURL?: string;
-  dictionary: string;
+  dictionary?: string;
 }
 
 export class App extends Component<AppProps, AppState> {
@@ -140,9 +127,6 @@ export class App extends Component<AppProps, AppState> {
     super();
     this.state = {
       result:           '',
-      dictionary:       null,
-      tokenizer:        null,
-      radicalData:      null,
       selectedRadicals: [],
       showRadicalUI:    false,
     };
@@ -160,7 +144,7 @@ export class App extends Component<AppProps, AppState> {
 
   toggleTokenizer() {
     if (this.state.tokenizer) {
-      this.setState({ tokenizer: null });
+      this.setState({ tokenizer: undefined });
     } else {
       TokenizerLoader.load().then((tokenizer) => {
         this.setState({ tokenizer });
@@ -183,7 +167,7 @@ export class App extends Component<AppProps, AppState> {
   }
 
   closeDict() {
-    this.setState({ dictionaryURL: null });
+    this.setState({ dictionaryURL: undefined });
   }
 
   fakeTokenize(result: string): IpadicFeatures[] {
@@ -229,10 +213,18 @@ export class App extends Component<AppProps, AppState> {
   }
 
   refineRadicals(kanji: string) {
+    if (!this.state.radicalData) {
+      throw new Error("Cannot refine without radical data");
+    }
+
     const { kanjiToRadical } = this.state.radicalData;
-    const selectedRadicals   = this.state.selectedRadicals.slice();
-    selectedRadicals.unshift(...kanjiToRadical[kanji]);
-    this.setState({ selectedRadicals });
+    let addedRadicals        = kanjiToRadical[kanji];
+
+    if (addedRadicals) {
+      const selectedRadicals = this.state.selectedRadicals.slice();
+      selectedRadicals.unshift(...addedRadicals);
+      this.setState({ selectedRadicals });
+    }
   }
 
   render() {
@@ -257,8 +249,8 @@ export class App extends Component<AppProps, AppState> {
                 <Token
                   key={i}
                   {...token}
-                  onKanjiClicked={this.state.radicalData && this.refineRadicals}
-                  kanjiToRadical={this.state.radicalData && this.state.radicalData.kanjiToRadical}
+                  onKanjiClicked={this.state.radicalData ? this.refineRadicals : undefined}
+                  kanjiToRadical={this.state.radicalData ? this.state.radicalData.kanjiToRadical : undefined}
                 />
               ))}
             </div>

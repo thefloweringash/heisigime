@@ -3,7 +3,7 @@ import { IKanjiToRadical } from "./data/radicals";
 
 type Dictionary = { [k: string]: any };
 
-function splitPhrase(dictionary: Dictionary, kanjiToRadical: IKanjiToRadical, phrase: string) {
+function splitPhrase(dictionary: Dictionary, kanjiToRadical: IKanjiToRadical | undefined, phrase: string) {
   const result = [];
   let partial  = null;
   for (const x of phrase) {
@@ -29,8 +29,8 @@ function splitPhrase(dictionary: Dictionary, kanjiToRadical: IKanjiToRadical, ph
 interface ShowKeywordProps {
   phrase: string,
   dictionary: Dictionary,
-  kanjiToRadical: IKanjiToRadical,
-  onKanjiClicked: (kanji: string) => void,
+  kanjiToRadical?: IKanjiToRadical,
+  onKanjiClicked?: (kanji: string) => void,
 }
 
 export const ShowKeyword = ({ phrase, dictionary, kanjiToRadical, onKanjiClicked }: ShowKeywordProps) => {
