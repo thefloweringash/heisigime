@@ -65,7 +65,19 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use:  ["isomorphic-style-loader", "css-loader", "postcss-loader", "less-loader"],
+        use:  [
+          "isomorphic-style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: (loader) => [
+                autoprefixer({ browsers: supportedBrowsers }),
+              ],
+            },
+          },
+          "less-loader"
+        ],
       },
     ],
   },
@@ -95,14 +107,5 @@ module.exports = {
     }),
 
     new webpack.NamedModulesPlugin(),
-
-    new webpack.LoaderOptionsPlugin({
-      test:    /\.less$/,
-      options: {
-        postcss: [
-          autoprefixer({ browsers: supportedBrowsers }),
-        ],
-      }
-    }),
   ],
 };
