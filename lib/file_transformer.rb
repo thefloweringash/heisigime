@@ -37,7 +37,7 @@ class FileTransformer
     File.open(filename, 'r') do |fh|
       fh.each_line
         .reject { |l| l =~ /^#/ }
-        .each { |line| self.ingest_line!(line) }
+        .each { |line| self.ingest_line!(line.chomp) }
     end
   end
 
