@@ -174,6 +174,7 @@ export class App extends Component<{}, IAppState> {
             />
             <HeisigIME
               onInput={this.characterSelected}
+              autoFocus
             />
             {this.state.showRadicalUI && this.state.radicalData && (
               <div>

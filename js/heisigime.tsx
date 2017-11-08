@@ -8,6 +8,7 @@ import { WordListFilter } from "./wordlistfilter";
 
 interface IProps {
   onInput: (character: string) => void;
+  autoFocus: boolean | undefined;
 }
 
 interface IState {
@@ -37,7 +38,9 @@ export class HeisigIME extends Component<IProps, IState> {
           onChange={(event) => this.setQuery(event.target.value)}
           placeholder="Keyword"
           onKeyDown={(evt) => this.handleKeyDown(evt)}
-          autoComplete="off" autoCorrect="off" autoCapitalize="off"/>
+          autoComplete="off" autoCorrect="off" autoCapitalize="off"
+          autoFocus={this.props.autoFocus}
+          />
         <div className="completions">
           {this.state.candidates.map((c) => this.renderItem(c, false))}
         </div>
