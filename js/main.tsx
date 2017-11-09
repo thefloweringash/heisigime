@@ -1,4 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./app";
-ReactDOM.render(<App />, document.getElementById("appcontainer"));
+
+const container = document.getElementById("appcontainer");
+
+if (!container) {
+  throw new Error("Missing mount point: #appcontainer");
+}
+
+const app = <App/>;
+
+if (container.firstChild) {
+  ReactDOM.hydrate(app, container);
+}
+else {
+  ReactDOM.render(app, container);
+}

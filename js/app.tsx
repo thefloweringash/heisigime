@@ -2,7 +2,7 @@ import * as Kuromoji from "kuromoji";
 import { IpadicFeatures, Tokenizer } from "kuromoji";
 import normalize from "normalize.css/normalize.css";  // tslint:disable-line
 import React, { Component } from "react";
-import Wanakana from "wanakana";
+import * as Wanakana from "wanakana";
 import stylesheet from "../css/app.less";  // tslint:disable-line
 import * as Radicals from "./data/radicals";
 import { IKanjiToRadical } from "./data/radicals";

@@ -1,7 +1,7 @@
 import Heap from "heap";
 import Levenshtein from "levenshtein";
 import React, { Component, KeyboardEvent } from "react";
-import Wanakana from "wanakana";
+import * as Wanakana from "wanakana";
 import { RTKv6 } from "./data/rtkv6";
 import { takeHeap } from "./util";
 import { WordListFilter } from "./wordlistfilter";
