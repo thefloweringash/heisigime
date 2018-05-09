@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --inline --hot",
     "build": "NODE_ENV=production webpack --optimize-minimize",
     "build-index": "NODE_ENV=production webpack --config webpack-index.config.js --optimize-minimize",
-    "lint": "tslint --project tsconfig.json --type-check -c tslint.json",
+    "lint": "tslint --project tsconfig.json -c tslint.json",
     "test": "karma start --single-run"
   },
   "author": "Andrew Childs <lorne@cons.org.nz>",
