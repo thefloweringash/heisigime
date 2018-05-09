@@ -25,8 +25,8 @@ interface ICandidate {
 export class HeisigIME extends Component<IProps, IState> {
   private readonly wordlist: WordListFilter<string> = new WordListFilter(RTKv6, 2);
 
-  constructor() {
-    super();
+  constructor(initialProps: IProps) {
+    super(initialProps);
     this.state = { query: "", candidates: [] };
   }
 
