@@ -1,6 +1,5 @@
 // Karma configuration
 // Generated on Sun Dec 04 2016 16:47:43 GMT+0900 (JST)
-const webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
   config.set({
@@ -11,12 +10,16 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai', 'parcel'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'js/**/*.spec.ts'
+      {
+        pattern: 'js/**/*.spec.ts',
+        watched: false,
+        included: false,
+      }
     ],
 
 
@@ -28,12 +31,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'js/**/*.spec.ts': ['webpack']
+      'js/**/*.spec.ts': ['parcel']
     },
-
-    webpack: webpackConfig,
-    webpackMiddleware: { stats: webpackConfig.devServer.stats },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

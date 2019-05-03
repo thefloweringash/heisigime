@@ -1,9 +1,10 @@
-/dist/*.js
-/dist/*.js.map
-/dist/dict
+/dist
+/dist-prerender
 /node_modules
 /json_data
-/tmp
+/.cache
+/.cache-prerender
+/.karma-parcel
 # Rubymine
 .idea/**/workspace.xml
 .idea/**/tasks.xml

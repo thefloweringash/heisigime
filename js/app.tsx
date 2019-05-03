@@ -1,9 +1,7 @@
 import * as Kuromoji from "kuromoji";
 import { IpadicFeatures, Tokenizer } from "kuromoji";
-import normalize from "normalize.css/normalize.css";  // tslint:disable-line
 import React, { Component } from "react";
 import * as Wanakana from "wanakana";
-import stylesheet from "../css/app.less";  // tslint:disable-line
 import * as Radicals from "./data/radicals";
 import { IKanjiToRadical } from "./data/radicals";
 import { RTKv6Inverse } from "./data/rtkv6";
@@ -13,13 +11,6 @@ import { ShowKeyword } from "./showkeyword";
 import { LazyLoader } from "./util";
 
 type IRadicalData = typeof Radicals;
-
-export const css = [normalize, stylesheet];
-if (typeof window !== "undefined") {
-  for (const c of css) {
-    c._insertCss();
-  }
-}
 
 interface IDictionary {
   label: string;
@@ -53,7 +44,7 @@ const Dictionaries: IDictionary[] = [
 
 const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
   new Promise<Tokenizer<IpadicFeatures>>((ok, fail) => {
-    Kuromoji.builder({ dicPath: "/dict/" }).build(
+    Kuromoji.builder({ dicPath: "/" }).build(
       (err: Error, tokenizer: Tokenizer<IpadicFeatures>) => {
         if (err) {
           fail(err);
@@ -67,7 +58,7 @@ const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
 );
 
 const RadicalDataLoader = new LazyLoader<IRadicalData>(
-  () => System.import("./data/radicals"));
+  () => import("./data/radicals"));
 
 const posClasses: { [pos: string]: string } = {
   助詞:  "particle",
@@ -120,8 +111,8 @@ interface IAppState {
 }
 
 export class App extends Component<{}, IAppState> {
-  constructor() {
-    super();
+  constructor(initialProps) {
+    super(initialProps);
     this.state = {
       result:           "",
       selectedRadicals: [],
