@@ -49,7 +49,7 @@ export function groupBy<T>(xs: Iterable<T>, keyfn: (t: T) => string) {
 }
 
 export class LazyLoader<T> {
-  private promise: Promise<T>;
+  private promise: Promise<T> | undefined;
 
   constructor(public startLoad: () => Promise<T>) {
     this.startLoad = startLoad;

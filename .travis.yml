@@ -4,6 +4,7 @@ node_js:
 
 script:
   - yarn test || true # TODO
+  - yarn typecheck
   - yarn lint
   - yarn build
 

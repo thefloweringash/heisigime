@@ -10,6 +10,7 @@
     "build:bundle": "NODE_ENV=production parcel build html/index.html",
     "build:index": "NODE_ENV=production parcel build -t node -d dist-prerender --cache-dir .cache-prerender scripts/build_index.js && node ./dist-prerender/build_index.js",
     "lint": "tslint --project tsconfig.json -c tslint.json",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
     "test": "karma start --single-run"
   },
   "author": "Andrew Childs <lorne@cons.org.nz>",

@@ -25,7 +25,7 @@ interface ICandidate {
 export class HeisigIME extends Component<IProps, IState> {
   private readonly wordlist: WordListFilter<string> = new WordListFilter(RTKv6, 2);
 
-  constructor(initialProps) {
+  constructor(initialProps: IProps) {
     super(initialProps);
     this.state = { query: "", candidates: [] };
   }
@@ -79,7 +79,7 @@ export class HeisigIME extends Component<IProps, IState> {
   private search(query: string, max: number): ICandidate[] {
     query = query.toLowerCase();
 
-    const sorted     = new Heap<ICandidate>((x, y) => x.distance - y.distance);
+    const sorted     = new Heap<ICandidate>((x: ICandidate, y: ICandidate) => x.distance - y.distance);
     const candidates = this.wordlist.fetch(query);
     if (candidates) {
       for (const candidate of candidates) {

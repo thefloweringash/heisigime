@@ -1,7 +1,5 @@
 import { contains, scan } from "./util";
 
-const current = Symbol("current");
-
 interface IFilterTree<T> {
   current: Array<[T, string]>;
   children?: { [letter: string]: IFilterTree<T> };

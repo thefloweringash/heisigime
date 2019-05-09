@@ -111,7 +111,7 @@ interface IAppState {
 }
 
 export class App extends Component<{}, IAppState> {
-  constructor(initialProps) {
+  constructor(initialProps: {}) {
     super(initialProps);
     this.state = {
       result:           "",
