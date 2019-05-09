@@ -152,7 +152,7 @@ export class App extends Component<{}, IAppState> {
                 <Token
                   key={i}
                   {...token}
-                  onKanjiClicked={this.state.radicalData ? this.refineRadicals : undefined}
+                  onKanjiClicked={this.state.showRadicalUI ? this.refineRadicals : this.openHochanh}
                   kanjiToRadical={this.state.radicalData ? this.state.radicalData.kanjiToRadical : undefined}
                 />
               ))}
@@ -281,5 +281,9 @@ export class App extends Component<{}, IAppState> {
       selectedRadicals.unshift(...addedRadicals);
       this.setState({ selectedRadicals });
     }
+  }
+
+  private openHochanh(kanji: string) {
+    window.open(`https://hochanh.github.io/rtk/${kanji}/index.html`, "_blank");
   }
 }
