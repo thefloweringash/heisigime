@@ -21,7 +21,7 @@ interface IDictionary {
 const Dictionaries: IDictionary[] = [
   {
     label:  "Jisho",
-    inline: true,
+    inline: false, // doesn't work in Firefox due to X-Frame-Options
     url(query) {
       return `http://jisho.org/search/${query}`;
     },
