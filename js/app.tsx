@@ -122,7 +122,7 @@ const toggleRadical = (selectedRadicals: string[], radical: string): string[] =>
   const newSelectedRadicals = selectedRadicals.slice();
 
   if (index === -1) {
-    selectedRadicals.push(radical);
+    newSelectedRadicals.push(radical);
   }
   else {
     newSelectedRadicals.splice(index, 1);
