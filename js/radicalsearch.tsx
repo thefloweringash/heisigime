@@ -1,6 +1,7 @@
 import { css, StyleSheet } from "aphrodite";
 import React from "react";
 import { IKanjiToRadical, IRadicalToKanji } from "./data/radicals";
+import { RTKv6Inverse } from "./data/rtkv6";
 import { IRadicalData } from "./radicals";
 
 function refineKanji(radicalToKanji: IRadicalToKanji, radicalList: string[]): string[] {
@@ -91,7 +92,7 @@ export const RadicalSearch = ({
           kanjiCandidates.map((kanji) =>
             <div
               key={kanji}
-              className={css(styles.candidate)}
+              className={css(RTKv6Inverse.hasOwnProperty(kanji) ? styles.rtkCandidate : styles.candidate)}
               onClick={() => onComplete(kanji)}
             >
               {kanji}
@@ -121,6 +122,10 @@ const styles = StyleSheet.create({
     textAlign:  "center",
   },
   candidate:     {
+    color:   "#aaa",
+    display: "inline-block",
+  },
+  rtkCandidate:  {
     display: "inline-block",
   },
 });
