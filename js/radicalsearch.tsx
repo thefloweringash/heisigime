@@ -1,6 +1,7 @@
 import { css, StyleSheet } from "aphrodite";
 import React from "react";
-import { IKanjiToRadical, IRadicalsByStroke, IRadicalToKanji } from "./data/radicals";
+import { IKanjiToRadical, IRadicalToKanji } from "./data/radicals";
+import { IRadicalData } from "./radicals";
 
 function refineKanji(radicalToKanji: IRadicalToKanji, radicalList: string[]): string[] {
   if (radicalList.length === 0) {
@@ -60,15 +61,13 @@ interface IRadicalSearchProps {
   selected: string[];
   onToggle: (radical: string) => void;
   onComplete: (kanji: string) => void;
-  radicalToKanji: IRadicalToKanji;
-  kanjiToRadical: IKanjiToRadical;
-  radicalsByStroke: IRadicalsByStroke;
+  radicalData: IRadicalData;
 }
 
 export const RadicalSearch = ({
-  selected, onToggle, onComplete,
-  radicalToKanji, kanjiToRadical, radicalsByStroke,
+  selected, onToggle, onComplete, radicalData
 }: IRadicalSearchProps) => {
+  const { radicalToKanji, kanjiToRadical, radicalsByStroke } = radicalData;
   const kanjiCandidates  = refineKanji(radicalToKanji, selected);
   const possibleRadicals = refineRadicals(kanjiToRadical, kanjiCandidates);
   return (

@@ -1,6 +1,6 @@
 import keywords from "../../json_data/keywords.json"; // tslint:disable-line
 
-export type IKanjiDetails = Array<[string, string]>;
+export type IKanjiDetails = [string, string][];
 export interface IKanjiLookup {
   [k: string]: string | undefined;
 }
