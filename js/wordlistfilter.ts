@@ -1,14 +1,14 @@
 import { contains, scan } from "./util";
 
 interface IFilterTree<T> {
-  current: Array<[T, string]>;
+  current: [T, string][];
   children?: { [letter: string]: IFilterTree<T> };
 }
 
 export class WordListFilter<T> {
   public readonly completions: IFilterTree<T>; // public for test
 
-  constructor(words: Array<[T, string]>, private prefixSize: number) {
+  constructor(words: [T, string][], private prefixSize: number) {
     this.completions = { current: words };
 
     this.prefixSize = prefixSize;
@@ -20,7 +20,7 @@ export class WordListFilter<T> {
     }
   }
 
-  public fetch(query: string): Array<[T, string]> | undefined {
+  public fetch(query: string): [T, string][] | undefined {
     const map = this.mapForQuery(query);
     return map && map.current;
   }

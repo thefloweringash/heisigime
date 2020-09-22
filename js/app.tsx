@@ -1,46 +1,44 @@
 import * as Kuromoji from "kuromoji";
 import { IpadicFeatures, Tokenizer } from "kuromoji";
-import React, { Component } from "react";
+import React, { FunctionComponent, useState } from "react";
 import * as Wanakana from "wanakana";
-import * as Radicals from "./data/radicals";
 import { IKanjiToRadical } from "./data/radicals";
 import { RTKv6Inverse } from "./data/rtkv6";
 import { HeisigIME } from "./heisigime";
+import { IRadicalData, RadicalDataLoader } from "./radicals";
 import { RadicalSearch } from "./radicalsearch";
 import { ShowKeyword } from "./showkeyword";
 import { LazyLoader } from "./util";
 
-type IRadicalData = typeof Radicals;
-
 interface IDictionary {
   label: string;
-  inline: boolean;
   url: (query: string) => string;
 }
 
 const Dictionaries: IDictionary[] = [
   {
-    label:  "Jisho",
-    inline: false, // doesn't work in Firefox due to X-Frame-Options
+    label: "Jisho",
     url(query) {
       return `http://jisho.org/search/${query}`;
     },
   },
   {
-    label:  "Google",
-    inline: false,
+    label: "Google",
     url(query) {
       return `https://google.com/search?q=${query}`;
     },
   },
   {
-    label:  "Translate",
-    inline: false,
+    label: "Translate",
     url(query) {
       return `https://translate.google.com/#ja/en/${query}`;
     },
   },
 ];
+
+const openHochanh = (kanji: string) => {
+  window.open(`https://hochanh.github.io/rtk/${kanji}/index.html`, "_blank");
+};
 
 const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
   new Promise<Tokenizer<IpadicFeatures>>((ok, fail) => {
@@ -56,9 +54,6 @@ const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
     );
   }),
 );
-
-const RadicalDataLoader = new LazyLoader<IRadicalData>(
-  () => import("./data/radicals"));
 
 const posClasses: { [pos: string]: string } = {
   助詞:  "particle",
@@ -100,190 +95,140 @@ const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: I
   }
 };
 
-interface IAppState {
-  tokenizer?: Tokenizer<IpadicFeatures>;
-  result: string;
-  selectedRadicals: string[];
-  radicalData?: IRadicalData;
-  showRadicalUI: boolean;
-  dictionaryURL?: string;
-  dictionary?: string;
-}
+const FakeTokenizer = {
+  tokenize(result: string): IpadicFeatures[] {
+    const tokens: IpadicFeatures[] = [];
+    for (const x of result) {
+      tokens.push({
+        word_type:       "UNKNOWN",
+        surface_form:    x,
+        word_id:         -1,
+        word_position:   -1,
+        pos:             "",
+        pos_detail_1:    "",
+        pos_detail_2:    "",
+        pos_detail_3:    "",
+        conjugated_type: "",
+        conjugated_form: "",
+        basic_form:      "",
+      });
+    }
+    return tokens;
+  },
+};
 
-export class App extends Component<{}, IAppState> {
-  constructor(initialProps: {}) {
-    super(initialProps);
-    this.state = {
-      result:           "",
-      selectedRadicals: [],
-      showRadicalUI:    false,
-    };
+const toggleRadical = (selectedRadicals: string[], radical: string): string[] => {
+  const index               = selectedRadicals.indexOf(radical);
+  const newSelectedRadicals = selectedRadicals.slice();
 
-    this.characterSelected = this.characterSelected.bind(this);
-
-    this.closeDict       = this.closeDict.bind(this);
-    this.toggleTokenizer = this.toggleTokenizer.bind(this);
-    this.toggleRadicalUI = this.toggleRadicalUI.bind(this);
-
-    this.toggleRadical  = this.toggleRadical.bind(this);
-    this.refineRadicals = this.refineRadicals.bind(this);
-    this.clearRadicals  = this.clearRadicals.bind(this);
+  if (index === -1) {
+    selectedRadicals.push(radical);
   }
+  else {
+    newSelectedRadicals.splice(index, 1);
+  }
+  return newSelectedRadicals;
+};
 
-  public render() {
-    const { tokenizer, result }       = this.state;
-    const tokenized: IpadicFeatures[] = tokenizer ?
-      tokenizer.tokenize(result) :
-      this.fakeTokenize(result);
+const addRadicals = (selectedRadicals: string[], newRadicals: string[]): string[] => {
+  const newSelectedRadicals = selectedRadicals.slice();
+  for (const newRadical of newRadicals) {
+    if (newSelectedRadicals.indexOf(newRadical) === -1) {
+      newSelectedRadicals.push(newRadical);
+    }
+  }
+  return newSelectedRadicals;
+};
 
-    return (
-      <div className="app">
-        <div className="imePane">
-          <div className="outButtons">
-            {Dictionaries.map((dict) =>
-              <button key={dict.label} onClick={() => this.showDict(dict)}>{dict.label}</button>)}
-            <button key="kuromoji" onClick={this.toggleTokenizer}>Kuromoji</button>
-            <button key="radicals" onClick={this.toggleRadicalUI}>Radicals</button>
-          </div>
+export const App: FunctionComponent = () => {
+  const [result, setResult]               = useState("");
+  const [tokenizer, setTokenizer]         = useState<Tokenizer<IpadicFeatures> | null>(null);
+  const [radicals, setRadicals]           = useState<string[]>([]);
+  const [showRadicalUI, setShowRadicalUI] = useState(false);
+  const [radicalData, setRadicalData]     = useState<IRadicalData | null>(null);
 
-          <div className="inputs">
-            <div className="reverse">
-              {tokenized.map((token, i) => (
-                <Token
-                  key={i}
-                  {...token}
-                  onKanjiClicked={this.state.showRadicalUI ? this.refineRadicals : this.openHochanh}
-                  kanjiToRadical={this.state.radicalData ? this.state.radicalData.kanjiToRadical : undefined}
-                />
-              ))}
-            </div>
-            <input
-              className="result"
-              value={this.state.result}
-              onChange={(evt) => this.setState({ result: evt.target.value })}
-              placeholder="Result"
-            />
-            <HeisigIME
-              onInput={this.characterSelected}
-              autoFocus
-            />
-            {this.state.showRadicalUI && this.state.radicalData && (
-              <div>
-                <button
-                  onClick={this.clearRadicals}
-                >
-                  Reset
-                </button>
-                <RadicalSearch
-                  onToggle={this.toggleRadical}
-                  selected={this.state.selectedRadicals}
-                  onComplete={this.characterSelected}
-                  {...this.state.radicalData}
-                />
-              </div>
-            )}
-          </div>
+  const characterSelected = (character: string) => {
+    setResult(result + character);
+  };
+
+  const toggleTokenizer = async () => {
+    if (tokenizer) {
+      setTokenizer(null);
+    }
+    else {
+      setTokenizer(await TokenizerLoader.load());
+    }
+  };
+
+  const toggleRadicalUI = async () => {
+    const shouldShow = !showRadicalUI;
+    setShowRadicalUI(shouldShow);
+    if (shouldShow && !radicalData) {
+      setRadicalData(await RadicalDataLoader.load());
+    }
+  };
+
+  const showDict = (dictionary: IDictionary) => {
+    window.open(dictionary.url(result));
+  };
+
+  const addRadicalsFromKanji = (kanji: string) => {
+    if (radicalData) {
+      const { kanjiToRadical } = radicalData;
+      setRadicals(addRadicals(radicals, kanjiToRadical[kanji] || []));
+    }
+  };
+
+  const tokenized: IpadicFeatures[] = (tokenizer ?? FakeTokenizer).tokenize(result);
+
+  return (
+    <div className="app">
+      <div className="imePane">
+        <div className="outButtons">
+          {Dictionaries.map((dict) =>
+            <button key={dict.label} onClick={() => showDict(dict)}>{dict.label}</button>)}
+          <button key="kuromoji" onClick={toggleTokenizer}>Kuromoji</button>
+          <button key="radicals" onClick={toggleRadicalUI}>Radicals</button>
         </div>
 
-        {this.state.dictionaryURL &&
-         <div className="obscurePane" onClick={this.closeDict}>
-           <div className="dictPane">
-             <iframe width="100%"
-                     height="100%"
-                     className="dictFrame"
-                     src={this.state.dictionaryURL}/>
-           </div>
-         </div>}
+        <div className="inputs">
+          <div className="reverse">
+            {tokenized.map((token, i) => (
+              <Token
+                key={i}
+                {...token}
+                onKanjiClicked={showRadicalUI ? addRadicalsFromKanji : openHochanh}
+                kanjiToRadical={radicalData ? radicalData.kanjiToRadical : undefined}
+              />
+            ))}
+          </div>
+          <input
+            className="result"
+            value={result}
+            onChange={(evt) => setResult(evt.target.value)}
+            placeholder="Result"
+          />
+          <HeisigIME
+            onInput={characterSelected}
+            autoFocus
+          />
+          {showRadicalUI && radicalData && (
+            <div>
+              <button
+                onClick={() => setRadicals([])}
+              >
+                Reset
+              </button>
+              <RadicalSearch
+                onToggle={(r) => setRadicals(toggleRadical(radicals, r))}
+                selected={radicals}
+                onComplete={characterSelected}
+                radicalData={radicalData}
+              />
+            </div>
+          )}
+        </div>
       </div>
-    );
-  }
-
-  private toggleTokenizer() {
-    if (this.state.tokenizer) {
-      this.setState({ tokenizer: undefined });
-    }
-    else {
-      TokenizerLoader.load().then((tokenizer) => {
-        this.setState({ tokenizer });
-      });
-    }
-  }
-
-  private characterSelected(char: string) {
-    this.setState((prev) => ({ result: prev.result + char }));
-  }
-
-  private showDict(dictionary: IDictionary) {
-    const dictionaryURL = dictionary.url(this.state.result);
-    if (dictionary.inline) {
-      this.setState({ dictionaryURL });
-    }
-    else {
-      window.open(dictionaryURL);
-    }
-  }
-
-  private closeDict() {
-    this.setState({ dictionaryURL: undefined });
-  }
-
-  private fakeTokenize(result: string): IpadicFeatures[] {
-    return [{
-      word_type:       "UNKNOWN",
-      surface_form:    result,
-      word_id:         -1,
-      word_position:   -1,
-      pos:             "",
-      pos_detail_1:    "",
-      pos_detail_2:    "",
-      pos_detail_3:    "",
-      conjugated_type: "",
-      conjugated_form: "",
-      basic_form:      "",
-    }];
-  }
-  private toggleRadical(radical: string) {
-    const selectedRadicals = this.state.selectedRadicals.slice();
-    const index              = selectedRadicals.indexOf(radical);
-    if (index === -1) {
-      selectedRadicals.push(radical);
-    }
-    else {
-      selectedRadicals.splice(index, 1);
-    }
-    this.setState({ selectedRadicals });
-  }
-
-  private toggleRadicalUI() {
-    const showRadicalUI = !this.state.showRadicalUI;
-    this.setState({ showRadicalUI });
-    if (showRadicalUI) {
-      RadicalDataLoader.load().then((radicalData) => {
-        this.setState({ radicalData });
-      });
-    }
-  }
-
-  private clearRadicals() {
-    this.setState({ selectedRadicals: [] });
-  }
-
-  private refineRadicals(kanji: string) {
-    if (!this.state.radicalData) {
-      throw new Error("Cannot refine without radical data");
-    }
-
-    const { kanjiToRadical } = this.state.radicalData;
-    const addedRadicals        = kanjiToRadical[kanji];
-
-    if (addedRadicals) {
-      const selectedRadicals = this.state.selectedRadicals.slice();
-      selectedRadicals.unshift(...addedRadicals);
-      this.setState({ selectedRadicals });
-    }
-  }
-
-  private openHochanh(kanji: string) {
-    window.open(`https://hochanh.github.io/rtk/${kanji}/index.html`, "_blank");
-  }
-}
+    </div>
+  );
+};

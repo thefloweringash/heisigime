@@ -6,7 +6,6 @@
       <option name="USE_DOUBLE_QUOTES" value="false" />
       <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
       <option name="SPACES_WITHIN_IMPORTS" value="true" />
-      <option name="ALIGN_MULTIPLE_ASSIGNMENTS" value="true" />
     </JSCodeStyleSettings>
     <TypeScriptCodeStyleSettings version="0">
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
@@ -17,7 +16,6 @@
       <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
       <option name="SPACES_WITHIN_IMPORTS" value="true" />
       <option name="IMPORT_SORT_MODULE_NAME" value="true" />
-      <option name="ALIGN_MULTIPLE_ASSIGNMENTS" value="true" />
     </TypeScriptCodeStyleSettings>
     <codeStyleSettings language="JavaScript">
       <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
@@ -28,6 +26,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
+      <option name="ELSE_ON_NEW_LINE" value="true" />
       <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
       <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
       <option name="METHOD_PARAMETERS_LPAREN_ON_NEXT_LINE" value="true" />
@@ -41,7 +40,6 @@
     <codeStyleSettings language="ruby">
       <option name="ALIGN_GROUP_FIELD_DECLARATIONS" value="true" />
       <option name="SPACE_WITHIN_BRACES" value="true" />
-      <option name="SPACE_WITHIN_ARRAY_INITIALIZER_BRACES" value="true" />
       <indentOptions>
         <option name="CONTINUATION_INDENT_SIZE" value="2" />
       </indentOptions>
