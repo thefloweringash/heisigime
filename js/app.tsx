@@ -15,6 +15,8 @@ interface IDictionary {
   url: (query: string) => string;
 }
 
+// These operate on a word or phrase, and will typically receive the entire
+// input.
 const Dictionaries: IDictionary[] = [
   {
     label: "Jisho",
@@ -36,8 +38,25 @@ const Dictionaries: IDictionary[] = [
   },
 ];
 
-const openHochanh = (kanji: string) => {
-  window.open(`https://hochanh.github.io/rtk/${kanji}/index.html`, "_blank");
+// These operate on a single character only
+const enum KanjiDictionaryName {
+  Hochanh = 'hochanh',
+  Koohii = 'koohii',
+};
+
+const KanjiDictionaries: { [name in KanjiDictionaryName]: IDictionary } = {
+  [KanjiDictionaryName.Hochanh]: {
+    label: "Hochanh",
+    url(kanji) {
+      return `https://hochanh.github.io/rtk/${kanji}/index.html`;
+    },
+  },
+  [KanjiDictionaryName.Koohii]: {
+    label: 'Koohii',
+    url(kanji) {
+      return `https://kanji.koohii.com/study/kanji/${kanji}`;
+    },
+  },
 };
 
 const TokenizerLoader = new LazyLoader<Tokenizer<IpadicFeatures>>(() =>
@@ -169,7 +188,20 @@ export const App: FunctionComponent = () => {
   };
 
   const showDict = (dictionary: IDictionary) => {
-    window.open(dictionary.url(result));
+    window.open(dictionary.url(result), '_blank');
+  };
+
+  const [kanjiDictionaryName, setKanjiDictionaryName] = useState(KanjiDictionaryName.Hochanh);
+  const openKanjiDictionary = (kanji: string) => {
+    const dictionary = KanjiDictionaries[kanjiDictionaryName];
+    window.open(dictionary.url(kanji), '_blank');
+  };
+
+  const rotateKanjiDictionary = () => {
+    const options = Object.keys(KanjiDictionaries) as KanjiDictionaryName[];
+    const currentIndex = options.indexOf(kanjiDictionaryName);
+    const next = options[(currentIndex + 1) % options.length];
+    setKanjiDictionaryName(next);
   };
 
   const addRadicalsFromKanji = (kanji: string) => {
@@ -189,6 +221,7 @@ export const App: FunctionComponent = () => {
             <button key={dict.label} onClick={() => showDict(dict)}>{dict.label}</button>)}
           <button key="kuromoji" onClick={toggleTokenizer}>Kuromoji</button>
           <button key="radicals" onClick={toggleRadicalUI}>Radicals</button>
+          <button key="kanji_dictionary" onClick={rotateKanjiDictionary}>{KanjiDictionaries[kanjiDictionaryName].label}</button>
         </div>
 
         <div className="inputs">
@@ -197,7 +230,7 @@ export const App: FunctionComponent = () => {
               <Token
                 key={i}
                 {...token}
-                onKanjiClicked={showRadicalUI ? addRadicalsFromKanji : openHochanh}
+                onKanjiClicked={showRadicalUI ? addRadicalsFromKanji : openKanjiDictionary}
                 kanjiToRadical={radicalData ? radicalData.kanjiToRadical : undefined}
               />
             ))}
