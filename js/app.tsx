@@ -159,8 +159,10 @@ const addRadicals = (selectedRadicals: string[], newRadicals: string[]): string[
   return newSelectedRadicals;
 };
 
-export const App: FunctionComponent = () => {
-  const [result, setResult]               = useState("");
+export const App: FunctionComponent<{
+  initialState: string
+}> = ({ initialState }) => {
+  const [result, setResult]               = useState(initialState);
   const [tokenizer, setTokenizer]         = useState<Tokenizer<IpadicFeatures> | null>(null);
   const [radicals, setRadicals]           = useState<string[]>([]);
   const [showRadicalUI, setShowRadicalUI] = useState(false);
