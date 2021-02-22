@@ -8,7 +8,19 @@ if (!container) {
   throw new Error("Missing mount point: #appcontainer");
 }
 
-const app = <App/>;
+const getStateFromHash = (hash: string) => {
+  if (!hash.startsWith("#")) {
+    return "";
+  }
+
+  return decodeURIComponent(hash.substr(1));
+};
+
+const app = (
+  <App
+    initialState={getStateFromHash(window.location.hash)}
+  />
+);
 
 if (container.firstChild) {
   ReactDOM.hydrate(app, container);

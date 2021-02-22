@@ -159,8 +159,10 @@ const addRadicals = (selectedRadicals: string[], newRadicals: string[]): string[
   return newSelectedRadicals;
 };
 
-export const App: FunctionComponent = () => {
-  const [result, setResult]               = useState("");
+export const App: FunctionComponent<{
+  initialState: string
+}> = ({ initialState }) => {
+  const [result, setResult]               = useState(initialState);
   const [tokenizer, setTokenizer]         = useState<Tokenizer<IpadicFeatures> | null>(null);
   const [radicals, setRadicals]           = useState<string[]>([]);
   const [showRadicalUI, setShowRadicalUI] = useState(false);
@@ -211,6 +213,21 @@ export const App: FunctionComponent = () => {
     }
   };
 
+  const copy = () => {
+    const url = new URL(window.location.toString());
+    url.hash = result;
+    navigator.clipboard.writeText(url.toString());
+  };
+
+  const share = () => {
+    if (navigator.share) {
+      navigator.share({
+        text: `Heisig reading for ${result}`,
+        url: `#${result}`,
+      });
+    }
+  };
+
   const tokenized: IpadicFeatures[] = (tokenizer ?? FakeTokenizer).tokenize(result);
 
   return (
@@ -222,6 +239,8 @@ export const App: FunctionComponent = () => {
           <button key="kuromoji" onClick={toggleTokenizer}>Kuromoji</button>
           <button key="radicals" onClick={toggleRadicalUI}>Radicals</button>
           <button key="kanji_dictionary" onClick={rotateKanjiDictionary}>{KanjiDictionaries[kanjiDictionaryName].label}</button>
+          <button key="copy" onClick={copy}>Copy</button>
+          <button key="share" onClick={share}>Share</button>
         </div>
 
         <div className="inputs">
