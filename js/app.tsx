@@ -40,17 +40,10 @@ const Dictionaries: IDictionary[] = [
 
 // These operate on a single character only
 const enum KanjiDictionaryName {
-  Hochanh = 'hochanh',
   Koohii = 'koohii',
 };
 
 const KanjiDictionaries: { [name in KanjiDictionaryName]: IDictionary } = {
-  [KanjiDictionaryName.Hochanh]: {
-    label: "Hochanh",
-    url(kanji) {
-      return `https://hochanh.github.io/rtk/${kanji}/index.html`;
-    },
-  },
   [KanjiDictionaryName.Koohii]: {
     label: 'Koohii',
     url(kanji) {
@@ -193,7 +186,7 @@ export const App: FunctionComponent<{
     window.open(dictionary.url(result), '_blank');
   };
 
-  const [kanjiDictionaryName, setKanjiDictionaryName] = useState(KanjiDictionaryName.Hochanh);
+  const [kanjiDictionaryName, setKanjiDictionaryName] = useState(KanjiDictionaryName.Koohii);
   const openKanjiDictionary = (kanji: string) => {
     const dictionary = KanjiDictionaries[kanjiDictionaryName];
     window.open(dictionary.url(kanji), '_blank');
