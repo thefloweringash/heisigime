@@ -41,6 +41,7 @@ const Dictionaries: IDictionary[] = [
 // These operate on a single character only
 const enum KanjiDictionaryName {
   Koohii = 'koohii',
+  Jisho = 'jisho',
 };
 
 const KanjiDictionaries: { [name in KanjiDictionaryName]: IDictionary } = {
@@ -48,6 +49,12 @@ const KanjiDictionaries: { [name in KanjiDictionaryName]: IDictionary } = {
     label: 'Koohii',
     url(kanji) {
       return `https://kanji.koohii.com/study/kanji/${kanji}`;
+    },
+  },
+  [KanjiDictionaryName.Jisho]: {
+    label: 'Jisho (kanji)',
+    url(kanji) {
+      return `https://jisho.org/search/${encodeURIComponent(`${kanji} #kanji`)}`;
     },
   },
 };
