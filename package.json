@@ -34,7 +34,7 @@
     "autoprefixer": "^10.3.2",
     "chai": "^4.3.4",
     "cheerio": "^1.0.0-rc.10",
-    "karma": "^6.3.4",
+    "karma": "^6.3.14",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-mocha": "^2.0.1",
