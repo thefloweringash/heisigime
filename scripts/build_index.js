@@ -18,7 +18,8 @@ const main = () => {
     fs.writeFileSync("dist/index.html", result);
   }
   catch (e) {
-    console.error("Error generating index: ${e}");
+    console.error(`Error generating index: ${e}`);
+    throw e;
   }
 }
 
