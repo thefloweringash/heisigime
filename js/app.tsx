@@ -93,25 +93,35 @@ interface ITokenProps extends IpadicFeatures {
 const Token = ({ surface_form, reading, pos, kanjiToRadical, onKanjiClicked }: ITokenProps) => {
   const posClass = posClasses[pos] || "";
   if (surface_form === reading || Wanakana.isKana(surface_form)) {
-    return <span className={`token ${posClass}`}>{surface_form}</span>;
-  }
-  else {
     return (
-      <ruby className={`token ${posClass}`}>
+      <ruby>
         <rb>
-          <ShowKeyword
-            dictionary={RTKv6Inverse}
-            kanjiToRadical={kanjiToRadical}
-            phrase={surface_form}
-            onKanjiClicked={onKanjiClicked}
-          />
+          <span className={`token ${posClass}`}>{surface_form}</span>
         </rb>
         <rp>(</rp>
-        <rt>{reading && Wanakana.toHiragana(reading)}</rt>
+        <rt>{Wanakana.toRomaji(surface_form)}</rt>
+
         <rp>)</rp>
       </ruby>
     );
   }
+  else if (reading) {
+    return (
+      <ruby className={`token ${posClass}`}>
+        <rb>
+          <span className={`token ${posClass}`}>{surface_form}</span>
+        </rb>
+        <rp>(</rp>
+        <rt>{reading && Wanakana.toRomaji(reading)}</rt>
+        <rp>)</rp>
+      </ruby>
+    );
+  } else {
+    return (
+      <span className={`token ${posClass}`}>{surface_form}</span>
+    );
+  }
+
 };
 
 const FakeTokenizer = {
